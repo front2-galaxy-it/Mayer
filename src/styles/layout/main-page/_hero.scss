@@ -3,6 +3,10 @@
     min-height: 780px;
     width: 100%;
     position: relative;
+    
+    @include media ("<tablet") {
+        min-height: 710px;
+    }
 
     &_video {
         position: absolute;
