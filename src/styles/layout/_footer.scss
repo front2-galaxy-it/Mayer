@@ -1,0 +1,235 @@
+.footer {
+    padding: 80px 0 24px 0;
+    background-color: $green_light;
+
+    .container {
+        max-width: 1230px;
+    }
+
+    &_top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 64px 30px;
+        @include adaptive-value("margin-bottom", 180, 80, 1);
+
+        @include media ("<tablet_x") {
+            flex-wrap: wrap;
+        }
+    }
+
+    &_mailing {
+        max-width: 545px;
+        width: 100%;
+        margin: 0 auto;
+        @include adaptive-value("margin-bottom", 180, 80, 1);
+
+        .tip {
+            @include adaptive-value("font-size", 14, 12, 1);
+            font-family: "Ease";
+        }
+    }
+
+    &_form {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        input {
+            background-color: transparent;
+            padding: 12px 10px 14px 0;
+            border: none;
+            border-bottom: 2px solid #8C9071;
+            width: 100%;
+            outline: none;
+            transition: all .3s ease;
+            color: $green;
+
+            &:focus {
+                border-color: $green;
+                transition: all .3s ease;
+            }
+
+            &::placeholder {
+                color: #8C9071;
+            }
+        }
+
+        .link {
+            border: none;
+            background-color: transparent;
+            outline: none;
+            padding: 0;
+            padding-bottom: 16px;
+        }
+
+    }
+
+    &_menu {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 30px;
+        @include adaptive-value("margin-bottom", 180, 80, 1);
+
+        @include media ("<desktop") {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
+    &_menu-column {
+        display: flex;
+        flex-direction: column;
+
+        @include media ("<desktop") {
+            width: 45%;
+            align-items: center;
+        }
+
+        @include media ("<phone") {
+            width: 100%;
+        }
+
+        &:last-child {
+            max-width: 570px;
+            width: 100%;
+        }
+
+        a {
+            color: $green;
+            @include adaptive-value("font-size", 18, 16, 1);
+
+            &:not(:last-child) {
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+    &_top-column {
+        width: 33%;
+
+        @include media ("<tablet_x") {
+            width: 45%;
+        }
+
+        @include media ("<phone_x") {
+            width: 100%;
+        }
+    }
+
+    &_bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+
+        .social {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                span {
+                    color: $green;
+                    font-family: "Ease";
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+
+            p,
+            a {
+                font-family: "Ease";
+                font-size: 12px;
+                color: $green;
+            }
+        }
+    }
+}
+
+.menu-column {
+    &_title {
+        font-family: "Ease";
+        margin-bottom: 8px;
+        font-size: 12px;
+    }
+}
+
+.column-middle {
+    a {
+        &:not(:last-of-type) {
+            margin-bottom: 24px;
+        }
+    }
+}
+
+.column-last {
+    p {
+        @include adaptive-value("font-size", 18, 16, 1);
+        @include adaptive-value("margin-bottom", 32, 16, 1);
+
+        @include media ("<desktop") {
+            text-align: center;
+        }
+    }
+
+    a {
+        margin-bottom: 0 !important;
+        border: 1px solid $green;
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+
+        &:last-child {
+            border-top: none;
+        }
+    }
+}
+
+.column {
+
+    &_title {
+        font-family: "Ease";
+        font-weight: 600;
+        margin-bottom: 16px;
+        font-size: 16px;
+    }
+
+    &_text {
+        font-size: 16px;
+        line-height: 130%;
+        margin-bottom: 16px;
+    }
+
+
+    &_link {
+        position: relative;
+        font-family: "Ease";
+        color: $green;
+    }
+
+    &_links-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+}

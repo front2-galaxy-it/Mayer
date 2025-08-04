@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Align';
+    src: url('Align-Medium.eot');
+    src: url('Align-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Align-Medium.woff2') format('woff2'),
+        url('Align-Medium.woff') format('woff'),
+        url('Align-Medium.ttf') format('truetype'),
+        url('Align-Medium.svg#Align-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ease SemiDisplay SmDisplay SmBd';
+    src: url('EaseSemiDisplay-Semibold.eot');
+    src: url('EaseSemiDisplay-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('EaseSemiDisplay-Semibold.woff2') format('woff2'),
+        url('EaseSemiDisplay-Semibold.woff') format('woff'),
+        url('EaseSemiDisplay-Semibold.ttf') format('truetype'),
+        url('EaseSemiDisplay-Semibold.svg#EaseSemiDisplay-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Align';
+    src: url('Align-Regular.eot');
+    src: url('Align-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Align-Regular.woff2') format('woff2'),
+        url('Align-Regular.woff') format('woff'),
+        url('Align-Regular.ttf') format('truetype'),
+        url('Align-Regular.svg#Align-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
