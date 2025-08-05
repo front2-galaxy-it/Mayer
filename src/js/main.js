@@ -43,6 +43,28 @@ new Swiper('.gallery-swiper', {
   },
 });
 
+new Swiper('.text-section-swiper', {
+  slidesPerView: 'auto',
+  breakpoints: {
+    320: {
+      spaceBetween: 16,
+    },
+    1024: {
+      spaceBetween: 24,
+    },
+  },
+});
+
+new Swiper('.blog-swiper', {
+  slidesPerView: 'auto',
+  spaceBetween: 24,
+  modules: [Navigation],
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
 let swiperQualities = null;
 let swiperPlan = null;
 

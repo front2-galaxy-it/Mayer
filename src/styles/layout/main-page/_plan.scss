@@ -14,6 +14,17 @@
         max-width: 1080px;
         width: 100%;
         margin: 0 auto;
+
+        @include media ("<phone") {
+            max-width: 310px;
+        }
+    }
+
+    .swiper-wrapper{
+        @include media ("<tablet") {
+            flex-direction: column;
+            gap: 45px;
+        }
     }
 
     &_item {
@@ -47,6 +58,10 @@
     .swiper-button-prev,
     .swiper-button-next {
         transition: all .3s ease;
+
+        @include media ("<tablet") {
+            display: none;
+        }
 
         &.swiper-button-disabled {
             opacity: 0;
