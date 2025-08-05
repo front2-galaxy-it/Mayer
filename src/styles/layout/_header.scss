@@ -11,6 +11,9 @@
         transition: all .3s ease;
 
         .header_logo {
+            max-width: 188px;
+            transition: all .3s ease;
+
             svg {
                 fill: $green;
                 transition: all .3s ease;
@@ -66,7 +69,7 @@
         max-width: 375px;
         width: 100%;
         @include adaptive-value("max-width", 375, 123, 1);
-
+        transition: all .3s ease;
 
         svg {
             width: 100%;

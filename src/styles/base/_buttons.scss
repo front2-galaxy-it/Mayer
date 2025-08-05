@@ -53,5 +53,37 @@
             transition: all .3s ease;
         }
     }
+}
 
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: $green;
+    transition: all .3s ease;
+
+    &:hover {
+        background-color: #303814;
+        transition: all .3s ease;
+    }
+
+    &::after {
+        display: none;
+    }
+}
+
+.swiper-button-next {
+    .arrow {
+        color: $white_soft;
+        width: 9px;
+        height: 18px;
+        rotate: 180deg;
+    }
+}
+
+.swiper-pagination {
+    font-family: "Ease";
+    position: static;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-top: 45px;
 }

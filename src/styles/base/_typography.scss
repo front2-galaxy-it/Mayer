@@ -71,6 +71,7 @@ ul {
 }
 
 .section-title {
+    text-transform: uppercase;
     @include adaptive-value("font-size", 34, 24, 1);
     text-align: center;
     @include adaptive-value("margin-bottom", 32, 16, 1);

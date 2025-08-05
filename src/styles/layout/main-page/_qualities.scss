@@ -1,0 +1,79 @@
+.qualities {
+    @include adaptive-value("padding-top", 80, 50, 1);
+    @include adaptive-value("padding-bottom", 40, 50, 1);
+
+    .container {
+        max-width: 1130px;
+    }
+
+    .qualities-swiper {
+        overflow: visible;
+    }
+
+    .swiper-wrapper {
+
+        @include media (">tablet") {
+            display: grid;
+            grid-template: 1fr / 1fr 1fr;
+            gap: 80px;
+        }
+
+        @include media ("<desktop") {
+            grid-template: 1fr / 1fr;
+        }
+    }
+
+    &_item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px 24px;
+
+        @include media ("<phone_x") {
+            flex-direction: column;
+        }
+    }
+
+    .swiper-pagination {
+        display: none;
+        justify-content: flex-start;
+        position: static;
+        margin-top: 32px;
+
+        @include media ("<tablet") {
+            display: flex;
+        }
+    }
+
+    .item {
+
+        &_img {
+            min-width: 140px;
+            min-height: 140px;
+            max-width: 140px;
+            max-height: 140px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        &_title {
+            font-family: "Ease";
+            font-size: 14px;
+            font-weight: 600;
+            @include adaptive-value("margin-bottom", 8, 12, 1);
+            line-height: 120%;
+            text-transform: uppercase;
+        }
+
+        &_text {
+            font-size: 14px;
+            line-height: 122%;
+            @include adaptive-value("margin-bottom", 8, 16, 1);
+        }
+
+        &_link {
+            font-family: "Ease";
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+}
