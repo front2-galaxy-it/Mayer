@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 import { htmlFiles } from './getHTMLFileNames';
+import { svgSpritemap } from 'vite-plugin-svg-spritemap';
 
 const input = { main: resolve(__dirname, 'src/index.html') };
 htmlFiles.forEach((file) => {
@@ -15,6 +16,9 @@ export default defineConfig({
   publicDir: '../public',
   plugins: [
     handlebars({ partialDirectory: resolve(__dirname, 'src/templates') }),
+    svgSpritemap({
+      pattern: 'public/icons/*.svg',
+    }),
   ],
   build: {
     rollupOptions: {

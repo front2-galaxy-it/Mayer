@@ -44,9 +44,14 @@
     }
 
     &_secondary-green {
-        background-color: $white_soft;
-        color: $green;
+        background-color: $green;
+        color: $white_soft;
         transition: all .3s ease;
+
+        &:hover {
+            background-color: #303814;
+            transition: all .3s ease;
+        }
     }
 
 }

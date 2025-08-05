@@ -3,7 +3,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 24px 0;
     z-index: 100;
     transition: all .3s ease;
 
@@ -32,12 +31,22 @@
             color: $green;
             border-color: $green;
             transition: all .3s ease;
+
+            &:hover {
+                background: rgba($color: #424D1C, $alpha: 0.2);
+                transition: all .3s ease;
+            }
         }
 
         .btn_secondary-white {
             background-color: $green;
             color: $white_soft;
             transition: all .3s ease;
+
+            &:hover {
+                background-color: #303814;
+                transition: all .3s ease;
+            }
         }
     }
 
@@ -46,6 +55,7 @@
         align-items: flex-start;
         justify-content: space-between;
         gap: 25px;
+        padding: 24px 0;
 
         @include media ("<tablet_x") {
             align-items: center;

@@ -11,6 +11,7 @@
   <link rel="manifest" href="./favicons/site.webmanifest">
   <link rel="stylesheet" href="/styles/main.scss">
   <script type="module" src="/js/main.js" defer></script>
+  <script src="js/wow.min.js"></script>
 </head>
 
 <body>
@@ -21,7 +22,9 @@
         <video class="hero_video" src="./video/demo-video-2_small.mp4" autoplay playsinline loop
           muted></video>
         <div class="container">
-          <p class="hero_text">Pozývame vás do novej štvrte, ktorá sa nikam nenáhli. Kde susedia
+          <p class="hero_text wow animate__animated animate__fadeInDown">Pozývame vás do novej
+            štvrte,
+            ktorá sa nikam nenáhli. Kde susedia
             budujú vzťahy komunitnými aktivitami, deti chodia do školy pešo zelenými ulicami a kde
             vás
             život pomalého malomesta vezme na prechádzku rybníkmi, lesmi, uličkami aj dvormi. Víta
@@ -32,14 +35,97 @@
       <section class="text-section">
         <div class="container">
           <div class="text-section_content">
-            <h2 class="section-title">Príležitosť spomaliť</h2>
-            <p>MAYER je živá komunitná štvrť, ktorá prináša do prostredia malokarpatskej prírody na
+            <h2 class="section-title wow animate__animated animate__fadeInDown">Príležitosť
+              spomaliť</h2>
+            <p class="wow animate__animated animate__fadeInDown">MAYER je živá komunitná štvrť,
+              ktorá prináša do prostredia malokarpatskej prírody na
               okraji Malaciek atmosféru malomestskej pohody. Každému, komu je sympatické bývanie v
               ľudskej mierke a pokojnom tempe, ponúka príležitosť žiť vedomý, udržateľný, komunitný
               život s bohatstvom príležitostí a silnými vzťahmi k ľuďom a miestam v rámci susedstva.
             </p>
-            <a href="#" class="btn btn_primary-green">Zobraziť viac</a>
+            <a href="#"
+              class="btn btn_primary-green wow animate__animated animate__fadeInDown">Zobraziť
+              viac</a>
           </div>
+        </div>
+      </section>
+      <section class="gallery">
+        <div class="container">
+          <p class="gallery_description caption wow animate__animated animate__fadeInDown">Okolie MAYERa
+            tvorí rozmanité prírodné prostredie, ktoré je
+            na dosah každého dňa v štvrti. Lesy, rybníky, bažiny aj lúky sú pohodlne dostupné pešo
+            aj na bicykli a ich pestrosť v priebehu ročných období vás láka objavovať.</p>
+          <div class="swiper gallery-swiper wow animate__animated animate__fadeInDown">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a data-fancybox="gallery" data-caption="Popiska k fotke"
+                  href="./images/gallery/gallery_img_1.webp">
+                  <img src="./images/gallery/gallery_img_1.webp" alt="Image 1" />
+                </a>
+                <span class="caption">Popiska k fotke</span>
+              </div>
+              <div class="swiper-slide">
+                <a data-fancybox="gallery" data-caption="Popiska k fotke"
+                  href="./images/gallery/gallery_img_2.webp">
+                  <img src="./images/gallery/gallery_img_2.webp" alt="Image 2" />
+                </a>
+                <span class="caption">Popiska k fotke</span>
+              </div>
+              <div class="swiper-slide">
+                <a data-fancybox="gallery" data-caption="Popiska k fotke"
+                  href="./images/gallery/gallery_img_3.webp">
+                  <img src="./images/gallery/gallery_img_3.webp" alt="Image 3" />
+                </a>
+                <span class="caption">Popiska k fotke</span>
+              </div>
+            </div>
+            <div class="swiper-button-next">
+              <svg class="arrow">
+                <use xlink:href="/spritemap.svg#arrow"></use>
+              </svg>
+              <!-- <img class="arrow" src="./images/arrow.svg" alt="image not found"> -->
+            </div>
+            <div class="swiper-button-prev">
+              <img class="arrow" src="./images/arrow.svg" alt="image not found">
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+      <section class="text-section">
+        <div class="container">
+          <div class="text-section_content">
+            <h2 class="section-title wow animate__animated animate__fadeInDown">Nízkopodlažnosť</h2>
+            <p class="wow animate__animated animate__fadeInDown">(blok k nizkej zástavbe) MAYER je
+              živá komunitná štvrť, ktorá prináša do prostredia malokarpatskej prírody na okraji
+              Malaciek atmosféru malomestskej pohody. Každému, komu je sympatické bývanie v ľudskej
+              mierke a pokojnom tempe, ponúka príležitosť žiť vedomý, udržateľný, komunitný život s
+              bohatstvom príležitostí a silnými vzťahmi k ľuďom a miestam v rámci susedstva.
+            </p>
+            <div class="text-section_list">
+              <a href="#" class="text-section_item">Bezpečné/chránené dvory
+                <img class="arrow" src="./images/arrow_green.svg" alt="image not found"></a>
+              <a href="#" class="text-section_item">Uzavreté dvory v obytných blokoch s priestorom
+                na
+                stretávanie sa susedov <img class="arrow" src="./images/arrow_green.svg"
+                  alt="image not found"> </a>
+              <a href="#" class="text-section_item">S pestovateľskými záhonmi a s ihriskami pre
+                menšie
+                deti, bez dozoru rodičov <img class="arrow" src="./images/arrow_green.svg"
+                  alt="image not found"> </a>
+              <p class="text-section_item">Na prízemí komunitný priestor prepojený s
+                kaviarňou</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="image-section">
+        <div class="container">
+          <div class="image_wrap">
+            <img src="./images/content/content_img_1.webp" alt="image not found">
+          </div>
+          <span class="caption">Štvrť tvoria bloky, z ktorých každý je niečím iný a výnimočný.
+            Niektoré tvoria bytové domy s pavlačami, iné malomestské dvojdomy.</span>
         </div>
       </section>
     </main>
