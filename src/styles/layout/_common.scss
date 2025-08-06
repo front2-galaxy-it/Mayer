@@ -366,6 +366,10 @@ html {
     @include adaptive-value("padding-top", 40, 50, 1);
     @include adaptive-value("padding-bottom", 120, 100, 1);
 
+    .container {
+        max-width: 100%;
+    }
+
     &_description {
         max-width: 275px;
         margin-bottom: 16px;
@@ -399,6 +403,10 @@ html {
 .image-section {
     @include adaptive-value("padding-top", 40, 50, 1);
     @include adaptive-value("padding-bottom", 40, 50, 1);
+
+    .container {
+        max-width: 100%;
+    }
 
     .image_wrap {
         width: 100%;
