@@ -12,7 +12,6 @@
         color: $white_soft;
         transition: all .3s ease;
 
-
         &:hover {
             background: rgba($color: #FCF7EB33, $alpha: 0.2);
             transition: all .3s ease;
@@ -47,6 +46,7 @@
     &_secondary-green {
         background-color: $green;
         color: $white_soft;
+        border-color: transparent;
         transition: all .3s ease;
 
         &:hover {

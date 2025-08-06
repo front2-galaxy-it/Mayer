@@ -14,6 +14,10 @@
             max-width: 188px;
             transition: all .3s ease;
 
+            @include media ("<phone") {
+                width: 122px;
+            }
+
             svg {
                 fill: $green;
                 transition: all .3s ease;
@@ -63,13 +67,25 @@
         @include media ("<tablet_x") {
             align-items: center;
         }
+
+        @include media ("<tablet") {
+            padding: 16px 0;
+        }
     }
 
     &_logo {
         max-width: 375px;
         width: 100%;
-        @include adaptive-value("max-width", 375, 123, 1);
+        @include adaptive-value("max-width", 375, 122, 1);
         transition: all .3s ease;
+        position: relative;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+
+        @include media ("<phone") {
+            width: 122px;
+        }
 
         svg {
             width: 100%;
@@ -127,5 +143,224 @@
         @include media ("<tablet_x") {
             display: flex;
         }
+
+        .viber-link {
+            &.hide {
+                display: none;
+            }
+        }
     }
+
+    &_mob-menu {
+        display: none;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        right: -100%;
+        background-color: $white_soft;
+        height: 100dvh;
+        width: 50%;
+        padding: 105px 16px 32px 16px;
+        transition: all .3s ease;
+        overflow: auto;
+
+        scrollbar-width: none;
+        scrollbar-color: transparent transparent;
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        &__body {
+            overflow: hidden;
+        }
+
+        &.open {
+            right: 0;
+            transition: all .3s ease;
+        }
+
+        @include media ("<tablet_x") {
+            display: block;
+        }
+
+        @include media ("<tablet") {
+            width: 100%;
+        }
+    }
+
+}
+
+.mob-menu {
+
+    &_nav {
+        margin-bottom: 24px;
+    }
+
+    &_item {
+        padding-bottom: 12px;
+        border-bottom: 1px solid $green8C;
+
+        &:not(:last-child) {
+            margin-bottom: 12px;
+        }
+    }
+
+    &_link {
+        font-size: 18px;
+        font-weight: 600;
+        font-family: "Ease";
+        color: $green8C;
+
+        &.active {
+            color: $green;
+        }
+    }
+
+    &_btn {
+        width: 100%;
+    }
+
+    &_title {
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "Ease";
+        color: $green;
+        display: inline-block;
+        margin-bottom: 12px;
+    }
+
+    &_sales {
+        margin-bottom: 64px;
+        margin-top: 64px;
+    }
+
+    &_swiper {
+        overflow: visible !important;
+
+        .swiper-slide {
+            width: auto;
+
+            &:not(:last-child) {
+                .mob-menu_slider {
+                    border-right: none
+                }
+            }
+        }
+    }
+
+    &_slider {
+        padding: 12px;
+        border: 1px solid $green;
+        width: 200px;
+
+
+    }
+
+    &_slider-img {
+        display: grid;
+        place-items: center;
+        padding: 16px;
+        margin-bottom: 12px;
+
+        img {
+            width: 144px;
+            height: 144px;
+            object-fit: cover;
+        }
+    }
+
+    &_slider-title {
+        font-size: 18px;
+        margin-bottom: 2px;
+        line-height: 120%;
+        letter-spacing: 0.25px;
+    }
+
+    &_slider-descr {
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "Ease";
+    }
+
+    &_prepare {
+        margin-bottom: 64px;
+    }
+
+    &_prepare-item {
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        border: 1px solid $green;
+
+        &:not(:last-child) {
+            border-bottom: none
+        }
+
+        &__title {
+            font-size: 18px;
+            margin-bottom: 2px;
+            line-height: 120%;
+            letter-spacing: 0.25px;
+        }
+
+        &__status {
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "Ease";
+        }
+    }
+
+    &_contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 32px;
+        }
+
+        &__link {
+            margin-bottom: 0 !important;
+            border: 1px solid $green;
+            width: 100%;
+            text-align: center;
+            padding: 8px;
+
+            &:last-child {
+                border-top: none;
+            }
+        }
+
+
+        &__social {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+
+            a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                span {
+                    color: $green;
+                    font-family: "Ease";
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
 }
