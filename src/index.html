@@ -1,20 +1,6 @@
-<!doctype html>
-<html lang="en">
+{{> head}}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mayer</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
-  <link rel="manifest" href="./favicons/site.webmanifest">
-  <link rel="stylesheet" href="/styles/main.scss">
-  <script type="module" src="/js/main.js" defer></script>
-  <script src="js/wow.min.js"></script>
-</head>
-
-<body>
+<body class="transparent_header">
   <div id="wrapper">
     {{> header }}
     <main>
@@ -49,47 +35,7 @@
           </div>
         </div>
       </section>
-      <section class="gallery">
-        <div class="container">
-          <p class="gallery_description caption wow animate__animated animate__fadeInDown">Okolie
-            MAYERa
-            tvorí rozmanité prírodné prostredie, ktoré je
-            na dosah každého dňa v štvrti. Lesy, rybníky, bažiny aj lúky sú pohodlne dostupné pešo
-            aj na bicykli a ich pestrosť v priebehu ročných období vás láka objavovať.</p>
-          <div class="swiper gallery-swiper wow animate__animated animate__fadeInDown">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a data-fancybox="gallery" data-caption="Popiska k fotke"
-                  href="./images/gallery/gallery_img_1.webp">
-                  <img src="./images/gallery/gallery_img_1.webp" alt="Image 1" />
-                </a>
-                <span class="caption">Popiska k fotke</span>
-              </div>
-              <div class="swiper-slide">
-                <a data-fancybox="gallery" data-caption="Popiska k fotke"
-                  href="./images/gallery/gallery_img_2.webp">
-                  <img src="./images/gallery/gallery_img_2.webp" alt="Image 2" />
-                </a>
-                <span class="caption">Popiska k fotke</span>
-              </div>
-              <div class="swiper-slide">
-                <a data-fancybox="gallery" data-caption="Popiska k fotke"
-                  href="./images/gallery/gallery_img_3.webp">
-                  <img src="./images/gallery/gallery_img_3.webp" alt="Image 3" />
-                </a>
-                <span class="caption">Popiska k fotke</span>
-              </div>
-            </div>
-            <div class="swiper-button-next">
-              <img class="arrow" src="./images/arrow.svg" alt="image not found">
-            </div>
-            <div class="swiper-button-prev">
-              <img class="arrow" src="./images/arrow.svg" alt="image not found">
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </section>
+      {{> gallery}}
       <section class="text-section">
         <div class="container">
           <div class="text-section_content">
@@ -100,27 +46,8 @@
               mierke a pokojnom tempe, ponúka príležitosť žiť vedomý, udržateľný, komunitný život s
               bohatstvom príležitostí a silnými vzťahmi k ľuďom a miestam v rámci susedstva.
             </p>
-            <div class="text-section_list">
-              <a href="#"
-                class="text-section_item wow animate__animated animate__fadeInLeft">Bezpečné/chránené
-                dvory
-                <img class="arrow" src="./images/arrow_green.svg" alt="image not found"></a>
-              <a href="#"
-                class="text-section_item wow animate__animated animate__fadeInLeft">Uzavreté dvory v
-                obytných blokoch s priestorom
-                na
-                stretávanie sa susedov <img class="arrow" src="./images/arrow_green.svg"
-                  alt="image not found"> </a>
-              <a href="#" class="text-section_item wow animate__animated animate__fadeInLeft">S
-                pestovateľskými záhonmi a s ihriskami pre
-                menšie
-                deti, bez dozoru rodičov <img class="arrow" src="./images/arrow_green.svg"
-                  alt="image not found"> </a>
-              <p class="text-section_item wow animate__animated animate__fadeInLeft">Na prízemí
-                komunitný priestor prepojený s
-                kaviarňou</p>
-            </div>
           </div>
+          {{> list_items}}
         </div>
       </section>
       <section class="image-section">
@@ -133,82 +60,7 @@
             Niektoré tvoria bytové domy s pavlačami, iné malomestské dvojdomy.</span>
         </div>
       </section>
-      <section class="qualities">
-        <div class="container">
-          <h2 class="section-title wow animate__animated animate__fadeInDown">OBJAVte KVALITY MAYERU
-          </h2>
-          <div class="swiper qualities-swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide wow animate__animated animate__fadeIn">
-                <div class="qualities_item">
-                  <div class="item_img">
-                    <img src="./images/content/qualities_img_1.webp" alt="image not found">
-                  </div>
-                  <div class="item_text-block">
-                    <h4 class="item_title">plnohodnotný život pre všetky generácie</h4>
-                    <p class="item_text">Ulice MAYERa sú bezpečné, lemované stromami a stvorené na
-                      presun pešo či na bicykli. Maximum zdrojov je tu zdieľaných a recyklovaných.
-                      Prirodzené napojenia na blízke parky, mokrade a lúky, ale aj blízke Malacky
-                      dávajú
-                      obyvateľom možnosť žiť zdravo, autonómne a nezávisle.</p>
-                    <a href="#" class="item_link link link_afterline-green">Objaviť</a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide wow animate__animated animate__fadeIn">
-                <div class="qualities_item">
-                  <div class="item_img">
-                    <img src="./images/content/qualities_img_2.webp" alt="image not found">
-                  </div>
-                  <div class="item_text-block">
-                    <h4 class="item_title">všímajúce susedstvo</h4>
-                    <p class="item_text">Bývanie na predmestí nemusí vždy znamenať iba
-                      monotónnu zástavbu niekde v poli. Môže to byť miesto s unikátnou
-                      kombináciou bytov, domov a priestorov s príjemnou atmosférou, inšpiratívne
-                      prostredie nielen pre bývanie, ale i pre prácu. Tak ako Manufaktúra v
-                      Bernolákove.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide wow animate__animated animate__fadeIn">
-                <div class="qualities_item">
-                  <div class="item_img">
-                    <img src="./images/content/qualities_img_3.webp" alt="image not found">
-                  </div>
-                  <div class="item_text-block">
-                    <h4 class="item_title">bezpečnosť a inklúzia</h4>
-                    <p class="item_text">Bývanie na predmestí nemusí vždy znamenať iba
-                      monotónnu zástavbu niekde v poli. Môže to byť miesto s unikátnou
-                      kombináciou bytov, domov a priestorov s príjemnou atmosférou, inšpiratívne
-                      prostredie nielen pre bývanie, ale i pre prácu. Tak ako Manufaktúra v
-                      Bernolákove.
-                      Objavte, čo všetko ponúka:</p>
-                    <a href="#" class="item_link link link_afterline-green">Objaviť</a>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide wow animate__animated animate__fadeIn">
-                <div class="qualities_item">
-                  <div class="item_img">
-                    <img src="./images/content/qualities_img_4.webp" alt="image not found">
-                  </div>
-                  <div class="item_text-block">
-                    <h4 class="item_title">aktívna komunita</h4>
-                    <p class="item_text">Ulice MAYERa sú bezpečné, lemované stromami a stvorené na
-                      presun pešo či na bicykli. Maximum zdrojov je tu zdieľaných a recyklovaných.
-                      Prirodzené napojenia na blízke parky, mokrade a lúky, ale aj blízke Malacky
-                      dávajú
-                      obyvateľom možnosť žiť zdravo, autonómne a nezávisle.</p>
-                    <a href="#" class="item_link link link_afterline-green">Objaviť</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </section>
+      {{> qualities}}
       <section class="image-section">
         <div class="container">
           <div class="image_wrap wow animate__animated animate__fadeInDown">
@@ -326,30 +178,7 @@
             Niektoré tvoria bytové domy s pavlačami, iné malomestské dvojdomy.</span>
         </div>
       </section>
-      <section class="life">
-        <div class="container">
-          <div class="life_content">
-            <h3 class="life_title wow animate__animated animate__fadeInDown">Viac zo života na
-              MAYERi</h3>
-            <div class="card wow animate__animated animate__fadeInDown">
-              <div class="card_img">
-                <img src="./images/content/life_img.webp" alt="image not found">
-              </div>
-              <div class="card_text">
-                <h4 class="card_title">Lesom na bicykli: tipy na výlet na MAYERi</h4>
-                <p class="card_descr">Aby susedstvá fungovali, potrebujú na to vytvoriť podmienky –
-                  a
-                  nie každý projekt, ktorý tvrdí, že je komunitný, v tom dosiahne úspech. Na čo
-                  všetko
-                  je potrebné pri tvorbe projektu štvrte myslieť, aby to v nej žilo, sme sa
-                  rozprávali
-                  s Borisom Hrbáňom, jedným z kľúčových autorov MAYERa.</p>
-                <a href="#" class="card_link link link_afterline-green">Čítať viac</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {{> life}}
       <section class="text-section">
         <div class="container">
           <div class="text-section_content">
@@ -642,4 +471,4 @@
     </main>
     {{> footer }}
 
-</html>
+    </html>

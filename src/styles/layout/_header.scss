@@ -1,10 +1,15 @@
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
     transition: all .3s ease;
+    background-color: $white_soft;
+
+    .container {
+        max-width: 1900px;
+    }
 
     &.active {
         background-color: $white_soft;
@@ -74,9 +79,8 @@
     }
 
     &_logo {
-        max-width: 375px;
+        max-width: 188px;
         width: 100%;
-        @include adaptive-value("max-width", 375, 122, 1);
         transition: all .3s ease;
         position: relative;
         z-index: 100;
@@ -90,7 +94,7 @@
         svg {
             width: 100%;
             height: 100%;
-            fill: $white_soft;
+            fill: $green;
             transition: all .3s ease;
         }
     }
@@ -107,7 +111,7 @@
 
     &_actions-link {
         font-size: 18px;
-        color: $white_soft;
+        color: $green;
         position: relative;
 
         &::after {
@@ -117,7 +121,7 @@
             bottom: -3px;
             width: 0;
             height: 2px;
-            background-color: $white_soft;
+            background-color: $green;
             transition: all .3s ease;
 
 
@@ -131,6 +135,28 @@
                 width: 100%;
                 transition: all .3s ease;
             }
+        }
+    }
+
+    .btn_primary-white {
+        color: $green;
+        border-color: $green;
+        transition: all .3s ease;
+
+        &:hover {
+            background: rgba($color: #424D1C, $alpha: 0.2);
+            transition: all .3s ease;
+        }
+    }
+
+    .btn_secondary-white {
+        background-color: $green;
+        color: $white_soft;
+        transition: all .3s ease;
+
+        &:hover {
+            background-color: #303814;
+            transition: all .3s ease;
         }
     }
 

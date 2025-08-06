@@ -14,10 +14,105 @@ html {
     }
 }
 
+.transparent_header {
+
+    .header {
+        position: fixed;
+        background-color: transparent;
+
+        &.active {
+            background-color: $white_soft;
+            transition: all .3s ease;
+
+            .header_logo {
+                max-width: 188px;
+                transition: all .3s ease;
+
+                @include media ("<phone") {
+                    width: 122px;
+                }
+
+                svg {
+                    fill: $green;
+                    transition: all .3s ease;
+                }
+            }
+
+            .header_actions-link {
+                color: $green;
+                transition: all .3s ease;
+
+                &::after {
+                    background-color: $green;
+                    transition: all .3s ease;
+                }
+            }
+
+            .btn_primary-white {
+                color: $green;
+                border-color: $green;
+                transition: all .3s ease;
+
+                &:hover {
+                    background: rgba($color: #424D1C, $alpha: 0.2);
+                    transition: all .3s ease;
+                }
+            }
+
+            .btn_secondary-white {
+                background-color: $green;
+                color: $white_soft;
+                transition: all .3s ease;
+
+                &:hover {
+                    background-color: #303814;
+                    transition: all .3s ease;
+                }
+            }
+        }
+
+        &_logo {
+            @include adaptive-value("max-width", 375, 122, 1);
+
+            svg {
+                fill: $white_soft;
+            }
+        }
+
+        &_actions-link {
+            color: $white_soft;
+
+            &::after {
+                background-color: $white_soft;
+            }
+        }
+
+        .btn_primary-white {
+            color: $white_soft;
+            border-color: $white_soft;
+
+            &:hover {
+                background: rgba($color: #FCF7EB33, $alpha: 0.2);
+                transition: all .3s ease;
+            }
+        }
+
+        .btn_secondary-white {
+            background-color: $white_soft;
+            color: $green;
+
+            &:hover {
+                background: rgba($color: #424D1C33, $alpha: 0.2);
+                transition: all .3s ease;
+            }
+        }
+
+    }
+}
+
 .lock {
     overflow: hidden;
 }
-
 
 #wrapper {
     overflow: hidden;
@@ -40,6 +135,39 @@ html {
     letter-spacing: 0.25px;
 }
 
+.breadcrumbs {
+    .container {
+        max-width: 1900px;
+    }
+
+    &_body {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .divider {
+        display: block;
+        width: 12px;
+        height: 1px;
+        background-color: $green
+    }
+
+    &_item {
+        font-weight: 600;
+        font-family: "Ease";
+        font-size: 14px;
+    }
+
+    &_parent-link {
+        color: $green;
+    }
+
+    &_current {
+        color: $green8C
+    }
+}
+
 .text-section {
     @include adaptive-value("padding-top", 120, 100, 1);
     @include adaptive-value("padding-bottom", 80, 50, 1);
@@ -52,32 +180,10 @@ html {
     }
 
     p {
-        @include adaptive-value("margin-bottom", 32, 16, 1);
+        &:not(:last-child) {
+            @include adaptive-value("margin-bottom", 32, 16, 1);
+        }
     }
-
-    // Item List Start
-
-    &_list {
-        display: flex;
-        flex-direction: column;
-    }
-
-    &_item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 30px;
-        font-family: "Ease";
-        @include adaptive-value("font-size", 18, 14, 1);
-        line-height: 125%;
-        font-weight: 600;
-        color: $green;
-        padding: 20px 0;
-        border-bottom: 1px solid $green;
-        margin-bottom: 0 !important;
-    }
-
-    // Item List End
 
     // Gallery Swiper Start
 
@@ -362,12 +468,37 @@ html {
 
 }
 
+.list_items {
+    display: flex;
+    flex-direction: column;
+    max-width: 815px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 0;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        font-family: "Ease";
+        @include adaptive-value("font-size", 18, 14, 1);
+        line-height: 125%;
+        font-weight: 600;
+        color: $green;
+        padding: 20px 0;
+        border-bottom: 1px solid $green;
+        margin-bottom: 0 !important;
+    }
+}
+
+
 .gallery {
     @include adaptive-value("padding-top", 40, 50, 1);
     @include adaptive-value("padding-bottom", 120, 100, 1);
 
     .container {
-        max-width: 100%;
+        max-width: 1990px;
     }
 
     &_description {
@@ -405,7 +536,7 @@ html {
     @include adaptive-value("padding-bottom", 40, 50, 1);
 
     .container {
-        max-width: 100%;
+        max-width: 1900px;
     }
 
     .image_wrap {

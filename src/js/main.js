@@ -1,13 +1,17 @@
 import { Fancybox } from '@fancyapps/ui/dist/fancybox/';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+import { fadeIn, fadeOut } from './fade';
+
 new WOW().init();
 
 setupHeaderScrollListener();
+initTabs();
 
 window.addEventListener('load', () => {
   initSwiperQualities();
   initSwiperPlan();
+  handleAccordionResize();
 });
 
 window.addEventListener('resize', () => {
@@ -17,6 +21,8 @@ window.addEventListener('resize', () => {
 });
 
 function setupHeaderScrollListener() {
+  const wrapper = document.querySelector('.transparent_header');
+
   const header = document.getElementById('header');
   if (!header) return;
 
@@ -222,4 +228,31 @@ function handleAccordionResize() {
   } else {
     destroyFooterAccordion();
   }
+}
+
+function initTabs() {
+  const buttons = document.querySelectorAll('.tab-button');
+  const contents = document.querySelectorAll('.tab-content');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+      const activeTab = document.getElementById(tabId);
+
+      if (activeTab.classList.contains('active')) return;
+
+      buttons.forEach((btn) => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      contents.forEach((content) => {
+        if (content.classList.contains('active')) {
+          fadeOut(content, 300, () => {
+            content.classList.remove('active');
+            activeTab.classList.add('active');
+            fadeIn(activeTab, 300);
+          });
+        }
+      });
+    });
+  });
 }
