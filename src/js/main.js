@@ -5,6 +5,17 @@ new WOW().init();
 
 setupHeaderScrollListener();
 
+window.addEventListener('load', () => {
+  initSwiperQualities();
+  initSwiperPlan();
+});
+
+window.addEventListener('resize', () => {
+  initSwiperQualities();
+  initSwiperPlan();
+  handleAccordionResize();
+});
+
 function setupHeaderScrollListener() {
   const header = document.getElementById('header');
   if (!header) return;
@@ -115,16 +126,6 @@ function initSwiperPlan() {
   }
 }
 
-window.addEventListener('load', () => {
-  initSwiperQualities();
-  initSwiperPlan();
-});
-
-window.addEventListener('resize', () => {
-  initSwiperQualities();
-  initSwiperPlan();
-});
-
 Fancybox.bind("[data-fancybox='gallery']", {
   Thumbs: false,
   Toolbar: {
@@ -159,4 +160,66 @@ function openHeaderMenu() {
     document.body.classList.toggle('lock', isOpen);
     menuButton.textContent = isOpen ? closeText : openText;
   });
+}
+
+let footerAccordionInitialized = false;
+
+function initFooterAccordion() {
+  if (footerAccordionInitialized) return;
+  footerAccordionInitialized = true;
+
+  const items = document.querySelectorAll('.dropdown');
+
+  items.forEach((item) => {
+    const button = item.querySelector('.dropdown_title_wrap');
+
+    // Добавляем ссылку на обработчик, чтобы потом снять
+    const handler = () => {
+      const isActive = item.classList.contains('active');
+
+      items.forEach((i) => {
+        i.classList.remove('active');
+        i.querySelector('.dropdown_content').style.maxHeight = null;
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+        item.querySelector('.dropdown_content').style.maxHeight =
+          item.querySelector('.dropdown_content').scrollHeight + 'px';
+      }
+    };
+
+    button._accordionHandler = handler;
+    button.addEventListener('click', handler);
+  });
+}
+
+destroyFooterAccordion();
+
+function destroyFooterAccordion() {
+  if (!footerAccordionInitialized) return;
+  footerAccordionInitialized = false;
+
+  const items = document.querySelectorAll('.dropdown');
+
+  items.forEach((item) => {
+    const button = item.querySelector('.dropdown_title_wrap');
+    const content = item.querySelector('.dropdown_content');
+
+    if (button._accordionHandler) {
+      button.removeEventListener('click', button._accordionHandler);
+      delete button._accordionHandler;
+    }
+
+    item.classList.remove('active');
+    content.style.maxHeight = null;
+  });
+}
+
+function handleAccordionResize() {
+  if (window.innerWidth < 768) {
+    initFooterAccordion();
+  } else {
+    destroyFooterAccordion();
+  }
 }

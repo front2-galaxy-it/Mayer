@@ -14,7 +14,8 @@
         @include adaptive-value("margin-bottom", 180, 80, 1);
 
         @include media ("<tablet_x") {
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
         }
     }
 
@@ -77,6 +78,13 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+
+        @include media ("<tablet") {
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            margin: 0;
+        }
     }
 
     &_menu-column {
@@ -88,14 +96,21 @@
             align-items: center;
         }
 
-        @include media ("<phone") {
+        @include media ("<tablet") {
             width: 100%;
+            border-bottom: 1px solid $green;
+            padding: 16px 0;
         }
 
         &:last-child {
             max-width: 570px;
             width: 100%;
+
+            @include media ("<tablet") {
+                max-width: 100%;
+            }
         }
+
 
         a {
             color: $green;
@@ -119,11 +134,92 @@
         }
     }
 
+    .dropdown_title_wrap {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        cursor: default;
+
+        &.hidden {
+            display: none;
+
+            @include media ("<tablet") {
+                display: flex;
+            }
+        }
+
+        @include media ("<tablet") {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+    }
+
+    .dropdown {
+        &.active {
+            .dropdown_content {
+                margin: 16px 0;
+                opacity: 1;
+                transition: all .3s ease;
+            }
+
+            .dropdown_arrow {
+                rotate: 270deg;
+                transition: all .3s ease;
+            }
+        }
+
+    }
+
+    .dropdown_arrow {
+        display: none;
+        width: 16px;
+        height: 16px;
+        rotate: 90deg;
+        transition: all .3s ease;
+
+        @include media ("<tablet") {
+            display: block;
+        }
+    }
+
+    .dropdown_content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        transition: all .3s ease;
+
+        @include media ("<desktop") {
+            align-items: center;
+        }
+
+        @include media ("<tablet") {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+            align-items: flex-start;
+            width: 100%;
+        }
+    }
+
     &_bottom {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 40px;
+
+        @include media ("<tablet") {
+            width: 100%;
+            border-bottom: 1px solid $green;
+            padding: 16px 0;
+            gap: 0;
+        }
+
 
         .social {
             display: flex;
@@ -162,14 +258,24 @@
                 color: $green;
             }
         }
+
+        .dropdown_content {
+            align-items: center;
+              @include adaptive-value("gap", 40, 24, 1);
+        }
     }
 }
 
 .menu-column {
     &_title {
+        display: inline-block;
         font-family: "Ease";
-        margin-bottom: 8px;
         font-size: 12px;
+        margin-bottom: 8px;
+
+        @include media ("<tablet") {
+            font-size: 14px;
+        }
     }
 }
 
