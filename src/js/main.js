@@ -2,6 +2,7 @@ import { Fancybox } from '@fancyapps/ui/dist/fancybox/';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import { fadeIn, fadeOut } from './fade';
+import WOW from './wow';
 
 new WOW().init();
 
