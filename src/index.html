@@ -6,7 +6,9 @@
     <main>
       <section class="hero">
         <video class="hero_video" src="./video/demo-video-2_small.mp4" autoplay playsinline loop
-          muted></video>
+          muted>
+          <p>Your browser does not support HTML5 video.</p>
+        </video>
         <div class="container">
           <p class="hero_text wow animate__animated animate__fadeInDown">Pozývame vás do novej
             štvrte,
@@ -52,24 +54,28 @@
       </section>
       <section class="image-section">
         <div class="container">
-          <div class="image_wrap wow animate__animated animate__fadeInDown">
-            <img src="./images/content/content_img_1.webp" alt="image not found">
+          <div class="image-section_content">
+            <div class="image_wrap wow animate__animated animate__fadeInDown">
+              <img src="./images/content/content_img_1.webp" alt="image not found">
+            </div>
+            <span class="caption wow animate__animated animate__fadeInUp">Štvrť tvoria bloky, z
+              ktorých každý je niečím iný a výnimočný.
+              Niektoré tvoria bytové domy s pavlačami, iné malomestské dvojdomy.</span>
           </div>
-          <span class="caption wow animate__animated animate__fadeInUp">Štvrť tvoria bloky, z
-            ktorých každý je niečím iný a výnimočný.
-            Niektoré tvoria bytové domy s pavlačami, iné malomestské dvojdomy.</span>
         </div>
       </section>
       {{> qualities}}
       <section class="image-section">
         <div class="container">
-          <div class="image_wrap wow animate__animated animate__fadeInDown">
-            <img src="./images/content/content_img_2.webp" alt="image not found">
+          <div class="image-section_content">
+            <div class="image_wrap wow animate__animated animate__fadeInDown">
+              <img src="./images/content/content_img_2.webp" alt="image not found">
+            </div>
+            <span class="caption wow animate__animated animate__fadeInUp">Bývanie na MAYERi má silne
+              komunitný charakter. Ucítite ho nielen v
+              podpore susedskej infraštruktúry a projektov, ale aj v samotnej architektúre, ktorá
+              podporuje spoločné trávenie času na dvoroch či pavlačiach.</span>
           </div>
-          <span class="caption wow animate__animated animate__fadeInUp">Bývanie na MAYERi má silne
-            komunitný charakter. Ucítite ho nielen v
-            podpore susedskej infraštruktúry a projektov, ale aj v samotnej architektúre, ktorá
-            podporuje spoločné trávenie času na dvoroch či pavlačiach.</span>
         </div>
       </section>
       <section class="history">
@@ -170,12 +176,14 @@
       </section>
       <section class="image-section">
         <div class="container">
-          <div class="image_wrap wow animate__animated animate__fadeInDown">
-            <img src="./images/content/content_img_3.webp" alt="image not found">
+          <div class="image-section_content">
+            <div class="image_wrap wow animate__animated animate__fadeInDown">
+              <img src="./images/content/content_img_3.webp" alt="image not found">
+            </div>
+            <span class="caption wow animate__animated animate__fadeInUp">Štvrť tvoria bloky, z
+              ktorých každý je niečím iný a výnimočný.
+              Niektoré tvoria bytové domy s pavlačami, iné malomestské dvojdomy.</span>
           </div>
-          <span class="caption wow animate__animated animate__fadeInUp">Štvrť tvoria bloky, z
-            ktorých každý je niečím iný a výnimočný.
-            Niektoré tvoria bytové domy s pavlačami, iné malomestské dvojdomy.</span>
         </div>
       </section>
       {{> life}}
@@ -432,43 +440,60 @@
             </p>
           </div>
           <div class="form wow animate__animated animate__fadeInDown">
-            <form action="#">
+            <form action="#" method="POST">
               <label for="name" class="data">
                 Meno
-                <input id="name" type="text" placeholder="Meno">
+                <input id="name" name="name" type="text" placeholder="Meno" required
+                  autocomplete="given-name" aria-required="true" />
               </label>
+
               <label for="surname" class="data">
                 Priezvisko
-                <input id="surname" type="text" placeholder="Priezvisko">
+                <input id="surname" name="surname" type="text" placeholder="Priezvisko" required
+                  autocomplete="family-name" aria-required="true" />
               </label>
+
               <label for="email" class="data">
                 E-mail
-                <input id="email" type="email" placeholder="Meno">
+                <input id="email" name="email" type="email" placeholder="E-mail" required
+                  autocomplete="email" aria-required="true" />
               </label>
+
               <label for="phone" class="data">
                 Telefónne číslo
-                <input id="phone" type="tel" placeholder="Telefónne číslo">
+                <input id="phone" name="phone" type="tel" placeholder="Telefónne číslo" required
+                  autocomplete="tel" aria-required="true" />
               </label>
+
               <label for="message" class="data textarea">
                 Vaša správa
-                <textarea id="message" placeholder="Vaša správa"></textarea>
+                <textarea id="message" name="message" placeholder="Vaša správa"
+                  aria-describedby="messageHelp"></textarea>
               </label>
+
               <label for="agree" class="checkbox">
-                <input id="agree" type="checkbox">
-                <span class="custom-checkbox-box"></span>
-                Súhlasím so zasielaním marketingových informácií, vrátane reklamy, elektronickou
-                poštou, alebo prostredníctvom sms, aby mi neunikla žiadna novinka.
+                <input id="agree" name="agree" type="checkbox" required aria-required="true" />
+                <span class="custom-checkbox-box" aria-hidden="true"></span>
+                Súhlasím so zasielaním marketingových informácií, vrátane reklamy,
+                elektronickou poštou alebo prostredníctvom SMS.
               </label>
+
               <div class="links_wrap">
                 <a href="#" class="link_underline">Cookies</a>
                 <a href="#" class="link_underline">Pravidlá spracúvania osobných údajov</a>
               </div>
-              <button class="form_btn btn btn_secondary-green">Odoslať</button>
+
+              <button type="submit" class="form_btn btn btn_secondary-green"
+                aria-label="Odoslať formulár">
+                Odoslať
+              </button>
             </form>
           </div>
         </div>
       </section>
     </main>
     {{> footer }}
+  </div>
+</body>
 
-    </html>
+</html>

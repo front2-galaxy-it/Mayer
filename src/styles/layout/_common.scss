@@ -14,7 +14,16 @@ html {
     }
 }
 
+body {
+    padding-top: 90px;
+
+    @include media ("<phone") {
+        padding-top: 70px;
+    }
+}
+
 .transparent_header {
+    padding: 0;
 
     .header {
         position: fixed;
@@ -169,8 +178,7 @@ html {
 }
 
 .text-section {
-    @include adaptive-value("padding-top", 120, 100, 1);
-    @include adaptive-value("padding-bottom", 80, 50, 1);
+    padding: 80px 0;
 
     &_content {
         text-align: start;
@@ -180,9 +188,79 @@ html {
     }
 
     p {
-        &:not(:last-child) {
+        &:not(:last-of-type) {
             @include adaptive-value("margin-bottom", 32, 16, 1);
         }
+    }
+
+    .hidden_text {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all .3s ease;
+        margin-bottom: 0;
+
+        &.show {
+            max-height: auto;
+            overflow: visible;
+            opacity: 1;
+            transition: all .3s ease;
+        }
+    }
+
+    .show_more_btn {
+        @include adaptive-value("font-size", 18, 14, 1);
+        font-weight: 600;
+        font-family: "Ease";
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        border: none;
+        background-color: transparent;
+        padding: 0;
+
+
+        &.active {
+            @include adaptive-value("margin-top", 32, 16, 1);
+
+            .status_box {
+                &::before {
+                    transform: translate(-50%, -50%) rotate(0deg);
+                    transition: all .3s ease;
+                }
+            }
+        }
+
+        .status_box {
+            width: 29px;
+            height: 28px;
+            border: 2px solid $green;
+
+            position: relative;
+
+            &::after,
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 12px;
+                height: 2px;
+                background-color: $green;
+                transition: all .3s ease;
+            }
+
+            &::before {
+                transform: translate(-50%, -50%) rotate(90deg);
+            }
+        }
+    }
+
+    .btn {
+        @include adaptive-value("margin-top", 32, 16, 1);
     }
 
     // Gallery Swiper Start
@@ -446,7 +524,7 @@ html {
                 flex-shrink: 0;
                 position: relative;
                 transition: 0.2s;
-                border: 1px solid $green
+                border: 2px solid $green
             }
         }
 
@@ -492,7 +570,6 @@ html {
     }
 }
 
-
 .gallery {
     @include adaptive-value("padding-top", 40, 50, 1);
     @include adaptive-value("padding-bottom", 120, 100, 1);
@@ -535,8 +612,24 @@ html {
     @include adaptive-value("padding-top", 40, 50, 1);
     @include adaptive-value("padding-bottom", 40, 50, 1);
 
+    &.row {
+        .image-section_content {
+            flex-direction: row;
+
+            @include media ("<tablet") {
+                flex-direction: column;
+            }
+        }
+    }
+
     .container {
         max-width: 1900px;
+    }
+
+    &_content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
     }
 
     .image_wrap {
@@ -550,6 +643,10 @@ html {
             height: 100%;
             object-fit: cover;
         }
+    }
+
+    .caption {
+        margin: 0
     }
 }
 
@@ -576,6 +673,10 @@ html {
         @include adaptive-value("padding", 32, 16, 1);
         border: 1px solid $green;
 
+        @include media ("<tablet") {
+            grid-template: 1fr / 1fr;
+        }
+
 
         &_img {
             min-width: 160px;
@@ -584,6 +685,13 @@ html {
             max-height: 160px;
             border-radius: 2px;
             overflow: hidden;
+
+            @include media ("<tablet") {
+                min-width: 100px;
+                min-height: 100px;
+                max-width: 100px;
+                max-height: 100px;
+            }
 
             img {
                 width: 100%;
@@ -610,12 +718,122 @@ html {
             font-size: 14px;
             line-height: 122%;
             flex: 1;
+            margin-bottom: 12px;
         }
 
 
         &_link {
             font-size: 14px;
             font-family: "Ease";
+        }
+    }
+}
+
+.tabs {
+    padding-bottom: 80px;
+
+    .container {
+        max-width: 1130px;
+    }
+
+    .tab-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        overflow: auto;
+
+        margin-bottom: 24px;
+
+        scrollbar-width: none;
+        scrollbar-color: transparent transparent;
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .tab-button {
+        min-width: 200px;
+        @include adaptive-value("padding", 16, 12, 1);
+        border: none;
+        border-bottom: 2px solid $green8C;
+        background-color: transparent;
+
+        font-weight: 600;
+        @include adaptive-value("font-size", 18, 14, 1);
+        font-family: "Ease";
+        color: $green8C;
+
+        transition: all .3s ease;
+
+        @include media ("<tablet") {
+            min-width: 100px;
+        }
+
+        &.active {
+            color: $green;
+            border-color: $green;
+            transition: all .3s ease;
+        }
+    }
+
+
+    .tab-content {
+        display: none;
+
+        &.active {
+            display: block
+        }
+    }
+
+    .tab-img {
+        width: 100%;
+        // height: 1100px;
+        aspect-ratio: 4/3;
+    }
+}
+
+.grid-cards {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    &_content {
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+        gap: 24px 64px;
+
+        @include media ("<tablet") {
+            grid-template: 1fr / 1fr;
+        }
+    }
+
+    .card {
+        max-width: 470px;
+        width: 100%;
+        margin: 0 auto;
+
+        &_img {
+            width: 123px;
+            height: 90px;
+            @include adaptive-value("margin-bottom", 24, 8, 1);
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &_title {
+            @include adaptive-value("font-size", 16, 14, 1);
+            font-weight: 600;
+            font-family: "Ease";
+            margin-bottom: 8px;
+        }
+
+        &_text {
+            @include adaptive-value("font-size", 16, 14, 1);
+            line-height: 120%;
         }
     }
 }

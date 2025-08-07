@@ -63,6 +63,10 @@
     background-color: $green;
     transition: all .3s ease;
 
+    @include media ("<tablet") {
+        display: none !important;
+    }
+
     &:hover {
         background-color: #303814;
         transition: all .3s ease;

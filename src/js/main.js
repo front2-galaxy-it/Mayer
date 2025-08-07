@@ -58,6 +58,20 @@ new Swiper('.gallery-swiper', {
       );
     },
   },
+  breakpoints: {
+    320: {
+      slidesPerView: 1.2,
+    },
+    640: {
+      slidesPerView: 1.8,
+    },
+    980: {
+      slidesPerView: 2.1,
+    },
+    1200: {
+      slidesPerView: 'auto',
+    },
+  },
 });
 
 new Swiper('.text-section-swiper', {
@@ -179,7 +193,6 @@ function initFooterAccordion() {
   items.forEach((item) => {
     const button = item.querySelector('.dropdown_title_wrap');
 
-    // Добавляем ссылку на обработчик, чтобы потом снять
     const handler = () => {
       const isActive = item.classList.contains('active');
 
@@ -234,12 +247,30 @@ function initTabs() {
   const buttons = document.querySelectorAll('.tab-button');
   const contents = document.querySelectorAll('.tab-content');
 
+  const savedTabId = localStorage.getItem('activeTabId');
+  if (savedTabId) {
+    const savedButton = document.querySelector(
+      `.tab-button[data-tab="${savedTabId}"]`,
+    );
+    const savedContent = document.getElementById(savedTabId);
+
+    if (savedButton && savedContent) {
+      buttons.forEach((btn) => btn.classList.remove('active'));
+      contents.forEach((content) => content.classList.remove('active'));
+
+      savedButton.classList.add('active');
+      savedContent.classList.add('active');
+    }
+  }
+
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       const tabId = button.getAttribute('data-tab');
       const activeTab = document.getElementById(tabId);
 
       if (activeTab.classList.contains('active')) return;
+
+      localStorage.setItem('activeTabId', tabId);
 
       buttons.forEach((btn) => btn.classList.remove('active'));
       button.classList.add('active');
@@ -251,6 +282,34 @@ function initTabs() {
             activeTab.classList.add('active');
             fadeIn(activeTab, 300);
           });
+        }
+      });
+    });
+  });
+}
+
+showHiddenText();
+
+function showHiddenText() {
+  const sections = document.querySelectorAll('.text-section');
+
+  sections.forEach((section) => {
+    const button = section.querySelector('.show_more_btn');
+    const hiddenTexts = section.querySelectorAll('.hidden_text');
+
+    if (!button) return;
+
+    button.addEventListener('click', () => {
+      const isOpen = button.classList.contains('active');
+      button.classList.toggle('active');
+
+      hiddenTexts.forEach((hiddenText) => {
+        hiddenText.classList.toggle('show');
+
+        if (isOpen) {
+          hiddenText.style.maxHeight = null;
+        } else {
+          hiddenText.style.maxHeight = hiddenText.scrollHeight + 'px';
         }
       });
     });

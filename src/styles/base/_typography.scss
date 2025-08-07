@@ -78,3 +78,11 @@ ul {
     text-align: center;
     @include adaptive-value("margin-bottom", 32, 16, 1);
 }
+
+.underline {
+    text-decoration: underline;
+}
+
+.bold {
+    font-weight: 500;
+}
