@@ -1,13 +1,17 @@
 import { Fancybox } from '@fancyapps/ui/dist/fancybox/';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-import { fadeIn, fadeOut } from './fade';
 import WOW from './wow';
+import { Tabs } from './components/tabs';
+import { Accordion } from './components/accordion';
 
 new WOW().init();
 
+new Tabs('.tabs_map');
+
+new Accordion('#low', 'single');
+
 setupHeaderScrollListener();
-initTabs();
 
 window.addEventListener('load', () => {
   initSwiperQualities();
@@ -242,50 +246,50 @@ function handleAccordionResize() {
   }
 }
 
-function initTabs() {
-  const buttons = document.querySelectorAll('.tab-button');
-  const contents = document.querySelectorAll('.tab-content');
+// function initTabs() {
+//   const buttons = document.querySelectorAll('.tab-button');
+//   const contents = document.querySelectorAll('.tab-content');
 
-  const savedTabId = localStorage.getItem('activeTabId');
-  if (savedTabId) {
-    const savedButton = document.querySelector(
-      `.tab-button[data-tab="${savedTabId}"]`,
-    );
-    const savedContent = document.getElementById(savedTabId);
+//   const savedTabId = localStorage.getItem('activeTabId');
+//   if (savedTabId) {
+//     const savedButton = document.querySelector(
+//       `.tab-button[data-tab="${savedTabId}"]`,
+//     );
+//     const savedContent = document.getElementById(savedTabId);
 
-    if (savedButton && savedContent) {
-      buttons.forEach((btn) => btn.classList.remove('active'));
-      contents.forEach((content) => content.classList.remove('active'));
+//     if (savedButton && savedContent) {
+//       buttons.forEach((btn) => btn.classList.remove('active'));
+//       contents.forEach((content) => content.classList.remove('active'));
 
-      savedButton.classList.add('active');
-      savedContent.classList.add('active');
-    }
-  }
+//       savedButton.classList.add('active');
+//       savedContent.classList.add('active');
+//     }
+//   }
 
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const tabId = button.getAttribute('data-tab');
-      const activeTab = document.getElementById(tabId);
+//   buttons.forEach((button) => {
+//     button.addEventListener('click', () => {
+//       const tabId = button.getAttribute('data-tab');
+//       const activeTab = document.getElementById(tabId);
 
-      if (activeTab.classList.contains('active')) return;
+//       if (activeTab.classList.contains('active')) return;
 
-      localStorage.setItem('activeTabId', tabId);
+//       localStorage.setItem('activeTabId', tabId);
 
-      buttons.forEach((btn) => btn.classList.remove('active'));
-      button.classList.add('active');
+//       buttons.forEach((btn) => btn.classList.remove('active'));
+//       button.classList.add('active');
 
-      contents.forEach((content) => {
-        if (content.classList.contains('active')) {
-          fadeOut(content, 300, () => {
-            content.classList.remove('active');
-            activeTab.classList.add('active');
-            fadeIn(activeTab, 300);
-          });
-        }
-      });
-    });
-  });
-}
+//       contents.forEach((content) => {
+//         if (content.classList.contains('active')) {
+//           fadeOut(content, 300, () => {
+//             content.classList.remove('active');
+//             activeTab.classList.add('active');
+//             fadeIn(activeTab, 300);
+//           });
+//         }
+//       });
+//     });
+//   });
+// }
 
 showHiddenText();
 
