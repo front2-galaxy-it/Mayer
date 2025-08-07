@@ -8,6 +8,7 @@ import { Accordion } from './components/accordion';
 new WOW().init();
 
 new Tabs('.tabs_map');
+new Tabs('.tabs_house');
 
 new Accordion('#low', 'single');
 
@@ -101,6 +102,21 @@ new Swiper('.blog-swiper', {
 
 new Swiper('.mob-menu_swiper', {
   slidesPerView: 'auto',
+});
+
+new Swiper('.house-swiper', {
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  breakpoints: {
+    320: {
+      initialSlide: 0,
+      centeredSlides: false,
+    },
+    1024: {
+      initialSlide: 3,
+      centeredSlides: true,
+    },
+  },
 });
 
 let swiperQualities = null;
@@ -318,3 +334,11 @@ function showHiddenText() {
     });
   });
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  const mapContainer = document.querySelector('.district-map');
+  const mapImage = document.querySelector('.district-map_img');
+
+  const scrollTo = (mapImage.offsetWidth - mapContainer.clientWidth) / 2;
+  mapContainer.scrollLeft = scrollTo;
+});

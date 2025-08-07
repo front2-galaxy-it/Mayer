@@ -406,6 +406,13 @@ body {
         gap: 54px;
         padding: 12px 16px;
         border: 1px solid $green;
+        transition: all .3s ease;
+        cursor: pointer;
+
+        &:hover {
+            transition: all .3s ease;
+            background-color: rgba($color: #424D1C, $alpha: 0.2);
+        }
 
         &:nth-child(2) {
             border-left: none;
@@ -740,7 +747,7 @@ body {
         justify-content: center;
         gap: 2px;
         overflow: auto;
-
+        padding: 0 15px;
         margin-bottom: 24px;
 
         scrollbar-width: none;
@@ -757,16 +764,19 @@ body {
         border: none;
         border-bottom: 2px solid $green8C;
         background-color: transparent;
+        white-space: nowrap;
 
         font-weight: 600;
         @include adaptive-value("font-size", 18, 14, 1);
         font-family: "Ease";
         color: $green8C;
 
+
         transition: all .3s ease;
 
         @include media ("<tablet") {
-            min-width: 100px;
+            min-width: 120px;
+            width: max-content;
         }
 
         &.active {
@@ -775,7 +785,6 @@ body {
             transition: all .3s ease;
         }
     }
-
 
     .tab-content {
         display: none;
@@ -787,8 +796,20 @@ body {
 
     .tab-img {
         width: 100%;
-        // height: 1100px;
         aspect-ratio: 4/3;
+    }
+
+    &_house {
+        .container {
+            max-width: 1900px;
+            padding: 0;
+        }
+
+        .tab-buttons {
+            @include media ("<phone") {
+                justify-content: flex-start;
+            }
+        }
     }
 }
 
@@ -966,5 +987,82 @@ body {
         .free-count {
             margin-right: 8px;
         }
+    }
+}
+
+// House Swiper
+
+.house-swiper {
+    overflow: visible;
+    padding: 0 15px !important;
+
+    .swiper-slide {
+        width: auto;
+
+        &:not(:last-child) {
+            .house_slider {
+                border-right: none;
+            }
+        }
+    }
+
+    .house {
+
+        &_slider {
+            padding: 12px;
+            border: 1px solid $green;
+            width: 280px;
+
+            @include media ("<tablet") {
+                width: 220px;
+            }
+
+            &.prepare {
+                background-color: #F5F1E0;
+            }
+        }
+
+        &_slider-type {
+            font-size: 18px;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        &_slider-img {
+            display: grid;
+            place-items: center;
+            margin-bottom: 2px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &_slider-title {
+            margin-bottom: 2px;
+        }
+
+        &_slider-title,
+        &_slider-descr {
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "Ease";
+        }
+    }
+}
+
+.district-map {
+    overflow: auto;
+
+    &_img {
+        display: block;
+        min-width: 1280px;
+        max-width: 1280px;
+        height: 840px;
+        flex-shrink: 0;
     }
 }
