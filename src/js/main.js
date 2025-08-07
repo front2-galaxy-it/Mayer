@@ -1,9 +1,9 @@
+new WOW().init();
+
 import { Fancybox } from '@fancyapps/ui/dist/fancybox/';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import { fadeIn, fadeOut } from './fade';
-
-new WOW().init();
 
 setupHeaderScrollListener();
 initTabs();
