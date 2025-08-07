@@ -22,8 +22,6 @@ window.addEventListener('resize', () => {
 });
 
 function setupHeaderScrollListener() {
-  const wrapper = document.querySelector('.transparent_header');
-
   const header = document.getElementById('header');
   if (!header) return;
 

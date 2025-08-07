@@ -81,7 +81,7 @@
                             nadväzujúcimi na okolie, infraštruktúrou, no najmä kultúrou.
                         </p>
                         <button type="button" class="show_more_btn">
-                            <div class="status_box"></div>
+                            <span class="status_box"></span>
                             Čitať viac
                         </button>
                     </div>
@@ -124,7 +124,7 @@
                             park, tiché rybníky na Maline, borovicové lesy, mokrade, aj stepné lúky.
                         </p>
                         <button type="button" class="show_more_btn">
-                            <div class="status_box"></div>
+                            <span class="status_box"></span>
                             Čitať viac
                         </button>
                     </div>
@@ -163,7 +163,7 @@
                             žiť aktívne, komunitne a udržateľne.
                         </p>
                         <button type="button" class="show_more_btn">
-                            <div class="status_box"></div>
+                            <span class="status_box"></span>
                             Čitať viac
                         </button>
                     </div>
@@ -305,43 +305,7 @@
                             bývaní na MAYERi povedia viac.
                         </p>
                     </div>
-                    <div class="form wow animate__animated animate__fadeInDown">
-                        <form action="#">
-                            <label for="name" class="data">
-                                Meno
-                                <input id="name" type="text" placeholder="Meno">
-                            </label>
-                            <label for="surname" class="data">
-                                Priezvisko
-                                <input id="surname" type="text" placeholder="Priezvisko">
-                            </label>
-                            <label for="email" class="data">
-                                E-mail
-                                <input id="email" type="email" placeholder="Meno">
-                            </label>
-                            <label for="phone" class="data">
-                                Telefónne číslo
-                                <input id="phone" type="tel" placeholder="Telefónne číslo">
-                            </label>
-                            <label for="message" class="data textarea">
-                                Vaša správa
-                                <textarea id="message" placeholder="Vaša správa"></textarea>
-                            </label>
-                            <label for="agree" class="checkbox">
-                                <input id="agree" type="checkbox">
-                                <span class="custom-checkbox-box"></span>
-                                Súhlasím so zasielaním marketingových informácií, vrátane reklamy,
-                                elektronickou
-                                poštou, alebo prostredníctvom sms, aby mi neunikla žiadna novinka.
-                            </label>
-                            <div class="links_wrap">
-                                <a href="#" class="link_underline">Cookies</a>
-                                <a href="#" class="link_underline">Pravidlá spracúvania osobných
-                                    údajov</a>
-                            </div>
-                            <button class="form_btn btn btn_secondary-green">Odoslať</button>
-                        </form>
-                    </div>
+                    {{> form}}
                 </div>
             </section>
         </main>
