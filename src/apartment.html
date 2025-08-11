@@ -17,13 +17,100 @@
                             class="breadcrumbs_parent-link breadcrumbs_item">Veronica</a>
                         <span class="divider"></span>
                         <a href="floor.html"
-                        class="breadcrumbs_parent-link breadcrumbs_item">Podlažie</a>
+                            class="breadcrumbs_parent-link breadcrumbs_item">Podlažie</a>
                         <span class="divider"></span>
                         <span class="breadcrumbs_current breadcrumbs_item">Byt</span>
                     </div>
                 </div>
             </div>
-            <section class="apartment"></section>
+            <section class="apartment">
+                <div class="container">
+                    <div class="apartment_content">
+                        <h2 class="apartment_title section-title">Byt 5.D</h2>
+                        <a href="floor.html" class="apartment_link link_afterline-green">Späť na
+                            podlažie</a>
+                    </div>
+                    <div class="apartment_body">
+                        <div class="apartment_info">
+                            <div class="apartment_info-block">
+                                <div class="apartment_info-item">
+                                    <span>Stav</span>
+                                    <span>Voľný</span>
+                                </div>
+                                <div class="apartment_info-item">
+                                    <span>Čislo podlažia</span>
+                                    <span>2. NP</span>
+                                </div>
+                                <div class="apartment_info-item">
+                                    <span>Počet izieb</span>
+                                    <span>3</span>
+                                </div>
+                            </div>
+                            <div class="apartment_info-block">
+                                <div class="apartment_info-item">
+                                    <span>Interiér</span>
+                                    <span>80,5 m²</span>
+                                </div>
+                                <div class="apartment_info-item">
+                                    <span>Exteriér</span>
+                                    <span>6,6 m²</span>
+                                </div>
+                                <div class="apartment_info-item">
+                                    <span>Plocha spolu</span>
+                                    <span>80,5 m²</span>
+                                </div>
+                            </div>
+                            <div class="apartment_info-buttons">
+                                <a href="./files/test-download.pdf" download=""
+                                    class="btn btn_primary-green">Stiahnuť PDF</a>
+                                <button
+                                    class="btn btn_secondary-green open-form-btn">Záujem</button>
+                            </div>
+                        </div>
+                        <div class="apartment_preview">
+                            <div class="swiper apartment-swiper-main">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="./images/content/apartment.webp" alt="apartment">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="./images/content/blog_img_1.jpg" alt="apartment">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="./images/content/blog_img_1.jpg" alt="apartment">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper apartment-swiper-thumbs">
+                                <div class="swiper-wrapper">
+                                    <!-- <div class="swiper-slide">
+                                        <div class="thumbs-slide">
+                                            <img src="./images/content/blog_img_1.jpg"
+                                                alt="apartment">
+                                        </div>
+                                        <span class="tip">Poloha v areali</span>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="thumbs-slide">
+                                            <img src="./images/content/blog_img_3.jpg"
+                                                alt="apartment">
+                                        </div>
+                                        <span class="tip">Poloha v budove</span>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="thumbs-slide">
+                                            <img src="./images/content/blog_img_3.jpg"
+                                                alt="apartment">
+                                        </div>
+                                        <span class="tip">Poschodie</span>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section class="text-section">
                 <div class="container">
                     <div class="text-section_content">
@@ -98,6 +185,7 @@
             </section>
             {{> form}}
         </main>
+        {{> form_popup}}
         {{> footer}}
     </div>
 </body>

@@ -1,5 +1,11 @@
 import Swiper from 'swiper';
-import { Navigation, Pagination, EffectCube, Controller } from 'swiper/modules';
+import {
+  Navigation,
+  Pagination,
+  EffectCube,
+  Controller,
+  Thumbs,
+} from 'swiper/modules';
 import WOW from './wow';
 import { Tabs } from './components/tabs';
 import { Accordion } from './components/accordion';
@@ -26,6 +32,7 @@ window.addEventListener('load', () => {
   initCustomRangeSliders();
   addFilterListResizeClass();
   initfloorSliders();
+  initApartmentSwiperWithThumbs();
 });
 
 window.addEventListener('resize', () => {
@@ -42,6 +49,7 @@ window.addEventListener('resize', () => {
   initCustomRangeSliders();
   addFilterListResizeClass();
   initfloorSliders();
+  initApartmentSwiperWithThumbs();
 });
 
 new Swiper('.gallery-swiper', {
@@ -122,7 +130,58 @@ new Swiper('.house-swiper', {
   },
 });
 
-let floorSwiper;
+function initApartmentSwiperWithThumbs() {
+  const mainSwiperEl = document.querySelector('.apartment-swiper-main');
+  const thumbsWrapper = document.querySelector(
+    '.apartment-swiper-thumbs .swiper-wrapper',
+  );
+
+  const tips = ['Poloha v areali', 'Poloha v budove', 'Poschodie'];
+
+  thumbsWrapper.innerHTML = '';
+
+  mainSwiperEl.querySelectorAll('.swiper-slide img').forEach((img, i) => {
+    const thumbSlide = document.createElement('div');
+    thumbSlide.classList.add('swiper-slide');
+
+    const thumbDiv = document.createElement('div');
+    thumbDiv.classList.add('thumbs-slide');
+
+    const thumbImg = document.createElement('img');
+    thumbImg.src = img.src;
+    thumbImg.alt = img.alt || '';
+
+    thumbDiv.appendChild(thumbImg);
+    thumbSlide.appendChild(thumbDiv);
+
+    if (tips[i]) {
+      const tipSpan = document.createElement('span');
+      tipSpan.classList.add('tip');
+      tipSpan.textContent = tips[i];
+      thumbSlide.appendChild(tipSpan);
+    }
+
+    thumbsWrapper.appendChild(thumbSlide);
+  });
+
+  const thumbsSwiper = new Swiper('.apartment-swiper-thumbs', {
+    slidesPerView: 3,
+    spaceBetween: 10,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+
+  const mainSwiper = new Swiper('.apartment-swiper-main', {
+    modules: [Navigation, Thumbs],
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: thumbsSwiper,
+    },
+  });
+}
 
 function initfloorSliders() {
   const prevBtn = document.querySelector('.floor_count-btn.prev');
@@ -717,5 +776,22 @@ function addFilterListResizeClass() {
         body.classList.remove('compress');
       });
     }
+  });
+}
+
+openFormPopup();
+function openFormPopup() {
+  const openFormBtn = document.querySelectorAll('.open-form-btn');
+  const closeFormBtn = document.querySelector('.form-popup_close-btn');
+  const popupForm = document.querySelector('.form-popup');
+
+  openFormBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      popupForm.classList.add('show');
+    });
+  });
+
+  closeFormBtn.addEventListener('click', () => {
+    popupForm.classList.remove('show');
   });
 }

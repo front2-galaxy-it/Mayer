@@ -571,9 +571,19 @@ body {
     .links_wrap {
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
         gap: 16px 24px;
         @include adaptive-value("margin-bottom", 48, 32, 1);
+
+        @include media ("<tablet") {
+            flex-direction: column;
+            align-items: flex-start
+        }
+
+        .link_underline {
+            @include adaptive-value("font-size", 14, 12, 1);
+            font-weight: 600;
+            font-family: "Ease";
+        }
     }
 
     .form_btn {
@@ -1952,5 +1962,129 @@ body {
         width: 100%;
         margin: 0 auto;
         padding: 0 15px;
+    }
+}
+
+.apartment {
+    padding: 80px 0;
+
+    @include media ("<tablet") {
+        padding: 40px 0;
+    }
+
+    &_content {
+        text-align: center;
+        @include adaptive-value("margin-bottom", 84, 68, 1);
+    }
+
+    &_link {
+        @include adaptive-value("font-size", 18, 14, 1);
+    }
+
+    &_body {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 80px 30px;
+
+        @include media ("<desktop") {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+    }
+
+    &_info {
+        min-width: 395px;
+
+        @include media ("<desktop") {
+            min-width: auto;
+            max-width: 395px;
+            width: 100%;
+        }
+    }
+
+    &_info-block {
+        margin-bottom: 32px;
+    }
+
+    &_info-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 0;
+        border-bottom: 1px solid $green;
+
+        span {
+            @include adaptive-value("font-size", 18, 14, 1);
+            font-weight: 600;
+            font-family: "Ease";
+        }
+    }
+
+    &_info-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        @include adaptive-value("margin-top", 16, 0, 1);
+    }
+
+    &_preview {
+        max-width: 815px;
+        width: 100%;
+
+        .apartment-swiper-main {
+            max-width: 550px;
+            width: 100%;
+            margin: 0 auto;
+            @include adaptive-value("margin-bottom", 48, 64, 1);
+
+            .swiper-slide {
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+        }
+
+        .apartment-swiper-thumbs {
+            max-width: 590px;
+            width: 100%;
+
+            .swiper-slide {
+                width: auto !important;
+            }
+
+            .thumbs-slide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid $green;
+                cursor: pointer;
+                width: 180px;
+                height: 180px;
+                box-sizing: border-box;
+
+                @include media ("<phone") {
+                    width: 140px;
+                    height: 140px;
+                }
+
+                img {
+                    width: 90%;
+                    height: 90%;
+                }
+            }
+
+            .tip {
+                display: inline-block;
+                margin-top: 8px;
+
+                @include adaptive-value("font-size", 14, 12, 1);
+                font-weight: 600;
+                font-family: "Ease";
+            }
+        }
     }
 }
