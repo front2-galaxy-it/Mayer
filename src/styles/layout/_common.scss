@@ -51,7 +51,7 @@ body {
                     }
 
                     svg {
-                        color: $green;
+                        fill: $green;
                         transition: all .3s ease;
                     }
                 }
@@ -93,7 +93,7 @@ body {
                 @include adaptive-value("max-width", 375, 122, 1);
 
                 svg {
-                    color: $white_soft;
+                    fill: $white_soft;
                 }
             }
 
@@ -643,7 +643,7 @@ body {
             }
         }
 
-        .swiper-pagination{
+        .swiper-pagination {
             position: static !important;
         }
     }
@@ -1834,19 +1834,26 @@ body {
         border: none;
         width: 24px;
         height: 24px;
+        display: grid;
+        place-items: center;
 
         &.disabled {
             opacity: 0.5;
         }
+
+
+        &.prev {
+            rotate: 90deg;
+        }
+
+        &.next {
+            rotate: -90deg;
+        }
     }
 
     &_count-arrow {
-        width: 18px;
-        height: 9px;
-
-        &.rotate {
-            rotate: 180deg;
-        }
+        width: 9px;
+        height: 18px;
     }
 }
 
@@ -1938,5 +1945,12 @@ body {
             font-weight: 600;
             font-family: "Ease";
         }
+    }
+
+    &_filter-list {
+        max-width: 1900px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 15px;
     }
 }
