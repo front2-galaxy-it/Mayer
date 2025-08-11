@@ -1,0 +1,307 @@
+<section class="filter">
+    <div class="container">
+        <h2 class="filter__title section-title">Filter NEHNUTEĽNOSTÍ</h2>
+        <div class="filter__head">
+            <div class="filter__select-wrap filter__block-wrap">
+                <div class="filter__select-body">
+                    <span class="filter__tip">Typ</span>
+                    <div class="filter__select">
+                        <div class="filter__trigger">
+                            <span class="filter__trigger-text">Všetky</span>
+                            <svg class="filter__arrow">
+                                <use xlink:href="/spritemap.svg#arrow-down"></use>
+                            </svg>
+                        </div>
+                        <div class="filter__options">
+                            <div class="filter__option" data-filter-type="type" data-value="all">
+                                Všetky</div>
+                            <div class="filter__option" data-filter-type="type" data-value="house">
+                                Domy</div>
+                            <div class="filter__option" data-filter-type="type"
+                                data-value="apartment">Byty
+                            </div>
+                            <div class="filter__option" data-filter-type="type" data-value="land">
+                                Pozemky</div>
+                            <div class="filter__option" data-filter-type="type"
+                                data-value="commercial">Komerčné
+                                priestory</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter__select-body">
+                    <span class="filter__tip">Dostupnosť</span>
+                    <div class="filter__select">
+                        <div class="filter__trigger">
+                            <span class="filter__trigger-text">Všetky</span>
+                            <svg class="filter__arrow">
+                                <use xlink:href="/spritemap.svg#arrow-down"></use>
+                            </svg>
+                        </div>
+                        <div class="filter__options">
+                            <div class="filter__option" data-filter-type="status" data-value="all">
+                                Všetky</div>
+                            <div class="filter__option" data-filter-type="status"
+                                data-value="available">Voľný
+                            </div>
+                            <div class="filter__option" data-filter-type="status"
+                                data-value="reserved">
+                                Rezervovaný</div>
+                            <div class="filter__option" data-filter-type="status"
+                                data-value="prepare">
+                                V priprave</div>
+                            <div class="filter__option" data-filter-type="status" data-value="sold">
+                                Predaný</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filter__checkbox-wrap filter__block-wrap">
+                <div class="filter__checkbox-body">
+                    <span class="filter__tip">Izby</span>
+                    <div class="filter__checkboxes">
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input" value="1"
+                                data-filter-type="rooms">
+                            <span class="filter__custom-checkbox">1</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input" value="2"
+                                data-filter-type="rooms">
+                            <span class="filter__custom-checkbox">1,5</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input" value="3"
+                                data-filter-type="rooms">
+                            <span class="filter__custom-checkbox">2</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input" value="4"
+                                data-filter-type="rooms">
+                            <span class="filter__custom-checkbox">2,5</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input" value="5"
+                                data-filter-type="rooms">
+                            <span class="filter__custom-checkbox">3</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input" value="6"
+                                data-filter-type="rooms">
+                            <span class="filter__custom-checkbox">4</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="filter__checkbox-body">
+                    <span class="filter__tip">Podlažie</span>
+                    <div class="filter__checkboxes">
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input"
+                                data-filter-type="floors" value="1">
+                            <span class="filter__custom-checkbox">1</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input"
+                                data-filter-type="floors" value="2">
+                            <span class="filter__custom-checkbox">2</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input"
+                                data-filter-type="floors" value="3">
+                            <span class="filter__custom-checkbox">3</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input"
+                                data-filter-type="floors" value="4">
+                            <span class="filter__custom-checkbox">4</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input"
+                                data-filter-type="floors" value="5">
+                            <span class="filter__custom-checkbox">5</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input"
+                                data-filter-type="floors" value="6">
+                            <span class="filter__custom-checkbox">6</span>
+                        </label>
+                        <label class="filter__checkbox">
+                            <input type="checkbox" class="filter__checkbox-input"
+                                data-filter-type="floors" value="7">
+                            <span class="filter__custom-checkbox">7</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="filter__range-wrap filter__block-wrap">
+                <div class="filter__range-body">
+                    <span class="filter__tip">Plocha</span>
+                    <div class="filter__range-inner">
+                        <div class="filter__range">
+                            <div class="range-slider__track"></div>
+                            <div class="range-slider__range"></div>
+                            <input type="range" class="range-slider__input range-slider__input--min"
+                                min="0" max="600" value="0" step="1">
+                            <input type="range" class="range-slider__input range-slider__input--max"
+                                min="0" max="600" value="450" step="1">
+                        </div>
+                        <div class="range-slider__labels">
+                            <div class="range-slider__label">
+                                <span data-range="min" data-range-type="plocha">0</span>
+                                <span>m²</span>
+                            </div>
+                            <div class="range-slider__label">
+                                <span data-range="max" data-range-type="plocha">600</span>
+                                <span>m²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter__range-body">
+                    <span class="filter__tip">Cena</span>
+                    <div class="filter__range-inner">
+                        <div class="filter__range">
+                            <div class="range-slider__track"></div>
+                            <div class="range-slider__range"></div>
+                            <input type="range" class="range-slider__input range-slider__input--min"
+                                min="0" max="10000000" value="0" step="1">
+                            <input type="range" class="range-slider__input range-slider__input--max"
+                                min="0" max="10000000" value="5000000" step="1000">
+                        </div>
+                        <div class="range-slider__labels">
+                            <div class="range-slider__label">
+                                <span data-range="min" data-range-type="cena">0</span>
+                                <span>EUR</span>
+                            </div>
+                            <div class="range-slider__label">
+                                <span data-range="max" data-range-type="cena">10000000</span>
+                                <span>EUR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="filter__info">
+            <div class="filter__info-item">
+                <span>Filter:</span>
+                <div class="filter__info-counts">
+                    <span>26</span>
+                    <span>/</span>
+                    <span>160</span>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="filter__info-item">
+                <button type="button" class="link_underline">Vymazať filter</button>
+            </div>
+        </div>
+    </div>
+    <div class="filter__list">
+        <div class="filter__list-heading">
+            <div class="filter__list-col">
+                <button type="button">Blok</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Typ</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Podlažie</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Počet izieb</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Plocha</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Balkón/Lodžia <br>/Terasa</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Záhradka +</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Plocha spolu</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Cena s DPH</button>
+            </div>
+            <div class="filter__list-col">
+                <button type="button">Stav</button>
+            </div>
+        </div>
+        <div class="filter__list-body">
+            <a href="house-type.html" target="_blank" class="filter__list-row">
+                <div class="filter__list-col"><span>RIVA</span></div>
+                <div class="filter__list-col"><span>Byt</span></div>
+                <div class="filter__list-col"><span>2</span></div>
+                <div class="filter__list-col"><span>2</span></div>
+                <div class="filter__list-col"><span>55,80 m²</span></div>
+                <div class="filter__list-col"><span>5,40 m²</span></div>
+                <div class="filter__list-col"><span>20,00 m²</span></div>
+                <div class="filter__list-col"><span>150,00 m²</span></div>
+                <div class="filter__list-col"><span>189 000 €</span></div>
+                <div class="filter__list-col"><span>Voľný</span></div>
+            </a>
+
+            <a href="house-type.html" target="_blank" class="filter__list-row reserv">
+                <div class="filter__list-col"><span>LUNA</span></div>
+                <div class="filter__list-col"><span>Ateliér</span></div>
+                <div class="filter__list-col"><span>1</span></div>
+                <div class="filter__list-col"><span>1</span></div>
+                <div class="filter__list-col"><span>38,10 m²</span></div>
+                <div class="filter__list-col"><span>–</span></div>
+                <div class="filter__list-col"><span>12,00 m²</span></div>
+                <div class="filter__list-col"><span>120,00 m²</span></div>
+                <div class="filter__list-col"><span>129 000 €</span></div>
+                <div class="filter__list-col"><span>Rezervovaný</span></div>
+            </a>
+
+            <a href="house-type.html" target="_blank" class="filter__list-row sold">
+                <div class="filter__list-col"><span>ORION</span></div>
+                <div class="filter__list-col"><span>Byt</span></div>
+                <div class="filter__list-col"><span>4</span></div>
+                <div class="filter__list-col"><span>4</span></div>
+                <div class="filter__list-col"><span>98,75 m²</span></div>
+                <div class="filter__list-col"><span>10,00 m²</span></div>
+                <div class="filter__list-col"><span>25,00 m²</span></div>
+                <div class="filter__list-col"><span>250,00 m²</span></div>
+                <div class="filter__list-col"><span>295 000 €</span></div>
+                <div class="filter__list-col"><span>Predaný</span></div>
+            </a>
+
+            <a href="house-type.html" target="_blank" class="filter__list-row prepare">
+                <div class="filter__list-col"><span>SIRIUS</span></div>
+                <div class="filter__list-col"><span>Byt</span></div>
+                <div class="filter__list-col"><span>5</span></div>
+                <div class="filter__list-col"><span>2</span></div>
+                <div class="filter__list-col"><span>67,40 m²</span></div>
+                <div class="filter__list-col"><span>3,50 m²</span></div>
+                <div class="filter__list-col"><span>18,00 m²</span></div>
+                <div class="filter__list-col"><span>180,00 m²</span></div>
+                <div class="filter__list-col"><span>199 000 €</span></div>
+                <div class="filter__list-col"><span>V priprave</span></div>
+            </a>
+
+            <a href="house-type.html" target="_blank" class="filter__list-row">
+                <div class="filter__list-col"><span>VEGA</span></div>
+                <div class="filter__list-col"><span>Mezonet</span></div>
+                <div class="filter__list-col"><span>2</span></div>
+                <div class="filter__list-col"><span>5</span></div>
+                <div class="filter__list-col"><span>115,90 m²</span></div>
+                <div class="filter__list-col"><span>–</span></div>
+                <div class="filter__list-col"><span>48,00 m²</span></div>
+                <div class="filter__list-col"><span>280,00 m²</span></div>
+                <div class="filter__list-col"><span>355 000 €</span></div>
+                <div class="filter__list-col"><span>Voľný</span></div>
+            </a>
+
+        </div>
+    </div>
+    <div class="filter__list-count">
+        <span>10</span>
+        <span>z</span>
+        <span>80</span>
+    </div>
+    <button class="filter__list-show-more btn btn_secondary-green">Načítať
+        ďalšie</button>
+</section>

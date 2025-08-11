@@ -29,23 +29,27 @@
                 </div>
             </section>
             <section class="tabs tabs_map wow animate__animated animate__fadeIn">
-                <div class="container">
-                    <div class="tab-buttons">
-                        <button class="tab-button active" data-tab="tab1">Okolie</button>
-                        <button class="tab-button" data-tab="tab2">Cyklistika</button>
-                        <button class="tab-button" data-tab="tab3">Voľný čas</button>
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="tab1">Okolie</button>
+                    <button class="tab-button" data-tab="tab2">Cyklistika</button>
+                    <button class="tab-button" data-tab="tab3">Voľný čas</button>
+                </div>
+                <div class="tab-contents scrollable_block">
+                    <div class="tab-content scroll_wrapper active" id="tab1" data-scroll>
+                        <img class="tab-img scrollable_item" src="./images/content/map.webp"
+                            alt="map">
                     </div>
-                    <div class="tab-contents">
-                        <div class="tab-content active" id="tab1">
-                            <img class="tab-img" src="./images/content/map.webp" alt="map">
-                        </div>
-                        <div class="tab-content" id="tab2">
-                            <img class="tab-img" src="./images/content/map.webp" alt="map">
-                        </div>
-                        <div class="tab-content" id="tab3">
-                            <img class="tab-img" src="./images/content/map.webp" alt="map">
-                        </div>
+                    <div class="tab-content scroll_wrapper" id="tab2" data-scroll>
+                        <img class="tab-img scrollable_item" src="./images/content/map.webp"
+                            alt="map">
                     </div>
+                    <div class="tab-content scroll_wrapper" id="tab3" data-scroll>
+                        <img class="tab-img scrollable_item" src="./images/content/map.webp"
+                            alt="map">
+                    </div>
+                </div>
+                <div class="custom-scrollbar">
+                    <div class="custom-thumb"></div>
                 </div>
             </section>
             <section class="text-section">
@@ -276,22 +280,9 @@
                             ponúka už dnes a čo ju čaká v budúcnosti.
                         </p>
                     </div>
-                    <div class="table">
-                        <div class="table_item">
-                            <h5 class="table_title">Spoznajte štvrt</h5>
-                            <span class="table_text">Viac</span>
-                        </div>
-                        <div class="table_item">
-                            <h5 class="table_title">Nájdite domov</h5>
-                            <span class="table_text">Viac</span>
-                        </div>
-                        <div class="table_item">
-                            <h5 class="table_title">Vyberte nehnuteľnosť</h5>
-                            <span class="table_text">Viac</span>
-                        </div>
-                    </div>
                 </div>
             </section>
+            {{> table}}
             <section class="text-section">
                 <div class="container">
                     <div class="text-section_content">
@@ -305,9 +296,9 @@
                             bývaní na MAYERi povedia viac.
                         </p>
                     </div>
-                    {{> form}}
                 </div>
             </section>
+            {{> form}}
         </main>
         {{> footer }}
     </div>

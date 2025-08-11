@@ -17,7 +17,10 @@ export default defineConfig({
   plugins: [
     handlebars({ partialDirectory: resolve(__dirname, 'src/templates') }),
     svgSpritemap({
-      pattern: 'public/icons/*.svg',
+      // pattern: resolve(__dirname, 'src/icons/*.svg'),
+      pattern: 'src/icons/*.svg',
+      currentColor: true,
+      emit: true,
     }),
   ],
   build: {

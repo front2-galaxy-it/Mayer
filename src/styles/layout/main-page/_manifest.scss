@@ -48,6 +48,13 @@
         @include adaptive-value("height", 505, 310, 1);
         @include adaptive-value("margin-bottom", 15, 23, 1);
 
+        @include media ("<tablet_x") {
+            display: block;
+            max-width: 240px;
+            margin: 0 auto;
+            @include adaptive-value("margin-bottom", 15, 23, 1);
+        }
+
         img {
             width: 100%;
             height: 100%;

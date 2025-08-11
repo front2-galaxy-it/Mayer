@@ -592,10 +592,16 @@
                     </div>
                 </div>
             </section>
-            <section class="district-map">
-                <img class="district-map_img" src="./images/content/district-map.webp"
-                    alt="image not found">
+            <section class="district-map scrollable_block">
+                <div class="scroll_wrapper" data-scroll>
+                    <img class="district-map_img scrollable_item"
+                        src="./images/content/district-map.webp" alt="map" />
+                </div>
+                <div class="custom-scrollbar">
+                    <div class="custom-thumb"></div>
+                </div>
             </section>
+            {{> filters}}
             <section class="text-section">
                 <div class="container">
                     <div class="text-section_content">
@@ -612,9 +618,9 @@
                             ponúka už dnes a čo ju čaká v budúcnosti.
                         </p>
                     </div>
-                    {{> table}}
                 </div>
             </section>
+            {{> table}}
             <section class="text-section">
                 <div class="container">
                     <div class="text-section_content">
@@ -628,10 +634,9 @@
                             bývaní na MAYERi povedia viac.
                         </p>
                     </div>
-                    {{> form}}
                 </div>
             </section>
-
+            {{> form}}
         </main>
         {{> footer}}
     </div>

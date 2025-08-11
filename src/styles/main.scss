@@ -40,16 +40,13 @@ $media-expressions: ('screen': 'screen',
 @import "layout/main-page/hero";
 @import "layout/main-page/qualities";
 @import "layout/main-page/history";
-@import "layout/main-page/plan";
 @import "layout/main-page/manifest";
 
 
 // Animate.css
 @import 'animate.css';
 
-//  Fancybox
-@import "@fancyapps/ui/dist/fancybox/fancybox.css";
-
 // Swiper
 @import 'swiper/css';
 @import 'swiper/css/bundle';
+@import 'swiper/css/effect-cube';

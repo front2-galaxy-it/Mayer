@@ -1,0 +1,162 @@
+{{> head}}
+
+<body class="house-type">
+    <div id="wrapper">
+        {{> header}}
+        <main>
+            <div class="breadcrumbs wow animate__animated animate__fadeInDown">
+                <div class="container">
+                    <div class="breadcrumbs_body">
+                        <a href="index.html"
+                            class="breadcrumbs_parent-link breadcrumbs_item">Úvod</a>
+                        <span class="divider"></span>
+                        <a href="choose.html"
+                            class="breadcrumbs_parent-link breadcrumbs_item">Výber</a>
+                        <span class="divider"></span>
+                        <a href="house-type.html"
+                            class="breadcrumbs_parent-link breadcrumbs_item">Veronica</a>
+                        <span class="divider"></span>
+                        <span class="breadcrumbs_current breadcrumbs_item">Podlažie</span>
+                    </div>
+                </div>
+            </div>
+            <section class="floor">
+                <div class="container">
+                    <div class="floor_content">
+                        <div class="swiper floor-title-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <h2 class="floor_title section-title">1. PODLAŽIE</h2>
+                                </div>
+                                <div class="swiper-slide">
+                                    <h2 class="floor_title section-title">2. PODLAŽIE</h2>
+                                </div>
+                                <div class="swiper-slide">
+                                    <h2 class="floor_title section-title">3. PODLAŽIE</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="house-info_status">
+                            <div class="house-info_status-label">
+                                <div class="house-info_status-label">
+                                    <span>6</span>
+                                    <span>Voľných</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="floor_count-wrap">
+                            <div class="floor_count-body">
+                                <span class="floor-current"></span>
+                                <span>/</span>
+                                <span class="floor-total"></span>
+                                <span>podľažie</span>
+                            </div>
+                            <div class="floor_count-arrows">
+                                <button type="button" class="floor_count-btn prev"
+                                    aria-label="Previous floor">
+                                    <svg class="floor_count-arrow">
+                                        <use xlink:href="/spritemap.svg#arrow-down"></use>
+                                    </svg>
+                                </button>
+                                <div class="divider"></div>
+                                <button type="button" class="floor_count-btn next"
+                                    aria-label="Next floor">
+                                    <svg class="floor_count-arrow rotate">
+                                        <use xlink:href="/spritemap.svg#arrow-down"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floor-map scrollable_block">
+                    <div class="swiper floor-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="scroll_wrapper" data-scroll>
+                                    <img class="floor-map_img scrollable_item"
+                                        src="./images/content/floor-map.webp"
+                                        alt="image not found">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="scroll_wrapper" data-scroll>
+                                    <img class="floor-map_img scrollable_item"
+                                        src="./images/content/floor-map.webp"
+                                        alt="image not found">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="scroll_wrapper" data-scroll>
+                                    <img class="floor-map_img scrollable_item"
+                                        src="./images/content/floor-map.webp"
+                                        alt="image not found">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-scrollbar">
+                        <div class="custom-thumb"></div>
+                    </div>
+                    <div class="container">
+                        <div class="floor-map_content">
+                            <div class="floor-map_status-item">
+                                <div class="box"></div>
+                                <span>Voľný</span>
+                            </div>
+                            <div class="floor-map_status-item">
+                                <div class="box"></div>
+                                <span>Predaný</span>
+                            </div>
+                            <div class="floor-map_status-item">
+                                <div class="box"></div>
+                                <span>Rezervovaný</span>
+                            </div>
+                            <div class="floor-map_status-item">
+                                <div class="box"></div>
+                                <span>V príprave</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="text-section">
+                <div class="container">
+                    <div class="text-section_content">
+                        <h2 class="section-title wow animate__animated animate__fadeInDown">
+                            Spoznajte MAYER v celej šírke</h2>
+                        <p class="wow animate__animated animate__fadeInDown">MAYER je prepojený
+                            ekosystém, kde
+                            urbanizmus a architektúra súznejú s človekom a prírodou. Na vývoji
+                            projektu dlhé roky
+                            pracuje multidisciplinárny tím, ktorý sa samostatne venuje všetkým
+                            aspektom a detailom
+                            tak, aby bol MAYER to najlepšie malomesto pre život. Pozrite sa, čo
+                            všetko štvrť
+                            ponúka už dnes a čo ju čaká v budúcnosti.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            {{> table}}
+            <section class="text-section">
+                <div class="container">
+                    <div class="text-section_content">
+                        <h2 class="section-title wow animate__animated animate__fadeInDown">Chcete
+                            vedieť viac?
+                        </h2>
+                        <p class="wow animate__animated animate__fadeInDown">Zaujal vás MAYER, máte
+                            otázky,
+                            obavy alebo pripomienky? Vyplňte formulár nižšie a naši kolegovia vám
+                            radi o živote a
+                            bývaní na MAYERi povedia viac.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            {{> form}}
+        </main>
+        {{> footer}}
+    </div>
+</body>

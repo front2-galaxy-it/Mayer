@@ -58,6 +58,7 @@
 
 .swiper-button-next,
 .swiper-button-prev {
+    z-index: 100;
     width: 40px !important;
     height: 72px !important;
     background-color: $green;
