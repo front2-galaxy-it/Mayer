@@ -136,6 +136,8 @@ function initApartmentSwiperWithThumbs() {
     '.apartment-swiper-thumbs .swiper-wrapper',
   );
 
+  if (!mainSwiperEl) return;
+
   const tips = ['Poloha v areali', 'Poloha v budove', 'Poschodie'];
 
   thumbsWrapper.innerHTML = '';
@@ -784,6 +786,8 @@ function openFormPopup() {
   const openFormBtn = document.querySelectorAll('.open-form-btn');
   const closeFormBtn = document.querySelector('.form-popup_close-btn');
   const popupForm = document.querySelector('.form-popup');
+
+  if (!popupForm) return;
 
   openFormBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
