@@ -7,6 +7,60 @@
     transition: all .3s ease;
     background-color: $white_soft;
 
+    &_label-wrap {
+        text-align: center;
+        background-color: $green_light;
+        padding: 12px 15px;
+        position: relative;
+
+        &.hidden{
+            display: none;
+        }
+
+        p {
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "Ease";
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        .label-wrap-close-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 12px;
+
+            width: 16px;
+            height: 16px;
+
+            background-color: transparent;
+            border: none;
+            padding: 0;
+
+            &::after,
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 90%;
+                height: 2px;
+                background-color: $green;
+            }
+
+            &::after {
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+
+            &::before {
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+        }
+    }
+
     .container {
         max-width: 1900px;
     }

@@ -34,6 +34,7 @@ window.addEventListener('load', () => {
   initfloorSliders();
   initApartmentSwiperWithThumbs();
   openFormPopup();
+  closeHeaderLabel();
 });
 
 window.addEventListener('resize', () => {
@@ -52,6 +53,7 @@ window.addEventListener('resize', () => {
   initfloorSliders();
   initApartmentSwiperWithThumbs();
   openFormPopup();
+  closeHeaderLabel();
 });
 
 new Swiper('.gallery-swiper', {
@@ -132,19 +134,43 @@ new Swiper('.house-swiper', {
   },
 });
 
+function closeHeaderLabel() {
+  const headerLabel = document.querySelector('.header_label-wrap');
+  const headerLabelCloseBtn = document.querySelector('.label-wrap-close-btn');
+
+  headerLabelCloseBtn.addEventListener('click', () => {
+    headerLabel.classList.add('hidden');
+  });
+}
+
 function initApartmentSwiperWithThumbs() {
   const mainSwiperEl = document.querySelector('.apartment-swiper-main');
-  const thumbsWrapper = document.querySelector(
-    '.apartment-swiper-thumbs .swiper-wrapper',
-  );
+  const thumbsContainer = document.querySelector('.apartment-swiper-thumbs');
+  const thumbsWrapper = thumbsContainer?.querySelector('.swiper-wrapper');
 
   if (!mainSwiperEl) return;
 
+  const slides = mainSwiperEl.querySelectorAll('.swiper-slide img');
   const tips = ['Poloha v areali', 'Poloha v budove', 'Poschodie'];
+
+  if (slides.length <= 1) {
+    if (thumbsContainer) {
+      thumbsContainer.style.display = 'none';
+    }
+
+    new Swiper('.apartment-swiper-main', {
+      modules: [Navigation],
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+    return;
+  }
 
   thumbsWrapper.innerHTML = '';
 
-  mainSwiperEl.querySelectorAll('.swiper-slide img').forEach((img, i) => {
+  slides.forEach((img, i) => {
     const thumbSlide = document.createElement('div');
     thumbSlide.classList.add('swiper-slide');
 
@@ -175,7 +201,7 @@ function initApartmentSwiperWithThumbs() {
     watchSlidesProgress: true,
   });
 
-  const mainSwiper = new Swiper('.apartment-swiper-main', {
+  new Swiper('.apartment-swiper-main', {
     modules: [Navigation, Thumbs],
     navigation: {
       nextEl: '.swiper-button-next',

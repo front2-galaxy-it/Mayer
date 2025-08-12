@@ -2280,10 +2280,33 @@ body {
         width: 100%;
         margin: 0 auto;
 
-        h2 {
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             text-align: center;
-            @include adaptive-value("font-size", 34, 24, 1);
             @include adaptive-value("margin-bottom", 40, 24, 1);
+        }
+
+        h2 {
+            @include adaptive-value("font-size", 34, 24, 1);
+        }
+
+        h3 {
+            @include adaptive-value("font-size", 24, 20, 1);
+        }
+
+        h4 {
+            @include adaptive-value("font-size", 22, 18, 1);
+        }
+
+        h5 {
+            @include adaptive-value("font-size", 20, 16, 1);
+        }
+
+        h6 {
+            @include adaptive-value("font-size", 18, 14, 1);
         }
 
         p {
