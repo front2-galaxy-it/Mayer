@@ -138,9 +138,25 @@ function closeHeaderLabel() {
   const headerLabel = document.querySelector('.header_label-wrap');
   const headerLabelCloseBtn = document.querySelector('.label-wrap-close-btn');
 
+  let visibleLabel = true;
+
+  function updatePadding() {
+    if (window.innerWidth <= 480) {
+      document.body.style.paddingTop = visibleLabel ? '110px' : '70px';
+    } else {
+      document.body.style.paddingTop = visibleLabel ? '130px' : '90px';
+    }
+  }
+
+  updatePadding();
+
   headerLabelCloseBtn.addEventListener('click', () => {
     headerLabel.classList.add('hidden');
+    visibleLabel = false;
+    updatePadding();
   });
+
+  window.addEventListener('resize', updatePadding);
 }
 
 function initApartmentSwiperWithThumbs() {
