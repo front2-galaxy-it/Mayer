@@ -2116,3 +2116,16 @@ body {
         }
     }
 }
+
+.contact-section {
+    .form-popup_links-wrap {
+        margin: 0 auto;
+        @include adaptive-value("margin-bottom", 64, 48, 1);
+    }
+
+    .tip-text {
+        @include adaptive-value("margin-bottom", 64, 48, 1);
+        text-align: center;
+        @include adaptive-value("font-size", 18, 14, 1);
+    }
+}
