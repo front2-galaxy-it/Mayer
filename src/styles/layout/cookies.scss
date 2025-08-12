@@ -13,6 +13,11 @@
         align-items: center;
         gap: 40px;
         padding: 32px 52px;
+
+        @include media ("<desktop") {
+            flex-direction: column;
+            padding: 24px;
+        }
     }
 
     &_text {
@@ -37,7 +42,10 @@
     &_switchers {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: 32px;
+
+
 
         span {
             font-weight: 600;
@@ -114,6 +122,15 @@
         flex-direction: column;
         gap: 8px;
         width: 286px;
+        min-width: 286px;
+
+        @include media ("<desktop") {
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
 
         .btn {
             font-weight: 600;

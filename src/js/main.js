@@ -18,6 +18,8 @@ new Tabs('.tabs_house');
 
 new Accordion('#low', 'single');
 
+showCookies();
+
 window.addEventListener('load', () => {
   setupHeaderScrollListener();
   initSwiperQualities();
@@ -35,7 +37,6 @@ window.addEventListener('load', () => {
   initApartmentSwiperWithThumbs();
   openFormPopup();
   closeHeaderLabel();
-  showCookies();
 });
 
 window.addEventListener('resize', () => {
@@ -55,7 +56,6 @@ window.addEventListener('resize', () => {
   initApartmentSwiperWithThumbs();
   openFormPopup();
   closeHeaderLabel();
-  showCookies();
 });
 
 new Swiper('.gallery-swiper', {
