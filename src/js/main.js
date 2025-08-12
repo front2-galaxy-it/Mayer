@@ -33,6 +33,7 @@ window.addEventListener('load', () => {
   addFilterListResizeClass();
   initfloorSliders();
   initApartmentSwiperWithThumbs();
+  openFormPopup();
 });
 
 window.addEventListener('resize', () => {
@@ -50,6 +51,7 @@ window.addEventListener('resize', () => {
   addFilterListResizeClass();
   initfloorSliders();
   initApartmentSwiperWithThumbs();
+  openFormPopup();
 });
 
 new Swiper('.gallery-swiper', {
@@ -781,7 +783,6 @@ function addFilterListResizeClass() {
   });
 }
 
-openFormPopup();
 function openFormPopup() {
   const openFormBtn = document.querySelectorAll('.open-form-btn');
   const closeFormBtn = document.querySelector('.form-popup_close-btn');
@@ -792,10 +793,12 @@ function openFormPopup() {
   openFormBtn.forEach((btn) => {
     btn.addEventListener('click', () => {
       popupForm.classList.add('show');
+      document.body.classList.add('lock');
     });
   });
 
   closeFormBtn.addEventListener('click', () => {
     popupForm.classList.remove('show');
+    document.body.classList.remove('lock');
   });
 }
