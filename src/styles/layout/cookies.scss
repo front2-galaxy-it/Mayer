@@ -8,10 +8,6 @@
     background-color: $white;
     display: none;
 
-    &.show {
-        transition: all .3s ease;
-    }
-
     &_content {
         display: flex;
         align-items: center;

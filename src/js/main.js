@@ -863,13 +863,11 @@ function showCookies() {
   const duration = 500;
 
   setTimeout(() => {
-    cookiesWrap.classList.add('show');
     slideDown(cookiesWrap, duration);
   }, 3000);
 
   cookiesButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      cookiesWrap.classList.remove('show');
       slideUp(cookiesWrap, duration);
     });
   });
