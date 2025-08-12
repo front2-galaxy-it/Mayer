@@ -11,15 +11,14 @@
     overflow: auto;
     opacity: 0;
     visibility: hidden;
-    z-index: -100;
-    scale: 0;
+    pointer-events: none;
     transition: all .3s ease;
 
     &.show {
         opacity: 1;
         visibility: visible;
         z-index: 100;
-        scale: 1;
+        pointer-events: all;
         transition: all .3s ease;
     }
 

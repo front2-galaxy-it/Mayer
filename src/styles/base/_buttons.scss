@@ -88,6 +88,10 @@
     }
 }
 
+.swiper-button-disabled{
+    pointer-events: all !important;
+}
+
 .swiper-pagination {
     font-family: "Ease";
     position: static;

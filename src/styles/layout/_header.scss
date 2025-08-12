@@ -12,10 +12,7 @@
         background-color: $green_light;
         padding: 12px 15px;
         position: relative;
-
-        &.hidden{
-            display: none;
-        }
+        transition: all .3s ease;
 
         p {
             font-size: 14px;

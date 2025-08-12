@@ -16,13 +16,13 @@ html {
     scrollbar-color: $green $white_soft;
     scrollbar-width: thin;
 
-
 }
 
 body {
+    transition: all .3s ease;
 
     &.transparent_header {
-        padding: 0;
+        padding: 0 !important;
 
         .header {
             position: fixed;
@@ -301,7 +301,7 @@ body {
 // Gallery Swiper Start
 
 .text-section-swiper {
-    max-width: 1032px;
+    max-width: 1062px;
     width: 100%;
     margin: 70px auto;
     padding: 0 15px !important;
@@ -1714,7 +1714,7 @@ body {
         border-bottom: 1px solid $green;
         transition: all 0.3s ease;
 
-        &:not(.sold, .prepare, .rezerv):hover {
+        &:not(.sold, .prepare, .reserv):hover {
             background-color: rgba($color: #424D1C, $alpha: 0.2);
             transition: all 0.3s ease;
 
@@ -1726,6 +1726,12 @@ body {
 
                 transition: all 0.3s ease;
             }
+        }
+
+        &.reserv {
+            background: url(../images/xcross.png);
+            background-repeat: repeat;
+            pointer-events: none;
         }
 
         &.prepare {
@@ -2445,7 +2451,9 @@ body {
     video {
         width: 100%;
         height: 100%;
+        min-height: 280px;
         border-radius: 2px;
         overflow: hidden;
+        object-fit: cover;
     }
 }

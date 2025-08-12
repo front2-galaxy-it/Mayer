@@ -35,6 +35,7 @@ window.addEventListener('load', () => {
   initApartmentSwiperWithThumbs();
   openFormPopup();
   closeHeaderLabel();
+  showCookies();
 });
 
 window.addEventListener('resize', () => {
@@ -54,6 +55,7 @@ window.addEventListener('resize', () => {
   initApartmentSwiperWithThumbs();
   openFormPopup();
   closeHeaderLabel();
+  showCookies();
 });
 
 new Swiper('.gallery-swiper', {
@@ -138,20 +140,27 @@ function closeHeaderLabel() {
   const headerLabel = document.querySelector('.header_label-wrap');
   const headerLabelCloseBtn = document.querySelector('.label-wrap-close-btn');
 
+  const body = document.body;
+
+  const duration = 500;
+
+  if (!headerLabel || !headerLabelCloseBtn) return;
+
   let visibleLabel = true;
 
   function updatePadding() {
+    if (body.classList.contains('transparent_header')) return;
     if (window.innerWidth <= 480) {
-      document.body.style.paddingTop = visibleLabel ? '110px' : '70px';
+      body.style.paddingTop = visibleLabel ? '110px' : '70px';
     } else {
-      document.body.style.paddingTop = visibleLabel ? '130px' : '90px';
+      body.style.paddingTop = visibleLabel ? '130px' : '90px';
     }
   }
 
   updatePadding();
 
   headerLabelCloseBtn.addEventListener('click', () => {
-    headerLabel.classList.add('hidden');
+    slideUp(headerLabel, duration);
     visibleLabel = false;
     updatePadding();
   });
@@ -346,6 +355,7 @@ function setupHeaderScrollListener() {
   };
 
   window.addEventListener('scroll', onScroll);
+  onScroll();
 }
 
 function openHeaderMenu() {
@@ -842,5 +852,25 @@ function openFormPopup() {
   closeFormBtn.addEventListener('click', () => {
     popupForm.classList.remove('show');
     document.body.classList.remove('lock');
+  });
+}
+
+function showCookies() {
+  const cookiesWrap = document.querySelector('.cookies');
+  if (!cookiesWrap) return;
+
+  const cookiesButtons = cookiesWrap.querySelectorAll('.btn');
+  const duration = 500;
+
+  setTimeout(() => {
+    cookiesWrap.classList.add('show');
+    slideDown(cookiesWrap, duration);
+  }, 3000);
+
+  cookiesButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      cookiesWrap.classList.remove('show');
+      slideUp(cookiesWrap, duration);
+    });
   });
 }
