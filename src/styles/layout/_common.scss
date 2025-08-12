@@ -299,8 +299,7 @@ body {
     max-width: 1032px;
     width: 100%;
     margin: 70px auto;
-    overflow: visible;
-    @include adaptive-value("margin-top", 80, 64, 1);
+    padding: 0 15px !important;
 
     .swiper-slide {
         width: auto;
@@ -616,6 +615,16 @@ body {
         padding: 20px 0;
         border-bottom: 1px solid $green;
         margin-bottom: 0 !important;
+    }
+
+    .arrow {
+        width: 9px;
+        height: 18px;
+
+        @include media ("<tablet") {
+            width: 6px;
+            height: 12px;
+        }
     }
 }
 
@@ -1042,7 +1051,7 @@ body {
     max-width: 815px;
     width: 100%;
     margin: 0 auto;
-    padding: 30px 0;
+    padding: 30px 15px;
 
     &_item {
         padding: 20px 0;
@@ -1060,6 +1069,14 @@ body {
     &_arrow {
         rotate: 90deg;
         transition: all .3s ease;
+        width: 9px;
+        height: 18px;
+        margin-right: 4px;
+
+        @include media ("<tablet") {
+            width: 6px;
+            height: 12px;
+        }
     }
 
     &_trigger {
@@ -1096,9 +1113,11 @@ body {
     align-items: center;
     gap: 16px 32px;
     @include adaptive-value("padding", 24, 16, 1);
-    margin: 40px 15px;
     border: 1px solid $green;
     background-color: rgba($color: #424D1C, $alpha: 0.1);
+    max-width: 815px;
+    width: calc(100% - 30px);
+    margin: 40px auto;
 
     @include media ("<tablet") {
         flex-direction: column;
@@ -1423,7 +1442,11 @@ body {
             transition: all .3s ease;
 
             .filter__arrow {
-                color: $white_soft;
+                path {
+                    transition: all .3s ease;
+                    stroke: $white_soft;
+                }
+
             }
         }
     }
@@ -1432,7 +1455,11 @@ body {
         width: 12px;
         height: 6px;
         transition: all .3s ease;
-        color: $green8C;
+
+        path {
+            transition: all .3s ease;
+            stroke: $green8C;
+        }
     }
 
     &__options {
@@ -1561,7 +1588,7 @@ body {
                 width: 18px;
                 height: 18px;
                 border-radius: 50%;
-                background-color: #007bff;
+                background-color: $green;
                 border: none;
                 cursor: pointer;
             }
@@ -1869,6 +1896,7 @@ body {
 
 .floor-map {
 
+
     .floor-swiper {
         height: 520px;
     }
@@ -1960,7 +1988,7 @@ body {
     &_filter-list {
         max-width: 1900px;
         width: 100%;
-        margin: 0 auto;
+        margin: 80px auto;
         padding: 0 15px;
     }
 }
