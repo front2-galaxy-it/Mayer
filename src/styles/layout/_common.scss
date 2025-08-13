@@ -165,6 +165,8 @@ body {
 }
 
 .breadcrumbs {
+    margin: 10px 0;
+
     .container {
         max-width: 1900px;
     }
@@ -1191,6 +1193,7 @@ body {
     &_status-label {
         display: flex;
         align-items: center;
+        gap: 4px;
 
         span {
             font-size: 14px;

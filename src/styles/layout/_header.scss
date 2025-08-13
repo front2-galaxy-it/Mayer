@@ -132,12 +132,16 @@
     &_logo-wrap {
         display: flex;
         align-items: center;
-        gap: 16px;
     }
 
     .house-type-logo {
         display: none;
         @include adaptive-value("height", 40, 24, 1);
+        margin-left: 16px;
+
+        @media (max-width:1055px) {
+            margin-left: 0;
+        }
     }
 
     &_logo {
@@ -149,6 +153,7 @@
         z-index: 100;
         display: grid;
         place-items: center;
+
 
         @include media ("<phone") {
             width: 122px;
