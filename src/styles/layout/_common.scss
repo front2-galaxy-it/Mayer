@@ -20,6 +20,11 @@ html {
 
 body {
     transition: all .3s ease;
+    padding-top: 130px;
+
+    @include media ("<phone") {
+        padding-top: 110px;
+    }
 
     &.transparent_header {
         padding: 0 !important;
