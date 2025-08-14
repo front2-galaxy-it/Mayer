@@ -2421,39 +2421,140 @@ body {
         width: 100%;
         margin: 0 auto;
 
+        h1,
         h2,
         h3,
         h4,
         h5,
         h6 {
             @include adaptive-value("margin-bottom", 24, 16, 1);
+        }
+
+        h1,
+        h2 {
+            font-size: 34px;
             text-transform: uppercase
         }
 
-        h2 {
-            @include adaptive-value("font-size", 34, 24, 1);
-        }
-
         h3 {
-            @include adaptive-value("font-size", 24, 20, 1);
+            font-size: 24px;
         }
 
         h4 {
-            @include adaptive-value("font-size", 22, 18, 1);
+            font-size: 24px;
         }
 
         h5 {
-            @include adaptive-value("font-size", 20, 16, 1);
+            font-size: 18px;
         }
 
         h6 {
-            @include adaptive-value("font-size", 18, 14, 1);
+            font-size: 18px;
         }
 
         p {
             @include adaptive-value("font-size", 18, 16, 1);
             line-height: 130%;
-            @include adaptive-value("margin-bottom", 40, 20, 1);
+            margin-bottom: 24px;
+
+            a {
+                display: inline-block;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 3px;
+                margin: 0;
+            }
+        }
+
+        b {
+            font-weight: 500;
+        }
+
+        u {
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        blockquote {
+            margin: 0;
+            padding: 32px;
+            background-color: $green_light;
+            margin-bottom: 40px;
+            @include adaptive-value("font-size", 18, 16, 1);
+        }
+
+        ol {
+            margin: 0;
+            margin-bottom: 24px;
+            padding: 0;
+            counter-reset: num;
+
+            li {
+                list-style: none;
+                counter-increment: num;
+                @include adaptive-value("font-size", 18, 14, 1);
+                line-height: 130%;
+                letter-spacing: 0.25px;
+                color: $green;
+
+                &:not(:last-child) {
+                    margin-bottom: 8px;
+                }
+
+                &::before {
+                    content: counter(num) " \00a0/";
+                    margin-right: 7px;
+                }
+            }
+        }
+
+        ul {
+            li {
+                margin: 0;
+                margin-bottom: 24px;
+                padding: 0;
+                @include adaptive-value("font-size", 18, 14, 1);
+                line-height: 130%;
+                letter-spacing: 0.25px;
+                color: $green;
+                list-style: inside;
+
+                &:not(:last-child) {
+                    margin-bottom: 8px;
+                }
+            }
+        }
+
+        button {
+            font-family: "Ease";
+            display: inline-block;
+            @include adaptive-value("font-size", 18, 14, 1);
+            font-weight: 600;
+            padding: 8px 16px;
+            border: none;
+            outline: none;
+            text-align: center;
+            margin-bottom: 24px;
+            background-color: $green;
+            color: $white_soft;
+
+            transition: all .3s ease;
+
+            &:hover {
+                background-color: #303814;
+                transition: all .3s ease;
+            }
+        }
+
+        a {
+            font-family: "Ease";
+            display: inline-block;
+            @include adaptive-value("font-size", 18, 14, 1);
+            font-weight: 600;
+            color: $green;
+            margin-bottom: 24px;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
         }
     }
 }
