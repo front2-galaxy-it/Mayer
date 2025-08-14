@@ -327,6 +327,7 @@ body {
     }
 
     .slide_img {
+        display: block;
         width: 100%;
         @include adaptive-value("height", 296, 240, 1);
         margin-bottom: 12px;
@@ -350,10 +351,14 @@ body {
 
 // Blog Swiper Start
 .blog-section {
+    position: relative;
     padding: 40px 0;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
 
     .blog-swiper {
-        max-width: 1032px;
+        max-width: 1062px;
         padding: 0 15px !important;
         margin-bottom: 40px;
 
@@ -363,15 +368,6 @@ body {
 
         .swiper-slide {
             width: auto;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            top: 40%;
-
-            @include media ("<desktop") {
-                display: none;
-            }
         }
 
         .blog_slide {
@@ -386,6 +382,7 @@ body {
         }
 
         .slide_img {
+            display: block;
             width: 100%;
             @include adaptive-value("height", 240, 200, 1);
             margin-bottom: 12px;
@@ -416,6 +413,23 @@ body {
             overflow: hidden;
         }
 
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: 40%;
+
+        @include media ("<desktop") {
+            display: none;
+        }
+    }
+
+    .swiper-button-prev {
+        left: 4%;
+    }
+
+    .swiper-button-next {
+        right: 4%;
     }
 
     .blog_btn {
@@ -861,6 +875,7 @@ body {
         }
 
         &_img {
+            display: inline-block;
             min-width: 160px;
             min-height: 160px;
             max-width: 160px;
