@@ -871,3 +871,30 @@ function showCookies() {
     });
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('fade-in');
+
+  document.querySelectorAll('a[href]').forEach((link) => {
+    link.addEventListener('click', function (e) {
+      const url = this.href;
+
+      if (this.target === '_blank' || url.indexOf(location.origin) !== 0) {
+        return;
+      }
+
+      e.preventDefault();
+      document.body.classList.remove('fade-in');
+      document.body.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 500);
+    });
+  });
+
+  window.addEventListener('beforeunload', () => {
+    document.body.classList.remove('fade-in');
+    document.body.classList.add('fade-out');
+  });
+});

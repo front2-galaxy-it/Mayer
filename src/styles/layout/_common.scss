@@ -19,8 +19,9 @@ html {
 }
 
 body {
-    transition: all .3s ease;
+    transition: all .5s ease;
     padding-top: 130px;
+    opacity: 0;
 
     @include media ("<phone") {
         padding-top: 110px;
@@ -145,6 +146,27 @@ body {
 
     &.lock {
         overflow: hidden;
+    }
+
+    &.fade-in {
+        animation: fadeIn .5s forwards;
+    }
+
+    &.fade-out {
+        opacity: 1;
+        animation: fadeOut .5s forwards;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
     }
 }
 
