@@ -88,8 +88,9 @@
     }
 }
 
-.swiper-button-disabled{
-    pointer-events: all !important;
+.swiper-button-disabled {
+    opacity: 0 !important;
+    transition: all .3s ease;
 }
 
 .swiper-pagination {

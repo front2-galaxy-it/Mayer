@@ -357,6 +357,27 @@ function setupHeaderScrollListener() {
   onScroll();
 }
 
+function hideHeaderOnScroll(selector, offset = 150) {
+  const header = document.querySelector(selector);
+  if (!header) return;
+
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY && currentScrollY > offset) {
+      header.classList.add('hidden');
+    } else {
+      header.classList.remove('hidden');
+    }
+
+    lastScrollY = currentScrollY;
+  });
+}
+
+hideHeaderOnScroll('#header', 80);
+
 function openHeaderMenu() {
   const header = document.getElementById('header');
   if (!header) return;
@@ -561,97 +582,6 @@ function initCustomScrollbar() {
   attachScrollListener();
 }
 
-// function initCustomScrollbar() {
-//   const customScrollbar = document.querySelector('.custom-scrollbar');
-//   const customThumb = document.querySelector('.custom-thumb');
-
-//   if (!customScrollbar || !customThumb) return;
-
-//   let scrollContainer = getActiveScrollContainer();
-//   if (!scrollContainer) {
-//     customScrollbar.style.display = 'none';
-//     return;
-//   }
-
-//   const updateThumb = () => {
-//     scrollContainer = getActiveScrollContainer();
-//     if (!scrollContainer) {
-//       customScrollbar.style.display = 'none';
-//       return;
-//     }
-
-//     const scrollbarWidth = customScrollbar.offsetWidth;
-//     const scrollWidth = scrollContainer.scrollWidth;
-//     const visibleWidth = scrollContainer.clientWidth;
-
-//     if (scrollWidth <= visibleWidth) {
-//       customScrollbar.style.display = 'none';
-//       return;
-//     } else {
-//       customScrollbar.style.display = 'block';
-//     }
-
-//     const thumbWidth = Math.max(
-//       (visibleWidth / scrollWidth) * scrollbarWidth,
-//       20,
-//     );
-//     customThumb.style.width = `${thumbWidth}px`;
-
-//     const scrollLeft = scrollContainer.scrollLeft;
-//     const maxScroll = scrollWidth - visibleWidth;
-//     const maxThumbMove = scrollbarWidth - thumbWidth;
-
-//     const thumbLeft = (scrollLeft / maxScroll) * maxThumbMove;
-//     customThumb.style.left = `${thumbLeft}px`;
-//   };
-
-//   const observeScroll = () => {
-//     document.querySelectorAll('.scroll_wrapper').forEach((el) => {
-//       el.removeEventListener('scroll', updateThumb);
-//     });
-
-//     scrollContainer = getActiveScrollContainer();
-//     if (scrollContainer) {
-//       scrollContainer.addEventListener('scroll', updateThumb);
-//     }
-//   };
-
-//   const tabButtons = document.querySelectorAll('.tab-button');
-//   if (tabButtons.length) {
-//     tabButtons.forEach((btn) => {
-//       btn.addEventListener('click', () => {
-//         const tabId = btn.getAttribute('data-tab');
-//         const newActive = document.getElementById(tabId);
-
-//         document
-//           .querySelectorAll('.tab-button')
-//           .forEach((b) => b.classList.remove('active'));
-//         document
-//           .querySelectorAll('.tab-content')
-//           .forEach((c) => c.classList.remove('active'));
-
-//         btn.classList.add('active');
-//         newActive.classList.add('active');
-
-//         setTimeout(() => {
-//           setScrollCenter();
-//           observeScroll();
-//           updateThumb();
-//         }, 500);
-//       });
-//     });
-//   }
-
-//   observeScroll();
-//   updateThumb();
-//   window.addEventListener('resize', updateThumb);
-
-//   function getActiveScrollContainer() {
-//     const active = document.querySelector('.tab-content.scroll_wrapper.active');
-//     return active || document.querySelector('.scroll_wrapper');
-//   }
-// }
-
 function initModalGalleries() {
   const modals = document.querySelectorAll('.gallery-modal');
   const galleries = document.querySelectorAll('.gallery-swiper');
@@ -668,6 +598,8 @@ function initModalGalleries() {
     const modalSwiper = new Swiper(swiperSelector, {
       slidesPerView: 1,
       centeredSlides: true,
+      loop: true,
+      autoHeight: true,
       modules: [Navigation, Pagination],
       navigation: {
         nextEl: modal.querySelector('.swiper-button-next'),

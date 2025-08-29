@@ -123,6 +123,12 @@
             width: 100%;
             @include adaptive-value("padding", 25, 16, 1);
             border: 1px solid $white_soft;
+            transition: $animation-speed;
+
+            &:hover {
+                transition: $animation-speed;
+                background-color: rgba(252, 247, 235, 0.2);
+            }
 
             img {
                 width: auto;

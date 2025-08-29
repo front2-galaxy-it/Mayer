@@ -7,6 +7,62 @@
     transition: all .3s ease;
     background-color: $white_soft;
 
+    &.hidden {
+        transform: translateY(-100%);
+        transition: all .3s ease;
+    }
+
+    &.active {
+        background-color: $white_soft;
+        transition: all .3s ease;
+
+        .header_logo {
+            max-width: 188px;
+            transition: all .3s ease;
+
+            @include media ("<phone") {
+                width: 122px;
+            }
+
+            svg {
+                fill: $green;
+                transition: all .3s ease;
+            }
+        }
+
+        .header_actions-link {
+            color: $green;
+            transition: all .3s ease;
+
+            &:hover {
+                color: #8C9071 !important;
+                transition: color .3s ease;
+            }
+        }
+
+        .btn_primary-white {
+            color: $green;
+            border-color: $green;
+            transition: all .3s ease;
+
+            &:hover {
+                background: rgba($color: #424D1C, $alpha: 0.2);
+                transition: all .3s ease;
+            }
+        }
+
+        .btn_secondary-white {
+            background-color: $green;
+            color: $white_soft;
+            transition: all .3s ease;
+
+            &:hover {
+                background-color: #303814;
+                transition: all .3s ease;
+            }
+        }
+    }
+
     &_label-wrap {
         text-align: center;
         background-color: $green_light;
@@ -60,57 +116,6 @@
 
     .container {
         max-width: 1900px;
-    }
-
-    &.active {
-        background-color: $white_soft;
-        transition: all .3s ease;
-
-        .header_logo {
-            max-width: 188px;
-            transition: all .3s ease;
-
-            @include media ("<phone") {
-                width: 122px;
-            }
-
-            svg {
-                fill: $green;
-                transition: all .3s ease;
-            }
-        }
-
-        .header_actions-link {
-            color: $green;
-            transition: all .3s ease;
-
-            &::after {
-                background-color: $green;
-                transition: all .3s ease;
-            }
-        }
-
-        .btn_primary-white {
-            color: $green;
-            border-color: $green;
-            transition: all .3s ease;
-
-            &:hover {
-                background: rgba($color: #424D1C, $alpha: 0.2);
-                transition: all .3s ease;
-            }
-        }
-
-        .btn_secondary-white {
-            background-color: $green;
-            color: $white_soft;
-            transition: all .3s ease;
-
-            &:hover {
-                background-color: #303814;
-                transition: all .3s ease;
-            }
-        }
     }
 
     &_content {
@@ -181,28 +186,11 @@
         font-size: 18px;
         color: $green;
         position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -3px;
-            width: 0;
-            height: 2px;
-            background-color: $green;
-            transition: all .3s ease;
-
-
-            @include media ("<tablet_x") {
-                width: 100%;
-            }
-        }
+        transition: color .3s ease;
 
         &:hover {
-            &::after {
-                width: 100%;
-                transition: all .3s ease;
-            }
+            color: #8C9071 !important;
+            transition: color .3s ease;
         }
     }
 

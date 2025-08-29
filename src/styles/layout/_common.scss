@@ -227,8 +227,7 @@ body {
 }
 
 .text-section {
-    @include adaptive-value("padding-top", 80, 50, 1);
-    @include adaptive-value("padding-bottom", 80, 50, 1);
+    padding: 30px 0;
 
     &_content {
         text-align: start;
@@ -241,7 +240,7 @@ body {
 
         @include adaptive-value("margin-bottom", 32, 16, 1);
 
-        &:last-child {
+        &:last-of-type {
             margin: 0
         }
     }
@@ -332,7 +331,7 @@ body {
 .text-section-swiper {
     max-width: 1062px;
     width: 100%;
-    margin: 70px auto;
+    margin: 30px auto;
     padding: 0 15px !important;
 
     .swiper-slide {
@@ -374,7 +373,7 @@ body {
 // Blog Swiper Start
 .blog-section {
     position: relative;
-    padding: 40px 0;
+    padding: 30px 0;
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
@@ -468,7 +467,7 @@ body {
 .table {
     max-width: 1032px;
     width: calc(100% - 30px);
-    margin: 40px auto;
+    margin: 30px auto;
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr;
 
@@ -645,10 +644,10 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 815px;
-    width: 100%;
+    width: calc(100% - 30px);
     margin: 0 auto;
 
-    padding: 30px 15px;
+    padding: 15px 0;
 
     &__item {
         display: flex;
@@ -748,11 +747,18 @@ body {
         }
 
         &_slide {
-            max-width: 800px;
-            width: 90vw;
-            height: 448px;
             border-radius: 4px;
             overflow: hidden;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: rgba(66, 77, 28, 0.2);
+                mix-blend-mode: multiply;
+                pointer-events: none;
+            }
 
             img {
                 width: 100%;
@@ -878,6 +884,8 @@ body {
     width: calc(100% - 30px);
     margin: 0 auto;
 
+
+
     &_title {
         @include adaptive-value("font-size", 24, 18, 1);
         @include adaptive-value("margin-bottom", 24, 12, 1);
@@ -891,6 +899,13 @@ body {
         gap: 12px 24px;
         @include adaptive-value("padding", 32, 16, 1);
         border: 1px solid $green;
+
+        transition: all .3s ease;
+
+        &:hover {
+            background-color: #424D1C33;
+            transition: all .3s ease
+        }
 
         @include media ("<tablet") {
             grid-template: 1fr / 1fr;
@@ -1103,9 +1118,9 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 815px;
-    width: 100%;
+    width: calc(100% - 30px);
     margin: 0 auto;
-    padding: 30px 15px;
+    padding: 15px 0;
 
     &_item {
         padding: 20px 0;
@@ -1152,7 +1167,6 @@ body {
     &_content {
         @include adaptive-value(" margin-top", 32, 24, 1);
         margin-top: 32px;
-        padding: 16px 0;
         max-width: 90%;
 
         p {

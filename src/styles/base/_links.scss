@@ -1,6 +1,8 @@
 .link {
     position: relative;
     width: max-content;
+    font-weight: 600;
+    font-family: "Ease";
 
     &_green,
     &_white {
@@ -44,7 +46,22 @@
     }
 
     &_afterline-green {
-        padding-bottom: 4px;
-        border-bottom: 2px solid $green !important;
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $green;
+            transition: all .3s ease;
+        }
+
+        &:hover {
+            &::after {
+                width: 0;
+                transition: all .3s ease;
+            }
+        }
     }
 }

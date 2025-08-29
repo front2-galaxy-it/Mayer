@@ -11,7 +11,7 @@
         align-items: flex-start;
         justify-content: center;
         gap: 64px 30px;
-        @include adaptive-value("margin-bottom", 180, 80, 1);
+        @include adaptive-value("margin-bottom", 140, 80, 1);
 
         @include media ("<tablet_x") {
             flex-direction: column;
@@ -23,7 +23,7 @@
         max-width: 545px;
         width: 100%;
         margin: 0 auto;
-        @include adaptive-value("margin-bottom", 180, 80, 1);
+        @include adaptive-value("margin-bottom", 140, 80, 1);
 
         .tip {
             @include adaptive-value("font-size", 14, 12, 1);
@@ -46,6 +46,8 @@
             outline: none;
             transition: all .3s ease;
             color: $green;
+            font-family: "Ease";
+            @include adaptive-value("font-size", 16, 14, 1);
 
             &:focus {
                 border-color: $green;
@@ -63,6 +65,7 @@
             outline: none;
             padding: 0;
             padding-bottom: 16px;
+            @include adaptive-value("font-size", 16, 14, 1);
         }
 
     }
@@ -72,7 +75,7 @@
         align-items: flex-start;
         justify-content: space-between;
         gap: 30px;
-        @include adaptive-value("margin-bottom", 180, 80, 1);
+        @include adaptive-value("margin-bottom", 140, 80, 1);
 
         @include media ("<desktop") {
             flex-wrap: wrap;
@@ -210,6 +213,20 @@
                 text-align: start;
             }
         }
+
+        p {
+            font-size: 18px;
+        }
+
+        a {
+            font-size: 18px;
+            transition: $animation-speed;
+
+            &:hover {
+                transition: $animation-speed;
+                color: #8C9071;
+            }
+        }
     }
 
     &_bottom {
@@ -224,7 +241,6 @@
             padding-top: 80px;
             gap: 80px;
         }
-
 
         .social {
             display: flex;
@@ -307,7 +323,7 @@
         border: 1px solid $green;
         width: 100%;
         text-align: center;
-        padding: 7px;
+        padding: 6px;
 
         &:last-child {
             border-top: none;
@@ -336,6 +352,17 @@
         position: relative;
         font-family: "Ease";
         color: $green;
+        transition: $animation-speed;
+
+        @include media ("<phone") {
+            font-size: 14px !important;
+        }
+
+        &:hover {
+            color: $green !important;
+            transition: $animation-speed;
+            background-color: rgba(66, 77, 28, 0.2);
+        }
     }
 
     &_links-wrap {
