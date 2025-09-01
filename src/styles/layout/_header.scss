@@ -7,6 +7,14 @@
     transition: all .3s ease;
     background-color: $white_soft;
 
+    .container {
+        padding: 0 24px;
+
+        @include media ("<phone") {
+            padding: 0 16px;
+        }
+    }
+
     &.hidden {
         transform: translateY(-100%);
         transition: all .3s ease;
@@ -183,10 +191,11 @@
     }
 
     &_actions-link {
-        font-size: 18px;
+        @include adaptive-value("font-size", 18, 14, 1);
         color: $green;
         position: relative;
         transition: color .3s ease;
+        font-family: "Ease";
 
         &:hover {
             color: #8C9071 !important;
@@ -255,6 +264,7 @@
 
         &__body {
             overflow: hidden;
+            padding-top: 48px;
         }
 
         &.open {
@@ -271,12 +281,17 @@
         }
     }
 
+    .menu_btn {
+        padding: 4px 10px;
+        border-width: 2px;
+    }
+
 }
 
 .mob-menu {
 
     &_nav {
-        width: calc(100% - 30px);
+        width: calc(100% - 32px);
         margin: 0 auto;
         margin-bottom: 24px;
     }
@@ -303,7 +318,7 @@
 
     &_btn {
         display: block;
-        width: calc(100% - 30px);
+        width: calc(100% - 32px);
         margin: 0 auto;
     }
 
@@ -314,16 +329,19 @@
         color: $green;
         display: inline-block;
         margin-bottom: 12px;
-        padding: 0 15px;
     }
 
     &_sales {
         margin-bottom: 64px;
         margin-top: 64px;
+
+        .mob-menu_title{
+            padding: 0 16px;
+        }
     }
 
     &_swiper {
-        padding: 0 15px !important;
+        padding: 0 16px !important;
         overflow: visible !important;
 
         .swiper-slide {
@@ -370,7 +388,7 @@
     }
 
     &_prepare {
-        width: calc(100% - 30px);
+        width: calc(100% - 32px);
         margin: 0 auto;
         margin-bottom: 64px;
     }
@@ -405,7 +423,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: calc(100% - 30px);
+        width: calc(100% - 32px);
         margin: 0 auto;
 
         &__links {

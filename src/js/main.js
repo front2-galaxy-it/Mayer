@@ -122,17 +122,6 @@ new Swiper('.mob-menu_swiper', {
 
 new Swiper('.house-swiper', {
   slidesPerView: 'auto',
-  centeredSlides: true,
-  breakpoints: {
-    320: {
-      initialSlide: 0,
-      centeredSlides: false,
-    },
-    1024: {
-      initialSlide: 3,
-      centeredSlides: true,
-    },
-  },
 });
 
 function closeHeaderLabel() {

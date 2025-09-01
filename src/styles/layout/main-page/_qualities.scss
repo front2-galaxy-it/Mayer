@@ -1,6 +1,6 @@
 .qualities {
     @include adaptive-value("padding-top", 80, 50, 1);
-    @include adaptive-value("padding-bottom", 40, 50, 1);
+    @include adaptive-value("padding-bottom", 80, 50, 1);
 
     .container {
         max-width: 1130px;
@@ -37,7 +37,7 @@
         display: none;
         justify-content: flex-start;
         position: static;
-        margin-top: 32px;
+        margin-top: 16px;
 
         @include media ("<tablet") {
             display: flex;

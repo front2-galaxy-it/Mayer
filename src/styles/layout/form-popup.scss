@@ -98,6 +98,12 @@
         font-family: "Ease";
         @include adaptive-value("font-size", 18, 14, 1);
         color: $green;
+        transition: $animation-speed;
+
+        &:hover {
+            transition: $animation-speed;
+            background-color: rgba($color: $green, $alpha: 0.2)
+        }
 
         &:last-child {
             border-top: none

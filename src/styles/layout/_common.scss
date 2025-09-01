@@ -178,7 +178,31 @@ body {
     max-width: 1358px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 16px;
+}
+
+.pt-80 {
+    padding-top: 80px !important;
+
+    @include media ("<tablet") {
+        padding-top: 50px !important;
+    }
+}
+
+.pt-120 {
+    padding-top: 120px !important;
+
+    @include media ("<tablet") {
+        padding-top: 100px !important;
+    }
+}
+
+.pt-160 {
+    padding-top: 160px !important;
+
+    @include media ("<tablet") {
+        padding-top: 100px !important;
+    }
 }
 
 .caption {
@@ -196,6 +220,11 @@ body {
 
     .container {
         max-width: 1900px;
+        padding: 0 24px;
+
+        @include media ("<phone") {
+            padding: 0 16px;
+        }
     }
 
     &_body {
@@ -227,7 +256,7 @@ body {
 }
 
 .text-section {
-    padding: 30px 0;
+    padding: 50px 0 40px 0;
 
     &_content {
         text-align: start;
@@ -280,8 +309,21 @@ body {
         border: none;
         background-color: transparent;
         padding: 0;
+        transition: $animation-speed;
 
-        // margin-top: 32px;
+        &:hover {
+            transition: $animation-speed;
+            color: rgba($color: #424D1C, $alpha: 0.2);
+
+            .status_box {
+                border-color: rgba($color: #424D1C, $alpha: 0.2);
+
+                &::after,
+                &::before {
+                    background-color: rgba($color: #424D1C, $alpha: 0.2);
+                }
+            }
+        }
 
 
         &.active {
@@ -299,7 +341,7 @@ body {
             width: 29px;
             height: 28px;
             border: 2px solid $green;
-
+            transition: $animation-speed;
             position: relative;
 
             &::after,
@@ -331,8 +373,12 @@ body {
 .text-section-swiper {
     max-width: 1062px;
     width: 100%;
-    margin: 30px auto;
-    padding: 0 15px !important;
+    margin: 40px auto 80px auto;
+    padding: 0 16px !important;
+
+    @include media ("<phone") {
+        margin: 32px auto 50px auto;
+    }
 
     .swiper-slide {
         width: auto;
@@ -373,18 +419,26 @@ body {
 // Blog Swiper Start
 .blog-section {
     position: relative;
-    padding: 30px 0;
+    padding: 40px 0 80px 0;
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
 
+    @include media ("<phone") {
+        padding: 20px 0 50px 0;
+    }
+
     .blog-swiper {
         max-width: 1062px;
         padding: 0 15px !important;
-        margin-bottom: 40px;
+        margin-bottom: 80px;
 
         @include media ("<desktop") {
             overflow: visible;
+        }
+
+        @include media ("<phone") {
+            margin-bottom: 40px;
         }
 
         .swiper-slide {
@@ -453,6 +507,16 @@ body {
         right: 4%;
     }
 
+    .read_time {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "Ease";
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+    }
+
     .blog_btn {
         margin: 0 auto;
         display: block;
@@ -467,12 +531,16 @@ body {
 .table {
     max-width: 1032px;
     width: calc(100% - 30px);
-    margin: 30px auto;
+    margin: 40px auto 80px auto;
     display: grid;
     grid-template: 1fr / 1fr 1fr 1fr;
 
     @include media ("<tablet") {
         grid-template: 1fr / 1fr;
+    }
+
+    @include media ("<phone") {
+        margin: 32px auto 50px auto;
     }
 
     .table_item {
@@ -484,6 +552,7 @@ body {
         border: 1px solid $green;
         transition: all .3s ease;
         cursor: pointer;
+        font-family: "Ease";
 
         &:hover {
             transition: all .3s ease;
@@ -512,6 +581,10 @@ body {
     width: calc(100% - 30px);
     margin: 40px auto 160px auto;
     @include adaptive-value("margin-bottom", 160, 115, 1);
+
+    @include media ("<phone") {
+        margin-top: 8px;
+    }
 
     form {
         max-width: 600px;
@@ -646,8 +719,7 @@ body {
     max-width: 815px;
     width: calc(100% - 30px);
     margin: 0 auto;
-
-    padding: 15px 0;
+    padding: 32px 0 16px 0;
 
     &__item {
         display: flex;
@@ -662,11 +734,24 @@ body {
         padding: 20px 0;
         border-bottom: 1px solid $green;
         margin-bottom: 0 !important;
+
+        @include media ("<phone") {
+            padding: 16px 0;
+        }
+
+        &:hover {
+            .arrow {
+                margin-right: 0;
+                transition: $animation-speed;
+            }
+        }
     }
 
     .arrow {
         width: 9px;
         height: 18px;
+        margin-right: 6.5px;
+        transition: $animation-speed;
 
         @include media ("<tablet") {
             width: 6px;
@@ -677,7 +762,7 @@ body {
 
 .gallery {
     @include adaptive-value("padding-top", 40, 50, 1);
-    @include adaptive-value("padding-bottom", 120, 100, 1);
+    @include adaptive-value("padding-bottom", 130, 70, 1);
 
     .container {
         max-width: 1990px;
@@ -694,13 +779,41 @@ body {
         .swiper-slide {
             width: auto;
 
+            .gallery_img {
+                cursor: pointer;
+                position: relative;
+                border-radius: 4px;
+                overflow: hidden;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    transition: $animation-speed;
+                    background-color: rgba($color: #424D1C, $alpha: 0.2);
+                }
+
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                        transition: $animation-speed;
+                    }
+                }
+            }
+
             img {
+                display: inline-block;
                 width: 100%;
                 height: 100%;
                 max-height: 600px;
                 object-fit: cover;
-                border-radius: 4px;
-                cursor: pointer;
+
+
+
             }
 
             .caption {
@@ -711,6 +824,8 @@ body {
 
         .swiper-pagination {
             position: static !important;
+            margin-top: 16px;
+            gap: 4px;
         }
     }
 
@@ -829,8 +944,8 @@ body {
 }
 
 .image-section {
-    @include adaptive-value("padding-top", 40, 50, 1);
-    @include adaptive-value("padding-bottom", 40, 50, 1);
+    @include adaptive-value("padding-top", 80, 50, 1);
+    @include adaptive-value("padding-bottom", 80, 50, 1);
 
     &.row {
         .image-section_content {
@@ -873,7 +988,17 @@ body {
     }
 
     .caption {
-        margin: 0
+        margin: 0;
+
+        a {
+            text-decoration: underline;
+            transition: $animation-speed;
+
+            &:hover {
+                color: #8C9071;
+                transition: $animation-speed
+            }
+        }
     }
 }
 
@@ -888,7 +1013,7 @@ body {
 
     &_title {
         @include adaptive-value("font-size", 24, 18, 1);
-        @include adaptive-value("margin-bottom", 24, 12, 1);
+        @include adaptive-value("margin-bottom", 16, 12, 1);
         letter-spacing: 0.25px;
         text-transform: uppercase;
     }
@@ -897,7 +1022,7 @@ body {
         display: grid;
         grid-template: 1fr / auto 1fr;
         gap: 12px 24px;
-        @include adaptive-value("padding", 32, 16, 1);
+        @include adaptive-value("padding", 24, 16, 1);
         border: 1px solid $green;
 
         transition: all .3s ease;
@@ -952,7 +1077,7 @@ body {
             font-size: 14px;
             line-height: 122%;
             flex: 1;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
 
 
@@ -987,6 +1112,7 @@ body {
         }
 
 
+
         @media (max-width:360px) {
             justify-content: flex-start;
         }
@@ -1006,8 +1132,12 @@ body {
         font-family: "Ease";
         color: $green8C;
 
-
         transition: all .3s ease;
+
+
+        &:hover {
+            color: rgba($color: #424D1C, $alpha: 1.0);
+        }
 
         @include media ("<tablet") {
             min-width: 120px;
@@ -1186,6 +1316,12 @@ body {
     max-width: 815px;
     width: calc(100% - 30px);
     margin: 40px auto;
+    transition: $animation-speed;
+
+    &:hover {
+        background-color: rgba($color: #424D1C, $alpha: 0.2);
+        transition: $animation-speed
+    }
 
     @include media ("<tablet") {
         flex-direction: column;
@@ -1285,6 +1421,13 @@ body {
             padding: 12px;
             border: 1px solid $green;
             width: 280px;
+            transition: $animation-speed;
+
+            &:hover {
+                background-color: rgba($color: #424D1C, $alpha: 0.2);
+                transition: $animation-speed
+            }
+
 
             @include media ("<tablet") {
                 width: 220px;
@@ -1332,10 +1475,13 @@ body {
     overflow: visible !important;
     max-width: 1100px;
     width: 100%;
-    margin: 70px auto 70px auto;
+    margin: 32px auto 80px auto;
 
     @include media ("<phone") {
-        max-width: 310px;
+        max-width: 100%;
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        margin-bottom: 50px;
     }
 
     .swiper-wrapper {
@@ -1385,6 +1531,10 @@ body {
             opacity: 0;
             transition: all .3s ease;
         }
+    }
+
+    .swiper-button-next {
+        right: 20px;
     }
 }
 
@@ -1588,6 +1738,11 @@ body {
         color: $green8C;
         transition: all .3s ease;
         cursor: pointer;
+
+        &:hover {
+            transition: all .3s ease;
+            background: rgba($color: #424D1C, $alpha: 0.2);
+        }
     }
 
     &__range-inner {
@@ -1776,15 +1931,6 @@ body {
         &:not(.sold, .prepare, .reserv):hover {
             background-color: rgba($color: #424D1C, $alpha: 0.2);
             transition: all 0.3s ease;
-
-            .filter__list-col {
-
-                &:not(:last-child):not(:nth-last-child(2)) {
-                    transform: translateX(20px);
-                }
-
-                transition: all 0.3s ease;
-            }
         }
 
         &.reserv {
@@ -2237,6 +2383,13 @@ body {
         @include media ("<phone") {
             max-width: 100%;
         }
+
+        &:hover {
+            .card_img {
+                filter: brightness(0.8);
+                transition: $animation-speed;
+            }
+        }
     }
 
     &_count-wrap {
@@ -2276,6 +2429,7 @@ body {
             margin-bottom: 12px;
             border-radius: 2px;
             overflow: hidden;
+            transition: $animation-speed;
 
             img {
                 width: 100%;
@@ -2308,6 +2462,9 @@ body {
             font-weight: 600;
             font-size: 14px;
             font-family: "Ease";
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 2px;
         }
     }
 }
