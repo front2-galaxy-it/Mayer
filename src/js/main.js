@@ -33,14 +33,12 @@ window.addEventListener('load', () => {
   openHeaderMenu();
   showHiddenText();
   initModalGalleries();
-  initCustomRangeSliders();
   addFilterListResizeClass();
   initfloorSliders();
   initApartmentSwiperWithThumbs();
   openFormPopup();
   // closeHeaderLabel();
   showCookies();
-  // getJsonData();
 });
 
 window.addEventListener('resize', () => {
@@ -53,12 +51,15 @@ window.addEventListener('resize', () => {
   openHeaderMenu();
   showHiddenText();
   initModalGalleries();
-  initCustomRangeSliders();
   addFilterListResizeClass();
   initfloorSliders();
   initApartmentSwiperWithThumbs();
   openFormPopup();
   // closeHeaderLabel();
+});
+
+document.addEventListener('filters:ready', () => {
+  initCustomRangeSliders();
 });
 
 new Swiper('.gallery-swiper', {

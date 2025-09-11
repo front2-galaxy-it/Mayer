@@ -318,4 +318,6 @@ export function renderFilters(data) {
   });
 
   renderList();
+
+  document.dispatchEvent(new CustomEvent('filters:ready'));
 }
