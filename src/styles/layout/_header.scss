@@ -72,9 +72,10 @@
     }
 
     &_label-wrap {
+        display: none;
         text-align: center;
         background-color: $green_light;
-        padding: 12px 15px;
+        padding: 12px;
         position: relative;
         transition: all .3s ease;
 
@@ -335,7 +336,7 @@
         margin-bottom: 64px;
         margin-top: 64px;
 
-        .mob-menu_title{
+        .mob-menu_title {
             padding: 0 16px;
         }
     }

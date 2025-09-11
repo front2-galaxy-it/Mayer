@@ -20,7 +20,7 @@ html {
 
 body {
     transition: all .5s ease;
-    padding-top: 130px;
+    padding-top: 80px;
     opacity: 0;
 
     @include media ("<phone") {
@@ -179,30 +179,6 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 0 16px;
-}
-
-.pt-80 {
-    padding-top: 80px !important;
-
-    @include media ("<tablet") {
-        padding-top: 50px !important;
-    }
-}
-
-.pt-120 {
-    padding-top: 120px !important;
-
-    @include media ("<tablet") {
-        padding-top: 100px !important;
-    }
-}
-
-.pt-160 {
-    padding-top: 160px !important;
-
-    @include media ("<tablet") {
-        padding-top: 100px !important;
-    }
 }
 
 .caption {
@@ -385,12 +361,19 @@ body {
     }
 
     .text-section_slide {
+        display: block;
         box-sizing: border-box;
         max-width: 328px;
         width: 100%;
         height: auto;
         padding: 16px;
         border: 1px solid $green;
+        transition: all .5s ease;
+
+        &:hover {
+            transition: all .5s ease;
+            background-color: rgba($color: #424D1C, $alpha: 0.2);
+        }
     }
 
     .slide_img {
@@ -577,139 +560,149 @@ body {
 
 // Form Start
 
-.form {
-    width: calc(100% - 30px);
-    margin: 40px auto 160px auto;
-    @include adaptive-value("margin-bottom", 160, 115, 1);
+.form-section {
 
-    @include media ("<phone") {
-        margin-top: 8px;
-    }
-
-    form {
-        max-width: 600px;
-        width: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        column-gap: 24px;
-
-        input {
-            accent-color: $green;
-        }
-    }
-
-    .data {
-        display: flex;
-        flex-direction: column;
-        width: 47%;
-        @include adaptive-value("margin-bottom", 48, 32, 1);
-        @include adaptive-value("font-size", 14, 12, 1);
-        font-weight: 600;
-        font-family: "Ease";
-        line-height: 125%;
+    .text-section_content {
+        padding-bottom: 80px;
 
         @include media ("<tablet") {
+            padding-bottom: 48px;
+        }
+    }
+
+    .form {
+
+        @include media ("<phone") {
+            margin-top: 8px;
+        }
+
+        form {
+            max-width: 600px;
             width: 100%;
-        }
-
-        input,
-        textarea {
-            background-color: transparent;
-            border: none;
-            border-bottom: 1px solid #8C9071;
-            padding: 12px 12px 14px 0;
-            transition: all .3s ease;
-            min-height: 49px;
-            @include adaptive-value("font-size", 18, 14, 1);
-            color: $green;
-
-            &:focus {
-                border-color: $green;
-                @include adaptive-value("font-size", 18, 14, 1);
-                transition: all .3s ease;
-            }
-
-            &::placeholder {
-                color: #8C9071;
-            }
-        }
-
-        textarea {
-            resize: vertical;
-        }
-    }
-
-    .textarea {
-        width: 100%;
-    }
-
-    .checkbox {
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-        cursor: pointer;
-        @include adaptive-value("margin-bottom", 24, 16, 1);
-        line-height: 1.4;
-        position: relative;
-        user-select: none;
-        @include adaptive-value("font-size", 14, 12, 1);
-        font-weight: 600;
-        font-family: "Ease";
-
-        input[type="checkbox"] {
-            opacity: 0;
-            position: absolute;
-            left: -9999px;
-
-            &:checked+.custom-checkbox-box {
-                background-color: $green;
-
-                &::after {
-                    content: url(../images/check.svg);
-                    margin-top: 3px;
-                }
-            }
-        }
-
-        .custom-checkbox-box {
+            margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-            position: relative;
-            transition: 0.2s;
-            border: 2px solid $green
+            justify-content: space-between;
+            flex-wrap: wrap;
+            column-gap: 24px;
+
+            input {
+                accent-color: $green;
+            }
         }
-    }
 
-    .links_wrap {
-        display: flex;
-        align-items: center;
-        gap: 16px 24px;
-        @include adaptive-value("margin-bottom", 48, 32, 1);
-
-        @include media ("<tablet") {
+        .data {
+            display: flex;
             flex-direction: column;
-            align-items: flex-start
-        }
-
-        .link_underline {
+            width: 47%;
+            @include adaptive-value("margin-bottom", 48, 32, 1);
             @include adaptive-value("font-size", 14, 12, 1);
             font-weight: 600;
             font-family: "Ease";
+            line-height: 125%;
+
+            @include media ("<tablet") {
+                width: 100%;
+            }
+
+            input,
+            textarea {
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid #8C9071;
+                padding: 12px 12px 14px 0;
+                transition: all .3s ease;
+                min-height: 49px;
+                @include adaptive-value("font-size", 18, 14, 1);
+                color: $green;
+
+                &:focus {
+                    border-color: $green;
+                    @include adaptive-value("font-size", 18, 14, 1);
+                    transition: all .3s ease;
+                }
+
+                &::placeholder {
+                    color: #8C9071;
+                }
+            }
+
+            textarea {
+                resize: vertical;
+            }
+        }
+
+        .textarea {
+            width: 100%;
+        }
+
+        .checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            cursor: pointer;
+            @include adaptive-value("margin-bottom", 24, 16, 1);
+            line-height: 1.4;
+            position: relative;
+            user-select: none;
+            @include adaptive-value("font-size", 14, 12, 1);
+            font-weight: 600;
+            font-family: "Ease";
+
+            input[type="checkbox"] {
+                opacity: 0;
+                position: absolute;
+                left: -9999px;
+
+                &:checked+.custom-checkbox-box {
+                    background-color: $green;
+
+                    &::after {
+                        content: url(../images/check.svg);
+                        margin-top: 3px;
+                    }
+                }
+            }
+
+            .custom-checkbox-box {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                flex-shrink: 0;
+                position: relative;
+                transition: 0.2s;
+                border: 2px solid $green
+            }
+        }
+
+        .links_wrap {
+            display: flex;
+            align-items: center;
+            gap: 16px 24px;
+            @include adaptive-value("margin-bottom", 48, 32, 1);
+
+            @include media ("<tablet") {
+                flex-direction: column;
+                align-items: flex-start
+            }
+
+            .link_underline {
+                @include adaptive-value("font-size", 14, 12, 1);
+                font-weight: 600;
+                font-family: "Ease";
+            }
+        }
+
+        .form_btn {
+            display: block;
+            width: 100%;
         }
     }
-
-    .form_btn {
-        display: block;
-        width: 100%;
-    }
 }
+
+
 
 // Form End
 
@@ -761,9 +754,6 @@ body {
 }
 
 .gallery {
-    @include adaptive-value("padding-top", 40, 50, 1);
-    @include adaptive-value("padding-bottom", 130, 70, 1);
-
     .container {
         max-width: 1990px;
     }
@@ -1006,7 +996,7 @@ body {
     @include adaptive-value("padding-top", 40, 50, 1);
     @include adaptive-value("padding-bottom", 40, 50, 1);
     max-width: 845px;
-    width: calc(100% - 30px);
+    width: calc(100% - 32px);
     margin: 0 auto;
 
 
@@ -1206,10 +1196,11 @@ body {
     &_content {
         display: grid;
         grid-template: 1fr / 1fr 1fr;
-        gap: 24px 64px;
+        gap: 64px;
 
         @include media ("<tablet") {
             grid-template: 1fr / 1fr;
+            row-gap: 56px;
         }
     }
 

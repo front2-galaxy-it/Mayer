@@ -65,3 +65,76 @@ $headings-color: inherit !default;
 
 
 $animation-speed: all .3s ease 0s;
+
+
+.pt-0 {
+    padding-top: 0 !important;
+}
+
+.pt-80 {
+    padding-top: 80px !important;
+
+    @include media ("<tablet") {
+        padding-top: 50px !important;
+    }
+}
+
+.pt-120 {
+    padding-top: 120px !important;
+
+    @include media ("<tablet") {
+        padding-top: 100px !important;
+    }
+}
+
+.pt-160 {
+    padding-top: 160px !important;
+
+    @include media ("<tablet") {
+        padding-top: 100px !important;
+    }
+}
+
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+.pb-40 {
+    padding-bottom: 40px !important;
+
+    @include media ("<tablet") {
+        padding-bottom: 32px !important;
+    }
+}
+
+.pb-32 {
+    padding-bottom: 32px !important;
+}
+
+.pb-80 {
+    padding-bottom: 80px !important;
+
+    @include media ("<tablet") {
+        padding-bottom: 50px !important;
+    }
+}
+
+.pb-160 {
+    padding-bottom: 160px !important;
+
+    @include media ("<tablet") {
+        padding-bottom: 100px !important;
+    }
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mb-80 {
+    margin-bottom: 80px !important;
+
+    @include media ("<tablet") {
+        margin-bottom: 50px !important;
+    }
+}

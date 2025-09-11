@@ -2,7 +2,7 @@ import Swiper from 'swiper';
 import {
   Navigation,
   Pagination,
-  EffectCube,
+  EffectCreative,
   Controller,
   Thumbs,
 } from 'swiper/modules';
@@ -34,7 +34,7 @@ window.addEventListener('load', () => {
   initfloorSliders();
   initApartmentSwiperWithThumbs();
   openFormPopup();
-  closeHeaderLabel();
+  // closeHeaderLabel();
   showCookies();
 });
 
@@ -54,7 +54,7 @@ window.addEventListener('resize', () => {
   initfloorSliders();
   initApartmentSwiperWithThumbs();
   openFormPopup();
-  closeHeaderLabel();
+  // closeHeaderLabel();
 });
 
 new Swiper('.gallery-swiper', {
@@ -139,9 +139,9 @@ function closeHeaderLabel() {
   function updatePadding() {
     if (body.classList.contains('transparent_header')) return;
     if (window.innerWidth <= 480) {
-      body.style.paddingTop = visibleLabel ? '110px' : '70px';
+      body.style.paddingTop = visibleLabel ? '90px' : '50px';
     } else {
-      body.style.paddingTop = visibleLabel ? '130px' : '90px';
+      body.style.paddingTop = visibleLabel ? '120px' : '80px';
     }
   }
 
@@ -237,21 +237,30 @@ function initfloorSliders() {
   const floorSwiper = new Swiper('.floor-swiper', {
     slidesPerView: 1,
     centeredSlides: true,
-    modules: [Navigation, EffectCube, Controller],
-    effect: 'cube',
-    cubeEffect: { shadow: false, slideShadows: false },
-    direction: 'vertical',
+    modules: [Navigation, EffectCreative, Controller],
+    effect: 'creative',
+    speed: 1500,
+    creativeEffect: {
+      prev: {
+        opacity: 0,
+        scale: 0,
+      },
+      next: {
+        opacity: 0,
+        scale: 0,
+      },
+    },
+    shadowPerProgress: true,
     allowTouchMove: false,
   });
 
   const floorTitleSwiper = new Swiper('.floor-title-swiper', {
     slidesPerView: 1,
     centeredSlides: true,
-    modules: [Navigation, EffectCube, Controller],
-    effect: 'cube',
-    cubeEffect: { shadow: false, slideShadows: false },
+    modules: [Navigation, Controller],
     direction: 'vertical',
     allowTouchMove: false,
+    speed: 2000,
   });
 
   floorSwiper.controller.control = floorTitleSwiper;
