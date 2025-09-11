@@ -1,4 +1,4 @@
-<section class="filter">
+<!-- <section class="filter">
     <div class="container">
         <h2 class="filter__title section-title">Filter NEHNUTEĽNOSTÍ</h2>
         <div class="filter__head">
@@ -21,7 +21,7 @@
                             <div class="filter__option" data-filter-type="type" data-value="house">
                                 Domy</div>
                             <div class="filter__option" data-filter-type="type"
-                                data-value="apartment">Byty
+                                data-value="apartment">Byt
                             </div>
                             <div class="filter__option" data-filter-type="type" data-value="land">
                                 Pozemky</div>
@@ -235,73 +235,7 @@
                 <button type="button">Stav</button>
             </div>
         </div>
-        <div class="filter__list-body">
-            <a href="floor.html" target="_blank" class="filter__list-row">
-                <div class="filter__list-col"><span>RIVA</span></div>
-                <div class="filter__list-col"><span>Byt</span></div>
-                <div class="filter__list-col"><span>2</span></div>
-                <div class="filter__list-col"><span>2</span></div>
-                <div class="filter__list-col"><span>55,80 m²</span></div>
-                <div class="filter__list-col"><span>5,40 m²</span></div>
-                <div class="filter__list-col"><span>20,00 m²</span></div>
-                <div class="filter__list-col"><span>150,00 m²</span></div>
-                <div class="filter__list-col"><span>189 000 €</span></div>
-                <div class="filter__list-col"><span>Voľný</span></div>
-            </a>
-
-            <a href="floor.html" target="_blank" class="filter__list-row reserv">
-                <div class="filter__list-col"><span>LUNA</span></div>
-                <div class="filter__list-col"><span>Ateliér</span></div>
-                <div class="filter__list-col"><span>1</span></div>
-                <div class="filter__list-col"><span>1</span></div>
-                <div class="filter__list-col"><span>38,10 m²</span></div>
-                <div class="filter__list-col"><span>–</span></div>
-                <div class="filter__list-col"><span>12,00 m²</span></div>
-                <div class="filter__list-col"><span>120,00 m²</span></div>
-                <div class="filter__list-col"><span>129 000 €</span></div>
-                <div class="filter__list-col"><span>Rezervovaný</span></div>
-            </a>
-
-            <a href="floor.html" target="_blank" class="filter__list-row sold">
-                <div class="filter__list-col"><span>ORION</span></div>
-                <div class="filter__list-col"><span>Byt</span></div>
-                <div class="filter__list-col"><span>4</span></div>
-                <div class="filter__list-col"><span>4</span></div>
-                <div class="filter__list-col"><span>98,75 m²</span></div>
-                <div class="filter__list-col"><span>10,00 m²</span></div>
-                <div class="filter__list-col"><span>25,00 m²</span></div>
-                <div class="filter__list-col"><span>250,00 m²</span></div>
-                <div class="filter__list-col"><span>295 000 €</span></div>
-                <div class="filter__list-col"><span>Predaný</span></div>
-            </a>
-
-            <a href="floor.html" target="_blank" class="filter__list-row prepare">
-                <div class="filter__list-col"><span>SIRIUS</span></div>
-                <div class="filter__list-col"><span>Byt</span></div>
-                <div class="filter__list-col"><span>5</span></div>
-                <div class="filter__list-col"><span>2</span></div>
-                <div class="filter__list-col"><span>67,40 m²</span></div>
-                <div class="filter__list-col"><span>3,50 m²</span></div>
-                <div class="filter__list-col"><span>18,00 m²</span></div>
-                <div class="filter__list-col"><span>180,00 m²</span></div>
-                <div class="filter__list-col"><span>199 000 €</span></div>
-                <div class="filter__list-col"><span>V priprave</span></div>
-            </a>
-
-            <a href="floor.html" target="_blank" class="filter__list-row">
-                <div class="filter__list-col"><span>VEGA</span></div>
-                <div class="filter__list-col"><span>Mezonet</span></div>
-                <div class="filter__list-col"><span>2</span></div>
-                <div class="filter__list-col"><span>5</span></div>
-                <div class="filter__list-col"><span>115,90 m²</span></div>
-                <div class="filter__list-col"><span>–</span></div>
-                <div class="filter__list-col"><span>48,00 m²</span></div>
-                <div class="filter__list-col"><span>280,00 m²</span></div>
-                <div class="filter__list-col"><span>355 000 €</span></div>
-                <div class="filter__list-col"><span>Voľný</span></div>
-            </a>
-
-        </div>
+        <div class="filter__list-body"></div>
     </div>
     <div class="filter__list-count">
         <span>10</span>
@@ -309,5 +243,66 @@
         <span>80</span>
     </div>
     <button class="filter__list-show-more btn btn_secondary-green">Načítať
+        ďalšie</button>
+</section> -->
+
+
+<section class="filter">
+    <div class="container">
+        <h2 class="filter__title section-title">Filter NEHNUTEĽNOSTÍ</h2>
+
+        <div class="filter__head">
+
+            <div class="filter__select-wrap filter__block-wrap" id="filter-selects"></div>
+
+
+            <div class="filter__checkbox-wrap filter__block-wrap" id="filter-checkboxes"></div>
+
+
+            <div class="filter__range-wrap filter__block-wrap" id="filter-ranges"></div>
+        </div>
+
+        <div class="filter__info">
+            <div class="filter__info-item">
+                <span>Filter:</span>
+                <div class="filter__info-counts">
+                    <span id="filtered-count">0</span>
+                    <span>/</span>
+                    <span id="total-count">0</span>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="filter__info-item">
+                <button type="button" class="link_underline" id="clear-filters">Vymazať
+                    filter</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="filter__list">
+        <div class="filter__list-heading">
+            <div class="filter__list-col"><button type="button">Blok</button></div>
+            <div class="filter__list-col"><button type="button">Typ</button></div>
+            <div class="filter__list-col"><button type="button">Podlažie</button></div>
+            <div class="filter__list-col"><button type="button">Počet izieb</button></div>
+            <div class="filter__list-col"><button type="button">Plocha</button></div>
+            <div class="filter__list-col"><button type="button">Balkón/Lodžia <br>/Terasa</button>
+            </div>
+            <div class="filter__list-col"><button type="button">Záhradka +</button></div>
+            <div class="filter__list-col"><button type="button">Plocha spolu</button></div>
+            <div class="filter__list-col"><button type="button">Cena s DPH</button></div>
+            <div class="filter__list-col"><button type="button">Stav</button></div>
+        </div>
+        <div class="filter__list-body" id="filter-list-body"></div>
+    </div>
+
+    <div class="filter__list-count">
+        <span id="showed-count">0</span>
+        <span>z</span>
+        <span id="total-count-bottom">0</span>
+    </div>
+
+    <button class="filter__list-show-more btn btn_secondary-green" id="load-more">Načítať
         ďalšie</button>
 </section>

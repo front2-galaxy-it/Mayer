@@ -10,6 +10,7 @@ import WOW from './wow';
 import { Tabs } from './components/tabs';
 import { Accordion } from './components/accordion';
 import { slideDown, slideUp } from './utils/slideIn';
+import { initFilters } from './components/filters';
 
 new WOW().init();
 
@@ -17,6 +18,10 @@ new Tabs('.tabs_map');
 new Tabs('.tabs_house');
 
 new Accordion('#low', 'single');
+
+document.addEventListener('DOMContentLoaded', () => {
+  initFilters();
+});
 
 window.addEventListener('load', () => {
   setupHeaderScrollListener();
@@ -28,7 +33,6 @@ window.addEventListener('load', () => {
   openHeaderMenu();
   showHiddenText();
   initModalGalleries();
-  initCustomSelects();
   initCustomRangeSliders();
   addFilterListResizeClass();
   initfloorSliders();
@@ -36,6 +40,7 @@ window.addEventListener('load', () => {
   openFormPopup();
   // closeHeaderLabel();
   showCookies();
+  // getJsonData();
 });
 
 window.addEventListener('resize', () => {
@@ -48,7 +53,6 @@ window.addEventListener('resize', () => {
   openHeaderMenu();
   showHiddenText();
   initModalGalleries();
-  initCustomSelects();
   initCustomRangeSliders();
   addFilterListResizeClass();
   initfloorSliders();
@@ -639,50 +643,6 @@ function initModalGalleries() {
   });
 }
 
-function initCustomSelects() {
-  const selects = document.querySelectorAll('.filter__select');
-  const duration = 300;
-
-  selects.forEach((customSelect) => {
-    const trigger = customSelect.querySelector('.filter__trigger');
-    const triggerText = customSelect.querySelector('.filter__trigger span');
-    const options = customSelect.querySelectorAll('.filter__option');
-    const content = customSelect.querySelector('.filter__options');
-
-    if (!trigger || !options.length || !content) return;
-
-    trigger.addEventListener('click', () => {
-      const isOpen = customSelect.classList.contains('open');
-
-      if (isOpen) {
-        customSelect.classList.remove('open');
-        slideUp(content, duration);
-      } else {
-        customSelect.classList.add('open');
-        slideDown(content, duration);
-      }
-    });
-
-    options.forEach((option) => {
-      option.addEventListener('click', () => {
-        triggerText.textContent = option.textContent;
-        trigger.classList.add('selected');
-        customSelect.classList.remove('open');
-        slideUp(content, duration);
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      const isOpen = customSelect.classList.contains('open');
-
-      if (isOpen && !customSelect.contains(e.target)) {
-        customSelect.classList.remove('open');
-        slideUp(content, duration);
-      }
-    });
-  });
-}
-
 function initCustomRangeSliders() {
   const sliders = document.querySelectorAll('.filter__range-inner');
 
@@ -828,3 +788,220 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('fade-out');
   });
 });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   let allData = [];
+//   let filters = {
+//     type: 'all',
+//     status: 'all',
+//     rooms: [],
+//     floors: [],
+//     plocha: [0, 600],
+//     cena: [0, 10000000],
+//   };
+
+//   const listBody = document.querySelector('.filter__list-body');
+//   const selectWrap = document.getElementById('filter-selects');
+//   const checkboxWrap = document.getElementById('filter-checkboxes');
+
+//   const countCurrent = document.querySelector(
+//     '.filter__list-count span:first-child',
+//   );
+//   const countTotal = document.querySelector(
+//     '.filter__list-count span:last-child',
+//   );
+
+//   const formatNumber = (num, suffix = ' m²') =>
+//     num && num > 0
+//       ? num.toLocaleString('sk-SK', {
+//           minimumFractionDigits: 2,
+//           maximumFractionDigits: 2,
+//         }) + suffix
+//       : '–';
+//   const formatPrice = (num) =>
+//     num && num > 0 ? num.toLocaleString('sk-SK') + ' €' : '–';
+
+//   // ---------------- Render List ----------------
+//   function renderList(data) {
+//     listBody.innerHTML = '';
+//     data.forEach((item) => {
+//       const row = document.createElement('a');
+//       row.href = 'floor.html';
+//       row.target = '_blank';
+//       row.className = 'filter__list-row';
+
+//       if (item.Stav === 'Rezervovany') row.classList.add('reserv');
+//       if (item.Stav === 'Predany') row.classList.add('sold');
+//       if (item.Stav === 'V priprave') row.classList.add('prepare');
+
+//       row.innerHTML = `
+//         <div class="filter__list-col">${item.Blok}</div>
+//         <div class="filter__list-col">${item.Typ}</div>
+//         <div class="filter__list-col">${item.Podlazie}</div>
+//         <div class="filter__list-col">${item.Pocet_izieb}</div>
+//         <div class="filter__list-col">${formatNumber(item.Plocha)}</div>
+//         <div class="filter__list-col">${formatNumber(
+//           item.Balkon_Lodzia_Terasa,
+//         )}</div>
+//         <div class="filter__list-col">${formatNumber(item.Zahradka)}</div>
+//         <div class="filter__list-col">${formatNumber(item.Plocha_spolu)}</div>
+//         <div class="filter__list-col">${formatPrice(item.Cena_s_DPH)}</div>
+//         <div class="filter__list-col">${item.Stav}</div>
+//       `;
+//       listBody.appendChild(row);
+//     });
+
+//     countCurrent.textContent = data.length;
+//     countTotal.textContent = allData.length;
+//   }
+
+//   // ---------------- Render Select ----------------
+//   function renderSelect(filterKey, placeholder = 'Všetky') {
+//     const container = document.createElement('div');
+//     container.className = 'filter__select-body';
+
+//     const tip = document.createElement('span');
+//     tip.className = 'filter__tip';
+//     tip.textContent = filterKey === 'Typ' ? 'Typ' : 'Dostupnosť';
+//     container.appendChild(tip);
+
+//     const select = document.createElement('div');
+//     select.className = 'filter__select';
+
+//     const trigger = document.createElement('div');
+//     trigger.className = 'filter__trigger';
+//     trigger.innerHTML = `
+//       <span class="filter__trigger-text">${placeholder}</span>
+//       <svg class="filter__arrow" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+//         <path d="M0.875 0.985352L5.46079 5.57114C6.24183 6.35219 7.50816 6.35219 8.28921 5.57114L12.875 0.985352" stroke="" stroke-width="2"/>
+//       </svg>
+//     `;
+//     select.appendChild(trigger);
+
+//     const options = document.createElement('div');
+//     options.className = 'filter__options';
+
+//     const allOption = document.createElement('div');
+//     allOption.className = 'filter__option';
+//     allOption.dataset.filterType = filterKey.toLowerCase();
+//     allOption.dataset.value = 'all';
+//     allOption.textContent = placeholder;
+//     options.appendChild(allOption);
+
+//     const uniqueValues = [...new Set(allData.map((item) => item[filterKey]))];
+//     uniqueValues.forEach((val) => {
+//       const opt = document.createElement('div');
+//       opt.className = 'filter__option';
+//       opt.dataset.filterType = filterKey.toLowerCase();
+//       opt.dataset.value = val.toLowerCase();
+//       opt.textContent = val;
+//       options.appendChild(opt);
+//     });
+
+//     select.appendChild(options);
+//     container.appendChild(select);
+
+//     // Обработчик выбора
+//     options.addEventListener('click', (e) => {
+//       const option = e.target.closest('.filter__option');
+//       if (!option) return;
+
+//       trigger.querySelector('.filter__trigger-text').textContent =
+//         option.textContent;
+//       filters[option.dataset.filterType] = option.dataset.value;
+//       applyFilters();
+//     });
+
+//     return container;
+//   }
+
+//   // ---------------- Render Checkboxes ----------------
+//   function renderCheckbox(filterKey, label) {
+//     const container = document.createElement('div');
+//     container.className = 'filter__checkbox-body';
+
+//     const tip = document.createElement('span');
+//     tip.className = 'filter__tip';
+//     tip.textContent = label;
+//     container.appendChild(tip);
+
+//     const checkboxes = document.createElement('div');
+//     checkboxes.className = 'filter__checkboxes';
+
+//     // Получаем уникальные значения из allData
+//     const uniqueValues = [
+//       ...new Set(allData.map((item) => item[filterKey])),
+//     ].sort((a, b) => a - b);
+
+//     uniqueValues.forEach((val) => {
+//       const labelEl = document.createElement('label');
+//       labelEl.className = 'filter__checkbox';
+
+//       const input = document.createElement('input');
+//       input.type = 'checkbox';
+//       input.className = 'filter__checkbox-input';
+//       input.value = val;
+//       input.dataset.filterType = filterKey;
+
+//       const span = document.createElement('span');
+//       span.className = 'filter__custom-checkbox';
+//       span.textContent = val;
+
+//       labelEl.appendChild(input);
+//       labelEl.appendChild(span);
+//       checkboxes.appendChild(labelEl);
+//     });
+
+//     container.appendChild(checkboxes);
+
+//     // Обработчик клика по чекбоксам
+//     checkboxes.addEventListener('change', () => {
+//       const checked = [...checkboxes.querySelectorAll('input:checked')].map(
+//         (c) => c.value,
+//       );
+//       filters[filterKey] = checked;
+//       applyFilters();
+//     });
+
+//     return container;
+//   }
+
+//   // ---------------- Использование ----------------
+//   // После загрузки JSON:
+//   checkboxWrap.appendChild(renderCheckbox('Pocet_izieb', 'Izby'));
+//   checkboxWrap.appendChild(renderCheckbox('Podlazie', 'Podlažie'));
+
+//   // ---------------- Apply Filters ----------------
+//   function applyFilters() {
+//     const filtered = allData.filter((item) => {
+//       if (filters.type !== 'all' && item.Typ.toLowerCase() !== filters.type)
+//         return false;
+
+//       if (filters.status !== 'all') {
+//         if (
+//           (filters.status === 'available' && item.Stav !== 'Volny') ||
+//           (filters.status === 'reserved' && item.Stav !== 'Rezervovany') ||
+//           (filters.status === 'prepare' && item.Stav !== 'V priprave') ||
+//           (filters.status === 'sold' && item.Stav !== 'Predany')
+//         )
+//           return false;
+//       }
+
+//       return true;
+//     });
+
+//     renderList(filtered);
+//   }
+
+//   // ---------------- Fetch JSON ----------------
+//   fetch('/data/data.json')
+//     .then((res) => res.json())
+//     .then((data) => {
+//       allData = data;
+//       renderList(allData);
+
+//       selectWrap.appendChild(renderSelect('Typ'));
+//       selectWrap.appendChild(renderSelect('Stav'));
+//     })
+//     .catch((err) => console.error('Chyba načítania JSON:', err));
+// });
