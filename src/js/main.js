@@ -763,29 +763,49 @@ function showCookies() {
   });
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   document.body.classList.add('fade-in');
+document.addEventListener('DOMContentLoaded', () => {
+  const skipLoaderKey = 'skipLoader';
+  const navEntries = (window.performance && performance.getEntriesByType) ? performance.getEntriesByType('navigation') : [];
+  const isBackForward = navEntries && navEntries[0] && navEntries[0].type === 'back_forward';
+  const shouldSkipLoader = isBackForward || localStorage.getItem(skipLoaderKey) === '1';
 
-//   document.querySelectorAll('a[href]').forEach((link) => {
-//     link.addEventListener('click', function (e) {
-//       const url = this.href;
+  if (!shouldSkipLoader) {
+    document.body.classList.add('fade-in');
+  } else {
+    localStorage.removeItem(skipLoaderKey);
+    document.body.classList.remove('fade-in');
+  }
 
-//       if (this.target === '_blank' || url.indexOf(location.origin) !== 0) {
-//         return;
-//       }
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      document.body.classList.remove('fade-in');
+    }
+  });
 
-//       e.preventDefault();
-//       document.body.classList.remove('fade-in');
-//       document.body.classList.add('fade-out');
+  window.addEventListener('popstate', () => {
+    localStorage.setItem(skipLoaderKey, '1');
+  });
 
-//       setTimeout(() => {
-//         window.location.href = url;
-//       }, 500);
-//     });
-//   });
+  document.querySelectorAll('a[href]').forEach((link) => {
+    link.addEventListener('click', function (e) {
+      const url = this.href;
 
-//   window.addEventListener('beforeunload', () => {
-//     document.body.classList.remove('fade-in');
-//     document.body.classList.add('fade-out');
-//   });
-// });
+      if (this.target === '_blank' || url.indexOf(location.origin) !== 0) {
+        return;
+      }
+
+      e.preventDefault();
+      document.body.classList.remove('fade-in');
+      document.body.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 500);
+    });
+  });
+
+  window.addEventListener('beforeunload', () => {
+    document.body.classList.remove('fade-in');
+    document.body.classList.add('fade-out');
+  });
+});

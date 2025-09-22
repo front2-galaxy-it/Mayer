@@ -1409,6 +1409,7 @@ body {
     .house {
 
         &_slider {
+            display: block;
             padding: 12px;
             border: 1px solid $green;
             width: 280px;
