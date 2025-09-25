@@ -623,7 +623,12 @@ function initModalGalleries() {
         if (!modal.classList.contains('hidden')) return;
 
         modal.classList.remove('hidden');
-        modalSwiper.slideTo(slideIndex);
+        // Ensure correct mapping even with looped/duplicated slides
+        if (typeof modalSwiper.slideToLoop === 'function') {
+          modalSwiper.slideToLoop(slideIndex, 0);
+        } else {
+          modalSwiper.slideTo(slideIndex, 0);
+        }
         document.body.classList.add('lock');
       });
     });
