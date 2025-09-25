@@ -788,9 +788,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('a[href]').forEach((link) => {
     link.addEventListener('click', function (e) {
-      const url = this.href;
+      const hrefAttr = this.getAttribute('href') || '';
+      const href = hrefAttr.trim();
 
-      if (this.target === '_blank' || url.indexOf(location.origin) !== 0) {
+      // Ignore modified/middle/right clicks or already prevented
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+        return;
+      }
+
+      // Block empty and placeholder links
+      if (!href || href === '#' || href.toLowerCase() === '#!') {
+        e.preventDefault();
+        return;
+      }
+
+      // Block javascript pseudo-links
+      if (/^javascript:/i.test(href)) {
+        e.preventDefault();
+        return;
+      }
+
+      // Allow special schemes without transition
+      const specialSchemes = ['mailto:', 'tel:', 'sms:', 'callto:', 'geo:', 'skype:', 'viber:', 'whatsapp:', 'tg:', 'fax:'];
+      if (specialSchemes.some((s) => href.toLowerCase().startsWith(s))) {
+        return;
+      }
+
+      // In-page anchors (hash only) — let browser handle, no transition
+      if (href.startsWith('#')) {
+        return;
+      }
+
+      // Respect attributes that imply non-navigation
+      if (this.target === '_blank' || this.hasAttribute('download') || this.getAttribute('rel') === 'external' || this.getAttribute('data-no-transition') === 'true') {
+        return;
+      }
+
+      let url = this.href;
+      let toUrl;
+      try {
+        toUrl = new URL(url);
+      } catch (_) {
+        // Malformed URL — do nothing
+        e.preventDefault();
+        return;
+      }
+
+      // External origins — no interception
+      if (toUrl.origin !== location.origin) {
+        return;
+      }
+
+      // Hash-only change on same page — skip transition
+      if (toUrl.pathname === location.pathname && toUrl.search === location.search) {
+        return;
+      }
+
+      // Navigating to the same full URL — skip
+      if (toUrl.href === location.href) {
+        e.preventDefault();
         return;
       }
 

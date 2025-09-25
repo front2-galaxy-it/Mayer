@@ -1,6 +1,17 @@
 import { slideDown, slideUp } from '../utils/slideIn';
 
 export function initFilters() {
+  // Detect presence of filter containers on the page
+  const hasContainers =
+    document.getElementById('filter-selects') ||
+    document.getElementById('filter-checkboxes') ||
+    document.getElementById('filter-ranges') ||
+    document.querySelector('.filter');
+
+  if (!hasContainers) {
+    return; // No filters markup on this page
+  }
+
   fetch('/data/data.json')
     .then((res) => res.json())
     .then((data) => {
@@ -45,6 +56,12 @@ export function renderFilters(data) {
   const clearBtn = document.querySelector('.link_underline');
   const loadMoreBtn = document.querySelector('.filter__list-show-more');
 
+  // If core containers are missing, do not proceed
+  if (!selectsContainer || !checkboxesContainer || !rangesContainer || !listBody) {
+    console.warn('[filters] Missing filter containers on this page. Skipping render.');
+    return;
+  }
+
   // ====================== HELPERS ======================
   const uniqueArray = (arr) => Array.from(new Set(arr));
 
@@ -71,6 +88,7 @@ export function renderFilters(data) {
         </div>
       </div>
     `;
+    if (!selectsContainer) return;
     selectsContainer.appendChild(wrapper);
 
     const selectEl = wrapper.querySelector('.filter__select');
@@ -133,6 +151,7 @@ export function renderFilters(data) {
       });
     });
 
+    if (!checkboxesContainer) return;
     checkboxesContainer.appendChild(wrapper);
   }
 
@@ -154,6 +173,7 @@ export function renderFilters(data) {
         </div>
       </div>
     `;
+    if (!rangesContainer) return;
     rangesContainer.appendChild(wrapper);
 
     const minInput = wrapper.querySelector('.range-slider__input--min');
@@ -200,6 +220,7 @@ export function renderFilters(data) {
       return true;
     });
 
+    if (!listBody) return;
     listBody.innerHTML = filtered
       .slice(0, itemsToShow)
       .map((item) => {
@@ -225,13 +246,14 @@ export function renderFilters(data) {
       })
       .join('');
 
-    filteredCount.textContent = filtered.length;
-    totalCount.textContent = data.length;
-    totalCountBottom.textContent = data.length;
-    showedCount.textContent = Math.min(itemsToShow, filtered.length);
+    if (filteredCount) filteredCount.textContent = filtered.length;
+    if (totalCount) totalCount.textContent = data.length;
+    if (totalCountBottom) totalCountBottom.textContent = data.length;
+    if (showedCount) showedCount.textContent = Math.min(itemsToShow, filtered.length);
 
-    loadMoreBtn.style.display =
-      itemsToShow >= filtered.length ? 'none' : 'block';
+    if (loadMoreBtn) {
+      loadMoreBtn.style.display = itemsToShow >= filtered.length ? 'none' : 'block';
+    }
   }
 
   // ====================== INIT FILTERS ======================
@@ -267,7 +289,7 @@ export function renderFilters(data) {
   createRangeFilter('Cena', 'cena', 0, maxCena, 'EUR');
 
   // ====================== CLEAR FILTERS ======================
-  clearBtn.addEventListener('click', () => {
+  if (clearBtn) clearBtn.addEventListener('click', () => {
     filters = {
       type: 'all',
       status: 'all',
@@ -279,32 +301,34 @@ export function renderFilters(data) {
 
     const filtersBody = document.querySelector('.filter');
 
-    filtersBody
-      .querySelectorAll('.filter__trigger-text')
-      .forEach((el) => (el.textContent = 'Všetky'));
+    if (filtersBody) {
+      filtersBody
+        .querySelectorAll('.filter__trigger-text')
+        .forEach((el) => (el.textContent = 'Všetky'));
 
-    filtersBody
-      .querySelectorAll('.filter__trigger')
-      .forEach((el) => el.classList.remove('selected'));
+      filtersBody
+        .querySelectorAll('.filter__trigger')
+        .forEach((el) => el.classList.remove('selected'));
 
-    filtersBody
-      .querySelectorAll('.filter__checkbox-input')
-      .forEach((el) => (el.checked = false));
+      filtersBody
+        .querySelectorAll('.filter__checkbox-input')
+        .forEach((el) => (el.checked = false));
 
-    filtersBody.querySelectorAll('.filter__range-body').forEach((rangeBody) => {
-      const minInput = rangeBody.querySelector('.range-slider__input--min');
-      const maxInput = rangeBody.querySelector('.range-slider__input--max');
-      const minLabel = rangeBody.querySelector('[data-range="min"]');
-      const maxLabel = rangeBody.querySelector('[data-range="max"]');
+      filtersBody.querySelectorAll('.filter__range-body').forEach((rangeBody) => {
+        const minInput = rangeBody.querySelector('.range-slider__input--min');
+        const maxInput = rangeBody.querySelector('.range-slider__input--max');
+        const minLabel = rangeBody.querySelector('[data-range="min"]');
+        const maxLabel = rangeBody.querySelector('[data-range="max"]');
 
-      if (minInput && maxInput) {
-        minInput.value = minInput.min;
-        maxInput.value = maxInput.max;
-      }
+        if (minInput && maxInput) {
+          minInput.value = minInput.min;
+          maxInput.value = maxInput.max;
+        }
 
-      if (minLabel && minInput) minLabel.textContent = minInput.value;
-      if (maxLabel && maxInput) maxLabel.textContent = maxInput.value;
-    });
+        if (minLabel && minInput) minLabel.textContent = minInput.value;
+        if (maxLabel && maxInput) maxLabel.textContent = maxInput.value;
+      });
+    }
 
     itemsToShow = 10;
 
@@ -312,10 +336,12 @@ export function renderFilters(data) {
   });
 
   // ====================== LOAD MORE ======================
-  loadMoreBtn.addEventListener('click', () => {
-    itemsToShow += 10;
-    renderList();
-  });
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      itemsToShow += 10;
+      renderList();
+    });
+  }
 
   renderList();
 
