@@ -35,6 +35,7 @@ export function renderFilters(data) {
   };
 
   let itemsToShow = 10;
+  let sortState = { key: null, dir: 'asc' };
 
   // ====================== DOM ELEMENTS ======================
   const selectsContainer = document.getElementById('filter-selects');
@@ -195,7 +196,7 @@ export function renderFilters(data) {
 
   // ====================== RENDER LIST ======================
   function renderList() {
-    const filtered = data.filter((item) => {
+    let filtered = data.filter((item) => {
       if (filters.type !== 'all' && item.Typ.toLowerCase() !== filters.type)
         return false;
       if (
@@ -220,7 +221,35 @@ export function renderFilters(data) {
       return true;
     });
 
+    // Apply sorting if set
+    if (sortState.key) {
+      const key = sortState.key;
+      const dir = sortState.dir === 'asc' ? 1 : -1;
+      filtered = filtered.slice().sort((a, b) => {
+        const va = normalizeValue(a[key]);
+        const vb = normalizeValue(b[key]);
+        if (va < vb) return -1 * dir;
+        if (va > vb) return 1 * dir;
+        return 0;
+      });
+    }
+
     if (!listBody) return;
+
+    if (filtered.length === 0) {
+      listBody.innerHTML = `
+        <div class="filter__list-empty">
+          <span>Nenašli sa žiadne výsledky podľa zvolených filtrov.</span>
+        </div>
+      `;
+      if (filteredCount) filteredCount.textContent = '0';
+      if (totalCount) totalCount.textContent = String(data.length);
+      if (totalCountBottom) totalCountBottom.textContent = String(data.length);
+      if (showedCount) showedCount.textContent = '0';
+      if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+      return;
+    }
+
     listBody.innerHTML = filtered
       .slice(0, itemsToShow)
       .map((item) => {
@@ -254,6 +283,15 @@ export function renderFilters(data) {
     if (loadMoreBtn) {
       loadMoreBtn.style.display = itemsToShow >= filtered.length ? 'none' : 'block';
     }
+  }
+
+  function normalizeValue(value) {
+    const v = value ?? 0;
+    if (typeof v === 'number') return v;
+    // Try numeric parse from string (e.g., price strings)
+    const num = Number(String(v).toString().replace(/[^0-9.-]+/g, ''));
+    if (!Number.isNaN(num) && String(v).trim() !== '') return num;
+    return String(v).toLowerCase();
   }
 
   // ====================== INIT FILTERS ======================
@@ -346,4 +384,67 @@ export function renderFilters(data) {
   renderList();
 
   document.dispatchEvent(new CustomEvent('filters:ready'));
+
+  // ====================== SORTING (LIST HEADER) ======================
+  const header = document.querySelector('.filter__list-heading');
+  if (header) {
+    const headerButtons = header.querySelectorAll('button');
+    const indexToKey = [
+      'Blok',
+      'Typ',
+      'Podlazie',
+      'Pocet_izieb',
+      'Plocha',
+      'Balkon_Lodzia_Terasa',
+      'Zahradka',
+      'Plocha_spolu',
+      'Cena_s_DPH',
+      'Stav',
+    ];
+
+    // Ensure sort icons exist
+    headerButtons.forEach((btn) => {
+      if (!btn.querySelector('.sort_icon')) {
+        const icon = document.createElement('img');
+        icon.className = 'sort_icon';
+        icon.alt = '';
+        icon.decoding = 'async';
+        icon.src = './images/sort_arrow.svg';
+        btn.appendChild(icon);
+      }
+    });
+
+    function updateSortIcons() {
+      headerButtons.forEach((btn, idx) => {
+        const icon = btn.querySelector('.sort_icon');
+        const key = indexToKey[idx];
+        const isActive = sortState.key === key;
+        btn.classList.toggle('sort-active', isActive);
+        if (icon) {
+          icon.classList.toggle('asc', isActive && sortState.dir === 'asc');
+          icon.classList.toggle('desc', isActive && sortState.dir === 'desc');
+          icon.style.visibility = isActive ? 'visible' : 'hidden';
+        }
+      });
+    }
+
+    headerButtons.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        const key = indexToKey[idx];
+        if (!key) return;
+        if (sortState.key === key) {
+          sortState.dir = sortState.dir === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortState.key = key;
+          sortState.dir = 'asc';
+        }
+        itemsToShow = 10; // reset pagination on new sort
+        renderList();
+        updateSortIcons();
+      });
+    });
+
+    // Initialize icons state
+    updateSortIcons();
+  }
 }

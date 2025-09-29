@@ -23,9 +23,11 @@
     &.active {
         background-color: $white_soft;
         transition: all .3s ease;
+        border-bottom: 1px solid $green;
 
         .header_logo {
             max-width: 188px;
+            width: 188px;
             transition: all .3s ease;
 
             @include media ("<phone") {
@@ -160,14 +162,13 @@
 
     &_logo {
         max-width: 188px;
-        width: 100%;
+        width: 188px;
         @include adaptive-value("height", 40, 26, 1);
         transition: all .3s ease;
         position: relative;
         z-index: 100;
         display: grid;
         place-items: center;
-
 
         @include media ("<phone") {
             width: 122px;

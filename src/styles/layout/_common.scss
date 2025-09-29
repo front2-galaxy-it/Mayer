@@ -44,6 +44,7 @@ body {
 
                 .header_logo {
                     max-width: 188px;
+                    width: 188px;
                     @include adaptive-value("height", 40, 26, 1);
                     transition: all .3s ease;
 
@@ -92,6 +93,7 @@ body {
 
             &_logo {
                 @include adaptive-value("max-width", 375, 122, 1);
+                @include adaptive-value("width", 375, 122, 1);
 
                 svg {
                     fill: $white_soft;
@@ -265,9 +267,9 @@ main {
 
         @include adaptive-value("margin-bottom", 32, 16, 1);
 
-        &:last-of-type {
-            margin: 0
-        }
+        // &:last-of-type {
+        //     margin: 0
+        // }
     }
 
     b {
@@ -308,16 +310,10 @@ main {
         transition: $animation-speed;
 
         &:hover {
-            transition: $animation-speed;
-            color: rgba($color: #424D1C, $alpha: 0.2);
 
             .status_box {
-                border-color: rgba($color: #424D1C, $alpha: 0.2);
-
-                &::after,
-                &::before {
-                    background-color: rgba($color: #424D1C, $alpha: 0.2);
-                }
+                transition: $animation-speed;
+                background: rgba(66, 77, 28, 0.2);
             }
         }
 
@@ -454,6 +450,22 @@ main {
             max-width: 240px;
             width: 100%;
 
+            &:hover {
+
+                .slide_img {
+                    filter: brightness(0.8);
+                    transition: $animation-speed;
+                }
+
+                .read_time {
+                    &:after {
+                        width: 0;
+                        transition: $animation-speed;
+                    }
+                }
+
+            }
+
             @include media ("<phone") {
                 max-width: 200px;
             }
@@ -464,6 +476,7 @@ main {
             width: 100%;
             @include adaptive-value("height", 240, 200, 1);
             margin-bottom: 12px;
+            transition: $animation-speed;
 
             img {
                 width: 100%;
@@ -511,13 +524,10 @@ main {
     }
 
     .read_time {
-        display: inline-block;
+        width: max-content;
         font-size: 14px;
         font-weight: 600;
         font-family: "Ease";
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 2px;
     }
 
     .blog_btn {
@@ -1344,6 +1354,7 @@ main {
     width: calc(100% - 30px);
     margin: 40px auto;
     transition: $animation-speed;
+    position: relative;
 
     &:hover {
         background-color: rgba($color: #424D1C, $alpha: 0.2);
@@ -1352,6 +1363,14 @@ main {
 
     @include media ("<tablet") {
         flex-direction: column;
+    }
+
+    &_permalink {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
     }
 
     &_block {
@@ -1932,6 +1951,9 @@ main {
             padding: 0;
 
             button {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
                 text-align: start;
                 font-size: 12px;
                 font-weight: 600;
@@ -1940,12 +1962,41 @@ main {
                 background-color: transparent;
                 border: none;
                 padding: 0;
+
+                .sort_icon {
+                    width: 10px;
+                    height: 10px;
+                    transition: transform .2s ease, opacity .2s ease;
+                    opacity: 0;
+                }
+
+                &.sort-active .sort_icon {
+                    opacity: 1;
+                }
+
+                .sort_icon.asc {
+                    transform: rotateX(0deg);
+                }
+
+                .sort_icon.desc {
+                    transform: rotateX(180deg);
+                }
             }
         }
     }
 
     &__list-body {
         margin-bottom: 80px;
+    }
+
+    .filter__list-empty {
+        padding: 24px 16px;
+        text-align: center;
+        color: $green8C;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "Ease";
+        border-bottom: 1px solid $green;
     }
 
     &__list-row {
@@ -1972,6 +2023,8 @@ main {
             pointer-events: none;
 
             .filter__list-col {
+                opacity: 0.7;
+
                 span {
                     color: $green8C;
                 }
@@ -1983,6 +2036,8 @@ main {
             pointer-events: none;
 
             .filter__list-col {
+                opacity: 0.7;
+
                 span {
                     color: rgba($color: #424D1C, $alpha: 0.5);
                 }
@@ -2319,58 +2374,61 @@ main {
         max-width: 815px;
         width: 100%;
 
-        .apartment-swiper-main {
+        &-main {
             max-width: 550px;
             width: 100%;
-            margin: 0 auto;
-            @include adaptive-value("margin-bottom", 48, 64, 1);
+            margin: 0 auto 48px auto;
 
-            .swiper-slide {
-                img {
-                    width: 100%;
-                    height: auto;
-                }
+            @include media ("<tablet") {
+                margin: 0 auto 64px auto;
             }
 
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
         }
 
-        .apartment-swiper-thumbs {
+        &-thumbs {
             max-width: 590px;
             width: 100%;
+            margin: 0 auto;
+            display: flex;
+            gap: 24px;
+            overflow: auto;
 
-            .swiper-slide {
-                width: auto !important;
+            &::-webkit-scrollbar{
+                display: none;
             }
 
-            .thumbs-slide {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid $green;
-                cursor: pointer;
-                width: 180px;
-                height: 180px;
-                box-sizing: border-box;
+            scrollbar-width: 0;
 
-                @include media ("<phone") {
-                    width: 140px;
-                    height: 140px;
-                }
-
-                img {
-                    width: 90%;
-                    height: 90%;
-                }
+            @include media ("<tablet") {
+                gap: 16px;
             }
+        }
 
-            .tip {
-                display: inline-block;
-                margin-top: 8px;
+        &-thumb {
+            width: 180px;
+            height: 180px;
+            border: 1px solid $green;
+            display: grid;
+            place-items: center;
+            margin-bottom: 8px;
 
-                @include adaptive-value("font-size", 14, 12, 1);
-                font-weight: 600;
-                font-family: "Ease";
+            img {
+                width: 90%;
+                height: 90%;
+                object-fit: contain;
             }
+        }
+
+        &-descr {
+            @include adaptive-value("font-size", 14, 12, 1);
+            font-weight: 600;
+            font-family: "Ease";
+            text-align: start;
         }
     }
 }

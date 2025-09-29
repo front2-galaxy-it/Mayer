@@ -34,8 +34,6 @@ window.addEventListener('load', () => {
   showHiddenText();
   initModalGalleries();
   addFilterListResizeClass();
-  initfloorSliders();
-  initApartmentSwiperWithThumbs();
   openFormPopup();
   // closeHeaderLabel();
   showCookies();
@@ -52,8 +50,6 @@ window.addEventListener('resize', () => {
   showHiddenText();
   initModalGalleries();
   addFilterListResizeClass();
-  initfloorSliders();
-  initApartmentSwiperWithThumbs();
   openFormPopup();
   // closeHeaderLabel();
 });
@@ -159,143 +155,6 @@ function closeHeaderLabel() {
   });
 
   window.addEventListener('resize', updatePadding);
-}
-
-function initApartmentSwiperWithThumbs() {
-  const mainSwiperEl = document.querySelector('.apartment-swiper-main');
-  const thumbsContainer = document.querySelector('.apartment-swiper-thumbs');
-  const thumbsWrapper = thumbsContainer?.querySelector('.swiper-wrapper');
-
-  if (!mainSwiperEl) return;
-
-  const slides = mainSwiperEl.querySelectorAll('.swiper-slide img');
-  const tips = ['Poloha v areali', 'Poloha v budove', 'Poschodie'];
-
-  if (slides.length <= 1) {
-    if (thumbsContainer) {
-      thumbsContainer.style.display = 'none';
-    }
-
-    new Swiper('.apartment-swiper-main', {
-      modules: [Navigation],
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-    return;
-  }
-
-  thumbsWrapper.innerHTML = '';
-
-  slides.forEach((img, i) => {
-    const thumbSlide = document.createElement('div');
-    thumbSlide.classList.add('swiper-slide');
-
-    const thumbDiv = document.createElement('div');
-    thumbDiv.classList.add('thumbs-slide');
-
-    const thumbImg = document.createElement('img');
-    thumbImg.src = img.src;
-    thumbImg.alt = img.alt || '';
-
-    thumbDiv.appendChild(thumbImg);
-    thumbSlide.appendChild(thumbDiv);
-
-    if (tips[i]) {
-      const tipSpan = document.createElement('span');
-      tipSpan.classList.add('tip');
-      tipSpan.textContent = tips[i];
-      thumbSlide.appendChild(tipSpan);
-    }
-
-    thumbsWrapper.appendChild(thumbSlide);
-  });
-
-  const thumbsSwiper = new Swiper('.apartment-swiper-thumbs', {
-    slidesPerView: 3,
-    spaceBetween: 10,
-    freeMode: true,
-    watchSlidesProgress: true,
-  });
-
-  new Swiper('.apartment-swiper-main', {
-    modules: [Navigation, Thumbs],
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    thumbs: {
-      swiper: thumbsSwiper,
-    },
-  });
-}
-
-function initfloorSliders() {
-  const prevBtn = document.querySelector('.floor_count-btn.prev');
-  const nextBtn = document.querySelector('.floor_count-btn.next');
-  const currentEl = document.querySelector('.floor-current');
-  const totalEl = document.querySelector('.floor-total');
-
-  if (!prevBtn || !nextBtn || !currentEl || !totalEl) return;
-
-  const floorSwiper = new Swiper('.floor-swiper', {
-    slidesPerView: 1,
-    centeredSlides: true,
-    modules: [Navigation, EffectCreative, Controller],
-    effect: 'creative',
-    speed: 1500,
-    creativeEffect: {
-      prev: {
-        opacity: 0,
-        scale: 0,
-      },
-      next: {
-        opacity: 0,
-        scale: 0,
-      },
-    },
-    shadowPerProgress: true,
-    allowTouchMove: false,
-  });
-
-  const floorTitleSwiper = new Swiper('.floor-title-swiper', {
-    slidesPerView: 1,
-    centeredSlides: true,
-    modules: [Navigation, Controller],
-    direction: 'vertical',
-    allowTouchMove: false,
-    speed: 2000,
-  });
-
-  floorSwiper.controller.control = floorTitleSwiper;
-  floorTitleSwiper.controller.control = floorSwiper;
-
-  function updatePagination() {
-    const currentIndex = floorSwiper.realIndex + 1;
-    const total = floorSwiper.slides.length;
-
-    currentEl.textContent = currentIndex;
-    totalEl.textContent = total;
-
-    prevBtn.disabled = currentIndex <= 1;
-    nextBtn.disabled = currentIndex >= total;
-
-    prevBtn.classList.toggle('disabled', prevBtn.disabled);
-    nextBtn.classList.toggle('disabled', nextBtn.disabled);
-  }
-
-  updatePagination();
-
-  floorSwiper.on('slideChange', updatePagination);
-
-  prevBtn.addEventListener('click', () => {
-    floorSwiper.slidePrev();
-  });
-
-  nextBtn.addEventListener('click', () => {
-    floorSwiper.slideNext();
-  });
 }
 
 let swiperQualities = null;
@@ -474,6 +333,7 @@ function showHiddenText() {
     button.addEventListener('click', () => {
       const isOpen = button.classList.contains('active');
       button.classList.toggle('active');
+      const nowOpen = !isOpen;
 
       hiddenTexts.forEach((hiddenText) => {
         hiddenText.classList.toggle('show');
@@ -484,6 +344,16 @@ function showHiddenText() {
           hiddenText.style.maxHeight = hiddenText.scrollHeight + 'px';
         }
       });
+
+      const moreLabel = 'Čitať viac';
+      const lessLabel = 'Čitať menej';
+      const desired = nowOpen ? lessLabel : moreLabel;
+      const statusBox = button.querySelector('.status_box');
+      button.textContent = desired;
+      if (statusBox) {
+        button.prepend(statusBox);
+        statusBox.insertAdjacentText('afterend', ' ');
+      }
     });
   });
 }
