@@ -58,9 +58,12 @@
         text-align: center;
 
         .btn {
-            border: none;
-            border-bottom: 1px solid $white;
-            padding: 8px 0 4px 0;
+
+            @include media ("<phone") {
+                border: none;
+                border-bottom: 1px solid $white;
+                padding: 8px 0 4px 0;
+            }
         }
     }
 
