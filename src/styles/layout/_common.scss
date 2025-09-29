@@ -19,9 +19,7 @@ html {
 }
 
 body {
-    // transition: all .5s ease;
     padding-top: 80px;
-    // opacity: 0;
 
     @include media ("<phone") {
         padding-top: 110px;
@@ -849,122 +847,121 @@ main {
         }
     }
 
-    .gallery-modal {
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 1;
-        visibility: visible;
-        z-index: 100;
+}
+
+.gallery-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s ease;
+
+    &.hidden {
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
         transition: all .3s ease;
 
-        &.hidden {
-            opacity: 0;
-            visibility: hidden;
-            z-index: -1;
-            transition: all .3s ease;
+    }
 
-        }
+    &_backdrop {
+        position: absolute;
+        inset: 0;
+        background-color: rgba($color: #FCF7EB, $alpha: 0.8);
+    }
 
-        &_backdrop {
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &_slide {
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+
+        &::before {
+            content: "";
             position: absolute;
             inset: 0;
-            background-color: rgba($color: #FCF7EB, $alpha: 0.8);
+            background: rgba(66, 77, 28, 0.2);
+            mix-blend-mode: multiply;
+            pointer-events: none;
         }
 
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        &_slide {
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-
-            &::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: rgba(66, 77, 28, 0.2);
-                mix-blend-mode: multiply;
-                pointer-events: none;
-            }
-
-            img {
-                width: auto;
-                height: auto;
-                max-width: 90vw;
-                max-height: 80vh;
-                object-fit: contain;
-                display: block;
-            }
-        }
-
-        .swiper-pagination {
-            justify-content: center;
-            bottom: 24px;
-            margin: 0;
-            gap: 8px;
-
-            .swiper-pagination-bullet {
-                margin: 0;
-                opacity: 1;
-                background-color: $green;
-                width: 8px;
-                height: 8px;
-                transition: all .3s ease;
-            }
-
-            .swiper-pagination-bullet-active {
-                border-radius: 0;
-                transition: all .3s ease;
-            }
-        }
-
-        &_close-btn {
-            position: absolute;
-            z-index: 3;
-            top: 24px;
-            right: 24px;
-            width: 40px;
-            height: 40px;
-            background-color: $green;
-            border: none;
-            cursor: pointer;
-            transition: all .3s ease;
-
-            &:hover {
-                background-color: #303814;
-                transition: all .3s ease;
-            }
-
-            &::after,
-            &::before {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-
-                width: 20px;
-                height: 2px;
-                background-color: $white_soft
-            }
-
-            &::after {
-                transform: translate(-50%, -50%) rotate(45deg);
-            }
-
-            &::before {
-                transform: translate(-50%, -50%) rotate(-45deg);
-            }
+        img {
+            width: auto;
+            height: auto;
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            display: block;
         }
     }
 
+    .swiper-pagination {
+        justify-content: center;
+        bottom: 24px;
+        margin: 0;
+        gap: 8px;
+
+        .swiper-pagination-bullet {
+            margin: 0;
+            opacity: 1;
+            background-color: $green;
+            width: 8px;
+            height: 8px;
+            transition: all .3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+            border-radius: 0;
+            transition: all .3s ease;
+        }
+    }
+
+    &_close-btn {
+        position: absolute;
+        z-index: 3;
+        top: 24px;
+        right: 24px;
+        width: 40px;
+        height: 40px;
+        background-color: $green;
+        border: none;
+        cursor: pointer;
+        transition: all .3s ease;
+
+        &:hover {
+            background-color: #303814;
+            transition: all .3s ease;
+        }
+
+        &::after,
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 20px;
+            height: 2px;
+            background-color: $white_soft
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::before {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
 }
 
 .image-section {
@@ -2390,6 +2387,12 @@ main {
             }
         }
 
+        &-thumbs-body {
+            display: flex;
+            flex-direction: column;
+            row-gap: 8px;
+        }
+
         &-thumbs {
             max-width: 590px;
             width: 100%;
@@ -2397,12 +2400,17 @@ main {
             display: flex;
             gap: 24px;
             overflow: auto;
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
 
-            &::-webkit-scrollbar{
+            &::-webkit-scrollbar {
                 display: none;
+                /* Chrome, Safari and Opera */
+                width: 0;
+                height: 0;
             }
-
-            scrollbar-width: 0;
 
             @include media ("<tablet") {
                 gap: 16px;
@@ -2410,12 +2418,12 @@ main {
         }
 
         &-thumb {
+            flex: 1;
             width: 180px;
-            height: 180px;
+            height: auto;
             border: 1px solid $green;
             display: grid;
             place-items: center;
-            margin-bottom: 8px;
 
             img {
                 width: 90%;
