@@ -119,10 +119,28 @@ body {
             .btn_secondary-white {
                 background-color: $white_soft;
                 color: $green;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    background: rgba(66, 77, 28, 0.2);
+                    transition: all .3s ease;
+                }
 
                 &:hover {
-                    background: rgba($color: #424D1C33, $alpha: 0.2);
+                    background: rgba(252, 247, 235, 1);
                     transition: all .3s ease;
+
+                    &::after {
+                        opacity: 1;
+                        transition: all .3s ease;
+                    }
                 }
             }
 
@@ -147,7 +165,9 @@ body {
     &.lock {
         overflow: hidden;
     }
+}
 
+main {
     &.fade-in {
         animation: fadeIn .5s forwards;
     }

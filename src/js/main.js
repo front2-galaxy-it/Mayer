@@ -773,17 +773,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const navEntries = (window.performance && performance.getEntriesByType) ? performance.getEntriesByType('navigation') : [];
   const isBackForward = navEntries && navEntries[0] && navEntries[0].type === 'back_forward';
   const shouldSkipLoader = isBackForward || localStorage.getItem(skipLoaderKey) === '1';
+  const mainEl = document.querySelector('main');
 
-  if (!shouldSkipLoader) {
-    document.body.classList.add('fade-in');
-  } else {
-    localStorage.removeItem(skipLoaderKey);
-    document.body.classList.remove('fade-in');
+  if (mainEl) {
+    if (!shouldSkipLoader) {
+      mainEl.classList.add('fade-in');
+    } else {
+      localStorage.removeItem(skipLoaderKey);
+      mainEl.classList.remove('fade-in');
+    }
   }
 
   window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
-      document.body.classList.remove('fade-in');
+    if (event.persisted && mainEl) {
+      mainEl.classList.remove('fade-in');
     }
   });
 
@@ -856,8 +859,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       e.preventDefault();
-      document.body.classList.remove('fade-in');
-      document.body.classList.add('fade-out');
+      if (mainEl) {
+        mainEl.classList.remove('fade-in');
+        mainEl.classList.add('fade-out');
+      }
 
       setTimeout(() => {
         window.location.href = url;
@@ -866,7 +871,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('beforeunload', () => {
-    document.body.classList.remove('fade-in');
-    document.body.classList.add('fade-out');
+    if (mainEl) {
+      mainEl.classList.remove('fade-in');
+      mainEl.classList.add('fade-out');
+    }
   });
 });
