@@ -1051,9 +1051,11 @@ main {
             background-color: #424D1C33;
             transition: all .3s ease;
 
-            .link_afterline-green::after {
-                width: 0;
-                transition: all .3s ease;
+            .link_afterline-green {
+                &::after {
+                    transform: translateY(5px);
+                    transition: all .3s ease;
+                }
             }
         }
 
@@ -1330,12 +1332,12 @@ main {
 
     &_content {
         @include adaptive-value(" margin-top", 32, 24, 1);
-        margin-top: 32px;
         max-width: 90%;
 
         p {
             font-size: 14px;
             line-height: 120%;
+            margin: 0;
         }
     }
 }
@@ -2240,36 +2242,21 @@ main {
         align-items: center;
         gap: 8px;
 
+        &:nth-child(1) {
+            .box {
+                border: 2px solid #9DA182
+            }
+        }
+
         &:nth-child(2) {
             .box {
-                background-color: #9DA182;
+                background-color: rgba(158, 162, 131, 0.7)
             }
         }
 
         &:nth-child(3) {
             .box {
-                position: relative;
-                overflow: hidden;
-
-                &::after,
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-
-                    width: 150%;
-                    height: 2px;
-                    background-color: #9DA182;
-                }
-
-                &::after {
-                    transform: translate(-50%, -50%) rotate(45deg);
-                }
-
-                &::before {
-                    transform: translate(-50%, -50%) rotate(-45deg);
-                }
+                background-color: $green;
             }
         }
 
@@ -2284,7 +2271,6 @@ main {
             width: 16px;
             height: 16px;
             border-radius: 1px;
-            border: 2px solid #9DA182
         }
 
         span {

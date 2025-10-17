@@ -2,43 +2,45 @@ import { slideDown, slideUp } from '../utils/slideIn';
 
 export class Accordion {
   constructor(containerSelector, mode = 'single', animationDuration = 300) {
-    this.container = document.querySelector(containerSelector);
-    if (!this.container) return;
+    this.containers = Array.from(document.querySelectorAll(containerSelector));
+    if (!this.containers.length) return;
 
     this.mode = mode;
     this.duration = animationDuration;
-    this.items = this.container.querySelectorAll('.accordion_item');
 
     this.init();
   }
 
   init() {
-    this.items.forEach((item) => {
-      const trigger = item.querySelector('.accordion_trigger');
-      const content = item.querySelector('.accordion_content');
+    this.containers.forEach((container) => {
+      const items = Array.from(container.querySelectorAll('.accordion_item'));
+      items.forEach((item) => {
+        const trigger = item.querySelector('.accordion_trigger');
+        const content = item.querySelector('.accordion_content');
 
-      if (!item.classList.contains('active')) {
-        content.style.display = 'none';
-      }
+        if (content && !item.classList.contains('active')) {
+          content.style.display = 'none';
+        }
 
-      if (trigger) {
-        trigger.addEventListener('click', () => {
-          this.toggleItem(item);
-        });
-      }
+        if (trigger && content) {
+          trigger.addEventListener('click', () => this.toggleItem(item, container));
+        }
+      });
     });
   }
 
-  toggleItem(item) {
+  toggleItem(item, container) {
     const isActive = item.classList.contains('active');
     const content = item.querySelector('.accordion_content');
+    if (!content) return;
 
     if (this.mode === 'single') {
-      this.items.forEach((el) => {
-        const elContent = el.querySelector('.accordion_content');
-        if (el !== item && el.classList.contains('active')) {
+      const activeItems = Array.from(container.querySelectorAll('.accordion_item.active'));
+      activeItems.forEach((el) => {
+        if (el !== item) {
+          const elContent = el.querySelector('.accordion_content');
           el.classList.remove('active');
-          slideUp(elContent, this.duration);
+          if (elContent) slideUp(elContent, this.duration);
         }
       });
     }

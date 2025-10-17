@@ -17,7 +17,7 @@ new WOW().init();
 new Tabs('.tabs_map');
 new Tabs('.tabs_house');
 
-new Accordion('#low', 'single');
+new Accordion('.accordion', 'single');
 
 document.addEventListener('DOMContentLoaded', () => {
   initFilters();
@@ -93,8 +93,13 @@ document.querySelectorAll('.gallery-swiper').forEach((galleryEl) => {
   function updateCounter() {
     if (!counterEl || !currentEl || !totalEl) return;
     const scope = wrapperEl || galleryEl;
-    const total = scope.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)').length;
-    const currentIndex = (typeof swiper.realIndex === 'number' ? swiper.realIndex : swiper.activeIndex) + 1;
+    const total = scope.querySelectorAll(
+      '.swiper-slide:not(.swiper-slide-duplicate)',
+    ).length;
+    const currentIndex =
+      (typeof swiper.realIndex === 'number'
+        ? swiper.realIndex
+        : swiper.activeIndex) + 1;
     currentEl.textContent = String(currentIndex);
     totalEl.textContent = String(total);
   }
@@ -547,12 +552,20 @@ function initModalGalleries() {
 
     // ARIA defaults
     modal.setAttribute('role', modal.getAttribute('role') || 'dialog');
-    modal.setAttribute('aria-modal', modal.getAttribute('aria-modal') || 'true');
-    modal.setAttribute('aria-hidden', modal.classList.contains('hidden') ? 'true' : 'false');
+    modal.setAttribute(
+      'aria-modal',
+      modal.getAttribute('aria-modal') || 'true',
+    );
+    modal.setAttribute(
+      'aria-hidden',
+      modal.classList.contains('hidden') ? 'true' : 'false',
+    );
 
     const galleryId = modal.getAttribute('data-modal-gallery-id');
     const gallery = galleryId
-      ? document.querySelector(`.gallery-swiper[data-gallery-id="${galleryId}"]`)
+      ? document.querySelector(
+          `.gallery-swiper[data-gallery-id="${galleryId}"]`,
+        )
       : galleriesByIndex[index];
     if (!gallery) return;
 
@@ -565,7 +578,7 @@ function initModalGalleries() {
 
     // Prepare source slides from linked gallery
     const sourceSlides = gallery.querySelectorAll(
-      '.swiper-slide:not(.swiper-slide-duplicate)'
+      '.swiper-slide:not(.swiper-slide-duplicate)',
     );
 
     // If modal wrapper is empty, populate it from the source gallery
@@ -620,7 +633,9 @@ function initModalGalleries() {
       }
       document.body.classList.add('lock');
       modal.__lastOpener = openerEl || null;
-      const focusable = modal.querySelector('[tabindex], button, a, [role="button"]');
+      const focusable = modal.querySelector(
+        '[tabindex], button, a, [role="button"]',
+      );
       if (focusable && typeof focusable.focus === 'function') focusable.focus();
     }
 
