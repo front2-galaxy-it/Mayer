@@ -21,6 +21,7 @@ new Accordion('.accordion', 'single');
 
 document.addEventListener('DOMContentLoaded', () => {
   initFilters();
+  addFilterListResizeClass();
 });
 
 window.addEventListener('load', () => {
@@ -36,6 +37,7 @@ window.addEventListener('load', () => {
   initGenericFilterSelects();
   addFilterListResizeClass();
   openFormPopup();
+  initFloorSelect();
   // closeHeaderLabel();
   showCookies();
 });
@@ -53,6 +55,7 @@ window.addEventListener('resize', () => {
   initGenericFilterSelects();
   addFilterListResizeClass();
   openFormPopup();
+  initFloorSelect();
   // closeHeaderLabel();
 });
 
@@ -784,6 +787,101 @@ function showCookies() {
   });
 }
 
+function initFloorSelect() {
+  const triggers = document.querySelectorAll('.open_floor_select');
+  const wraps = Array.from(document.querySelectorAll('.floor_list-wrap'));
+
+  if (!triggers.length || !wraps.length) return;
+
+  function anyOpen() {
+    return document.querySelector('.floor_list-wrap.open');
+  }
+
+  function setBodyLock() {
+    if (anyOpen()) {
+      document.body.classList.add('lock');
+    } else {
+      document.body.classList.remove('lock');
+    }
+  }
+
+  function closeAll() {
+    wraps.forEach((w) => w.classList.remove('open'));
+    setBodyLock();
+  }
+
+  wraps.forEach((wrap) => {
+    if (wrap.dataset.floorListInited === '1') return;
+    const overlay = wrap.querySelector('.floor_list-overlay');
+
+    if (overlay) {
+      overlay.addEventListener('click', () => {
+        wrap.classList.remove('open');
+        setBodyLock();
+      });
+    }
+
+    // Клик вне области
+    document.addEventListener('click', (e) => {
+      if (!wrap.classList.contains('open')) return;
+      const isInsideWrap = wrap.contains(e.target);
+      const isTrigger = (e.target.closest && !!e.target.closest('.open_floor_select'));
+      if (!isInsideWrap && !isTrigger) {
+        wrap.classList.remove('open');
+        setBodyLock();
+      }
+    });
+
+    wrap.dataset.floorListInited = '1';
+  });
+
+  // Escape закрывает любой открытый список (однократно навешиваем)
+  if (!document.documentElement.dataset.floorListEscapeBound) {
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const opened = document.querySelector('.floor_list-wrap.open');
+      if (!opened) return;
+      opened.classList.remove('open');
+      setBodyLock();
+    });
+    document.documentElement.dataset.floorListEscapeBound = 'true';
+  }
+
+  function resolveTarget(trigger) {
+    const selector = trigger.getAttribute('data-floor-target');
+    if (selector) {
+      try {
+        const el = document.querySelector(selector);
+        if (el) return el;
+      } catch (_) {
+        // ignore invalid selector
+      }
+    }
+    const scope = trigger.closest('main') || document;
+    const found = scope.querySelector('.floor_list-wrap');
+    return found || wraps[0] || null;
+  }
+
+  triggers.forEach((trigger) => {
+    if (trigger.dataset.floorTriggerInited === '1') return;
+
+    const targetWrap = resolveTarget(trigger);
+    if (!targetWrap) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Закрываем другие открытые
+      wraps.forEach((w) => {
+        if (w !== targetWrap) w.classList.remove('open');
+      });
+      targetWrap.classList.add('open');
+      setBodyLock();
+    });
+
+    trigger.dataset.floorTriggerInited = '1';
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const skipLoaderKey = 'skipLoader';
   const navEntries =
@@ -909,6 +1007,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (mainEl) {
         mainEl.classList.remove('fade-in');
         mainEl.classList.add('fade-out');
+        document.body.classList.remove('transparent_header');
       }
 
       setTimeout(() => {

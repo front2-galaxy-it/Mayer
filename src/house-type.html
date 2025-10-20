@@ -47,9 +47,9 @@
             <section class="house-type-section scrollable_block">
                 <div class="container">
                     <div class="filter__select-body">
-                        <span class="filter__tip">Typ</span>
+                        <span class="filter__tip">Výber podlažia</span>
                         <div class="filter__select">
-                            <div class="filter__trigger">
+                            <div class="filter__trigger open_floor_select">
                                 <span class="filter__trigger-text">Všetky</span>
                                 <svg class="filter__arrow" width="14" height="8" viewBox="0 0 14 8"
                                     fill="none">
@@ -57,17 +57,6 @@
                                         d="M0.875 0.985352L5.46079 5.57114C6.24183 6.35219 7.50816 6.35219 8.28921 5.57114L12.875 0.985352"
                                         stroke="" stroke-width="2" />
                                 </svg>
-                            </div>
-                            <div class="filter__options">
-                                <div class="filter__option">
-                                    <a href="floor.html">1. PODLAŽIE</a>
-                                </div>
-                                <div class="filter__option">
-                                    <a href="floor.html">2. PODLAŽIE</a>
-                                </div>
-                                <div class="filter__option">
-                                    <a href="floor.html">3. PODLAŽIE</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -241,6 +230,44 @@
             </section>
             {{> form}}
         </main>
+        <div class="floor_list-wrap">
+            <div class="floor_list-overlay"></div>
+            <div class="floor_list-body">
+                <span class="floor_list-title">Výber polažia</span>
+                <ul class="floor_list-list">
+                    <li class="floor_list-item">
+                        <a href="floor.html">
+                            <span>1. podlažie</span>
+                            <span>10 voľných</span>
+                        </a>
+                    </li>
+                    <li class="floor_list-item sold">
+                        <a href="floor.html">
+                            <span>2. podlažie</span>
+                            <span>Vypredané</span>
+                        </a>
+                    </li>
+                    <li class="floor_list-item">
+                        <a href="floor.html">
+                            <span>3. podlažie</span>
+                            <span>10 voľných</span>
+                        </a>
+                    </li>
+                    <li class="floor_list-item">
+                        <a href="floor.html">
+                            <span>4. podlažie</span>
+                            <span>6 voľných</span>
+                        </a>
+                    </li>
+                    <li class="floor_list-item">
+                        <a href="floor.html">
+                            <span>5. podlažie</span>
+                            <span>2 Voľné</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         {{> footer}}
     </div>
 </body>

@@ -1,0 +1,51 @@
+<section class="filter filter_land">
+    <div class="container">
+        <h2 class="filter__title section-title">Filter POZEMKOV</h2>
+
+        <div class="filter__head">
+
+            <div class="filter__select-wrap filter__block-wrap" id="filter-selects"></div>
+
+            <div class="filter__checkbox-wrap filter__block-wrap" id="filter-checkboxes"></div>
+
+            <div class="filter__range-wrap filter__block-wrap" id="filter-ranges"></div>
+        </div>
+
+        <div class="filter__info">
+            <div class="filter__info-item">
+                <span>Filter:</span>
+                <div class="filter__info-counts">
+                    <span id="filtered-count">0</span>
+                    <span>/</span>
+                    <span id="total-count">0</span>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="filter__info-item">
+                <button type="button" class="link_underline" id="clear-filters">Vymazať
+                    filter</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter__list">
+        <div class="filter__list-heading">
+            <div class="filter__list-col"><button type="button">Blok</button></div>
+            <div class="filter__list-col"><button type="button">Typ</button></div>
+            <div class="filter__list-col"><button type="button">Číslo</button></div>
+            <div class="filter__list-col"><button type="button">Plocha spolu</button></div>
+            <div class="filter__list-col"><button type="button">Cena s DPH</button></div>
+            <div class="filter__list-col"><button type="button">Stav</button></div>
+        </div>
+        <div class="filter__list-body" id="filter-list-body"></div>
+    </div>
+
+    <div class="filter__list-count">
+        <span id="showed-count">0</span>
+        <span>z</span>
+        <span id="total-count-bottom">0</span>
+    </div>
+
+    <button class="filter__list-show-more btn btn_secondary-green" id="load-more">Načítať
+        ďalšie</button>
+</section>

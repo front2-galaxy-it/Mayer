@@ -226,5 +226,205 @@
     "Plocha_spolu": 320.00,
     "Cena_s_DPH": 450000,
     "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "3.1",
+    "Plocha_spolu": 806,
+    "Cena_s_DPH": 325000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "3.2",
+    "Plocha_spolu": 650,
+    "Cena_s_DPH": 280000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "3.3",
+    "Plocha_spolu": 720,
+    "Cena_s_DPH": 310000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "3.4",
+    "Plocha_spolu": 806,
+    "Cena_s_DPH": 325000,
+    "Stav": "Predany"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "3.5",
+    "Plocha_spolu": 580,
+    "Cena_s_DPH": 250000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "4.1",
+    "Plocha_spolu": 900,
+    "Cena_s_DPH": 380000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "4.2",
+    "Plocha_spolu": 750,
+    "Cena_s_DPH": 320000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "4.3",
+    "Plocha_spolu": 680,
+    "Cena_s_DPH": 290000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "4.4",
+    "Plocha_spolu": 820,
+    "Cena_s_DPH": 340000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "4.5",
+    "Plocha_spolu": 600,
+    "Cena_s_DPH": 260000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "5.1",
+    "Plocha_spolu": 950,
+    "Cena_s_DPH": 400000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "5.2",
+    "Plocha_spolu": 780,
+    "Cena_s_DPH": 330000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "5.3",
+    "Plocha_spolu": 720,
+    "Cena_s_DPH": 310000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "5.4",
+    "Plocha_spolu": 850,
+    "Cena_s_DPH": 360000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "PRIMULA",
+    "Typ": "Pozemok",
+    "Cislo": "5.5",
+    "Plocha_spolu": 640,
+    "Cena_s_DPH": 275000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "1.1",
+    "Plocha_spolu": 700,
+    "Cena_s_DPH": 300000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "1.2",
+    "Plocha_spolu": 650,
+    "Cena_s_DPH": 280000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "1.3",
+    "Plocha_spolu": 800,
+    "Cena_s_DPH": 340000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "1.4",
+    "Plocha_spolu": 720,
+    "Cena_s_DPH": 310000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "1.5",
+    "Plocha_spolu": 580,
+    "Cena_s_DPH": 250000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "2.1",
+    "Plocha_spolu": 900,
+    "Cena_s_DPH": 380000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "2.2",
+    "Plocha_spolu": 750,
+    "Cena_s_DPH": 320000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "2.3",
+    "Plocha_spolu": 680,
+    "Cena_s_DPH": 290000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "2.4",
+    "Plocha_spolu": 820,
+    "Cena_s_DPH": 340000,
+    "Stav": "Volny"
+  },
+  {
+    "Blok": "TILIA",
+    "Typ": "Pozemok",
+    "Cislo": "2.5",
+    "Plocha_spolu": 600,
+    "Cena_s_DPH": 260000,
+    "Stav": "Volny"
   }
 ]

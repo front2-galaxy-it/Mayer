@@ -1638,6 +1638,31 @@ main {
     @include adaptive-value("padding-top", 80, 50, 1);
     @include adaptive-value("padding-bottom", 80, 50, 1);
 
+    &_land {
+
+        .filter__list-heading,
+        .filter__list-row {
+            grid-template: 1fr / repeat(6, 1fr);
+        }
+
+        .filter__select{
+            width: 240px;
+
+            @include media ("<phone_x") {
+                width: 100%;
+            }
+        }
+
+        .filter__range-wrap{
+            flex-direction: row;
+            @include adaptive-value("gap", 64, 32, 1);
+
+            @include media ("<tablet") {
+                flex-direction: column;
+            }
+        }
+    }
+
     &__head {
         margin-bottom: 80px;
         display: flex;
@@ -2051,6 +2076,10 @@ main {
         min-width: 110px;
         width: 100%;
         transition: all .3s ease;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: "Ease";
+        color: $green;
 
         span {
             text-align: start;
@@ -2081,11 +2110,23 @@ main {
     }
 }
 
+.land_section {
+    .land_img {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+}
+
 .house-type-section {
 
     .container {
         max-width: 1262px;
     }
+
+    .caption {
+        max-width: 395px;
+    }
+
 
     .filter__select-body {
         width: 295px;
@@ -2107,12 +2148,89 @@ main {
         }
     }
 
-
     &_img {
         display: block;
         max-width: 1232px;
         @include adaptive-value("height", 790, 480, 1);
         margin: 0 auto;
+    }
+}
+
+
+.floor_list {
+
+    &-wrap {
+        position: fixed;
+        inset: 0;
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+
+        &.open {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &-overlay {
+        position: fixed;
+        inset: 0;
+        background-color: rgba($color: #424D1C, $alpha: 0.65);
+        z-index: 1000;
+    }
+
+    &-body {
+        border-radius: 8px 8px 0 0;
+        padding: 24px;
+        width: 100%;
+        z-index: 1001;
+        background-color: #FCF7EB;
+        text-align: center;
+    }
+
+    &-title {
+        font-size: 16px;
+        font-weight: 600;
+        font-family: "Ease";
+        color: $green;
+        margin-bottom: 24px;
+        display: inline-block;
+    }
+
+    &-list {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    &-item {
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid $green;
+
+        &.sold {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: "Ease";
+            color: $green;
+        }
     }
 }
 
