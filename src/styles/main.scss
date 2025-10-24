@@ -36,6 +36,7 @@ $media-expressions: ('screen': 'screen',
 @import 'layout/header';
 @import 'layout/common';
 @import 'layout/footer';
+@import "layout/filters";
 
 @import 'layout/form-popup';
 @import 'layout/cookies';
@@ -45,6 +46,8 @@ $media-expressions: ('screen': 'screen',
 @import "layout/main-page/history";
 @import "layout/main-page/manifest";
 
+
+@import 'layout/svg-tooltips';
 
 // Animate.css
 @import 'animate.css';

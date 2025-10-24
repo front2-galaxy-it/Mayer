@@ -12,6 +12,8 @@ import { Accordion } from './components/accordion';
 import { slideDown, slideUp } from './utils/slideIn';
 import { initFilters } from './components/filters';
 
+import SvgTooltips from './components/svg-tooltips';
+
 new WOW().init();
 
 new Tabs('.tabs_map');
@@ -22,6 +24,11 @@ new Accordion('.accordion', 'single');
 document.addEventListener('DOMContentLoaded', () => {
   initFilters();
   addFilterListResizeClass();
+  new SvgTooltips({
+    dataFile: '/data/PAVLAČOVÝ-DOM.json',
+    svgSelector: '.pavlacovy_dom',
+    pathSelector: 'path[class*="floor"], path[class*="_floor"]',
+  });
 });
 
 window.addEventListener('load', () => {
@@ -40,6 +47,11 @@ window.addEventListener('load', () => {
   initFloorSelect();
   // closeHeaderLabel();
   showCookies();
+  new SvgTooltips({
+    dataFile: '/data/PAVLAČOVÝ-DOM.json',
+    svgSelector: '.pavlacovy_dom',
+    pathSelector: 'path[class*="floor"], path[class*="_floor"]',
+  });
 });
 
 window.addEventListener('resize', () => {
@@ -57,6 +69,11 @@ window.addEventListener('resize', () => {
   openFormPopup();
   initFloorSelect();
   // closeHeaderLabel();
+  new SvgTooltips({
+    dataFile: '/data/PAVLAČOVÝ-DOM.json',
+    svgSelector: '.pavlacovy_dom',
+    pathSelector: 'path[class*="floor"], path[class*="_floor"]',
+  });
 });
 
 document.addEventListener('filters:ready', () => {
@@ -825,7 +842,8 @@ function initFloorSelect() {
     document.addEventListener('click', (e) => {
       if (!wrap.classList.contains('open')) return;
       const isInsideWrap = wrap.contains(e.target);
-      const isTrigger = (e.target.closest && !!e.target.closest('.open_floor_select'));
+      const isTrigger =
+        e.target.closest && !!e.target.closest('.open_floor_select');
       if (!isInsideWrap && !isTrigger) {
         wrap.classList.remove('open');
         setBodyLock();

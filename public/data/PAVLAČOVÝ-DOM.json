@@ -1,0 +1,62 @@
+{
+  "first_floor": {
+    "name": "1. podlažie",
+    "status": "Voľné",
+    "count": 12
+  },
+  "first_floor_inner": {
+    "name": "1. podlažie",
+    "status": "Voľné",
+    "count": 12
+  },
+  "first_floor_side": {
+    "name": "1. podlažie",
+    "status": "Voľné",
+    "count": 12
+  },
+  "second_floor_inner": {
+    "name": "2. podlažie",
+    "status": "Voľné",
+    "count": 10
+  },
+  "second_floor_front": {
+    "name": "2. podlažie",
+    "status": "Voľné",
+    "count": 10
+  },
+  "second_floor_front_side": {
+    "name": "2. podlažie",
+    "status": "Voľné",
+    "count": 10
+  },
+  "third_floor_inner": {
+    "name": "3. podlažie",
+    "status": "Voľné",
+    "count": 8
+  },
+  "third_floor_front": {
+    "name": "3. podlažie",
+    "status": "Voľné",
+    "count": 8
+  },
+  "third_floor_front_side": {
+    "name": "3. podlažie",
+    "status": "Voľné",
+    "count": 8
+  },
+  "fourth_floor_front": {
+    "name": "4. podlažie",
+    "status": "Voľné",
+    "count": 6
+  },
+  "fourth_floor_front_side": {
+    "name": "4. podlažie",
+    "status": "Voľné",
+    "count": 6
+  },
+  "fourth_floor_inner": {
+    "name": "4. podlažie",
+    "status": "Voľné",
+    "count": 6
+  }
+}
