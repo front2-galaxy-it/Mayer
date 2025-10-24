@@ -1,6 +1,6 @@
 /**
  * SVG Tooltips Component
- * Управляет показом тултипов для элементов SVG карты
+ * Manages tooltip display for SVG map elements
  */
 
 export default class SvgTooltips {
@@ -10,17 +10,17 @@ export default class SvgTooltips {
     this.hideTimeout = null;
     this.tooltipData = {};
 
-    // Конфигурация
+    // Configuration
     this.config = {
-      tooltipSelector: '.tooltip', // Значение по умолчанию
-      ...config, // Остальные настройки должны быть переданы при создании экземпляра
+      tooltipSelector: '.tooltip', // Default value
+      ...config, // Other settings must be passed when creating an instance
     };
 
-    // Проверяем, является ли устройство сенсорным
+    // Check if device is touch-enabled
     this.isTouchDevice =
       'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // Если это сенсорное устройство, не инициализируем тултипы
+    // If it's a touch device, don't initialize tooltips
     if (this.isTouchDevice) {
       return;
     }
@@ -29,14 +29,14 @@ export default class SvgTooltips {
   }
 
   async loadTooltipData() {
-    // Проверяем, что путь к файлу указан
+    // Check that file path is specified
     if (!this.config.dataFile) {
       console.error('dataFile is required in config');
       this.init();
       return;
     }
 
-    // Сначала пробуем загрузить данные из JSON файла
+    // First try to load data from JSON file
     try {
       const response = await fetch(this.config.dataFile, {
         cache: 'no-cache',
@@ -51,7 +51,7 @@ export default class SvgTooltips {
 
       const text = await response.text();
 
-      // Проверяем, что ответ действительно JSON, а не HTML
+      // Check that response is actually JSON, not HTML
       if (
         text.trim().startsWith('<!doctype') ||
         text.trim().startsWith('<html')
@@ -61,7 +61,7 @@ export default class SvgTooltips {
 
       this.tooltipData = JSON.parse(text);
 
-      // Инициализируем тултипы только после загрузки данных
+      // Initialize tooltips only after loading data
       this.init();
     } catch (error) {
       console.error('Error loading tooltip data:', error);
@@ -72,7 +72,7 @@ export default class SvgTooltips {
   }
 
   init() {
-    // Если это сенсорное устройство, не инициализируем тултипы
+    // If it's a touch device, don't initialize tooltips
     if (this.isTouchDevice) {
       return;
     }
@@ -83,7 +83,7 @@ export default class SvgTooltips {
   }
 
   createTooltip() {
-    // Создаем тултип если его еще нет
+    // Create tooltip if it doesn't exist yet
     if (!document.querySelector(this.config.tooltipSelector)) {
       this.tooltip = document.createElement('div');
       this.tooltip.className = 'tooltip';
@@ -98,7 +98,7 @@ export default class SvgTooltips {
                 </div>
             `;
 
-      // Добавляем тултип в body для правильного позиционирования
+      // Add tooltip to body for proper positioning
       document.body.appendChild(this.tooltip);
     } else {
       this.tooltip = document.querySelector(this.config.tooltipSelector);
@@ -106,7 +106,7 @@ export default class SvgTooltips {
   }
 
   bindEvents() {
-    // Проверяем, что селекторы указаны
+    // Check that selectors are specified
     if (!this.config.svgSelector || !this.config.pathSelector) {
       console.error('svgSelector and pathSelector are required in config');
       return;
@@ -118,7 +118,7 @@ export default class SvgTooltips {
       return;
     }
 
-    // Находим все пути элементов
+    // Find all element paths
     const elementPaths = svg.querySelectorAll(this.config.pathSelector);
 
     elementPaths.forEach((path, index) => {
@@ -129,10 +129,10 @@ export default class SvgTooltips {
   }
 
   bindWindowEvents() {
-    // Скрываем тултип при изменении размера окна
+    // Hide tooltip when window is resized
     window.addEventListener('resize', () => {
       if (this.tooltip && this.tooltip.style.display !== 'none') {
-        // Отменяем любое запланированное скрытие
+        // Cancel any scheduled hiding
         if (this.hideTimeout) {
           clearTimeout(this.hideTimeout);
           this.hideTimeout = null;
@@ -141,10 +141,10 @@ export default class SvgTooltips {
       }
     });
 
-    // Скрываем тултип при скролле
+    // Hide tooltip when scrolling
     window.addEventListener('scroll', () => {
       if (this.tooltip && this.tooltip.style.display !== 'none') {
-        // Отменяем любое запланированное скрытие
+        // Cancel any scheduled hiding
         if (this.hideTimeout) {
           clearTimeout(this.hideTimeout);
           this.hideTimeout = null;
@@ -155,20 +155,20 @@ export default class SvgTooltips {
   }
 
   showTooltip(event) {
-    // Если это сенсорное устройство, не показываем тултип
+    // If it's a touch device, don't show tooltip
     if (this.isTouchDevice) {
       return;
     }
 
     const path = event.target;
 
-    // Отменяем скрытие тултипа, если оно было запланировано
+    // Cancel tooltip hiding if it was scheduled
     if (this.hideTimeout) {
       clearTimeout(this.hideTimeout);
       this.hideTimeout = null;
     }
 
-    // Не показываем тултип для отключенных элементов
+    // Don't show tooltip for disabled elements
     if (path.classList.contains('disabled')) {
       return;
     }
@@ -182,16 +182,16 @@ export default class SvgTooltips {
     const elementInfo = this.tooltipData[elementClass];
     this.currentElement = elementClass;
 
-    // Обновляем содержимое тултипа
+    // Update tooltip content
     this.tooltip.querySelector('.element_name').textContent = elementInfo.name;
     this.tooltip.querySelector('.status-text').textContent = elementInfo.status;
     this.tooltip.querySelector('.count-text').textContent = elementInfo.count;
 
-    // Показываем тултип с анимацией
+    // Show tooltip with animation
     this.tooltip.style.display = 'block';
     this.updateTooltipPosition(event);
 
-    // Добавляем класс для анимации
+    // Add class for animation
     requestAnimationFrame(() => {
       this.tooltip.classList.add('show');
     });
@@ -200,35 +200,35 @@ export default class SvgTooltips {
   updateTooltipPosition(event) {
     if (!this.tooltip || this.tooltip.style.display === 'none') return;
 
-    // Позиционируем тултип относительно курсора в окне браузера
-    const x = event.clientX + 10; // 10px справа от курсора
-    const y = event.clientY - 10; // 10px выше курсора
+    // Position tooltip relative to cursor in browser window
+    const x = event.clientX + 10; // 10px to the right of cursor
+    const y = event.clientY - 10; // 10px above cursor
 
-    // Проверяем, не выходит ли тултип за границы экрана
+    // Check if tooltip goes beyond screen boundaries
     const tooltipWidth = this.tooltip.offsetWidth || 280;
     const tooltipHeight = this.tooltip.offsetHeight || 100;
 
     let finalX = x;
     let finalY = y;
 
-    // Если тултип выходит за правую границу экрана
+    // If tooltip goes beyond right edge of screen
     if (x + tooltipWidth > window.innerWidth) {
-      finalX = event.clientX - tooltipWidth - 10; // показываем слева от курсора
+      finalX = event.clientX - tooltipWidth - 10; // show to the left of cursor
     }
 
-    // Если тултип выходит за нижнюю границу экрана
+    // If tooltip goes beyond bottom edge of screen
     if (y + tooltipHeight > window.innerHeight) {
-      finalY = event.clientY - tooltipHeight - 10; // показываем выше курсора
+      finalY = event.clientY - tooltipHeight - 10; // show above cursor
     }
 
-    // Если тултип выходит за верхнюю границу экрана
+    // If tooltip goes beyond top edge of screen
     if (finalY < 0) {
-      finalY = event.clientY + 20; // показываем ниже курсора
+      finalY = event.clientY + 20; // show below cursor
     }
 
-    // Если тултип выходит за левую границу экрана
+    // If tooltip goes beyond left edge of screen
     if (finalX < 0) {
-      finalX = 10; // минимальный отступ от левого края
+      finalX = 10; // minimum offset from left edge
     }
 
     this.tooltip.style.left = `${finalX}px`;
@@ -236,7 +236,7 @@ export default class SvgTooltips {
   }
 
   hideTooltip(event) {
-    // Если это сенсорное устройство, не скрываем тултип
+    // If it's a touch device, don't hide tooltip
     if (this.isTouchDevice) {
       return;
     }
@@ -247,11 +247,11 @@ export default class SvgTooltips {
   }
 
   getElementClass(path) {
-    // Получаем класс элемента из атрибута class
+    // Get element class from class attribute
     const classList = path.className.baseVal || path.className;
     const classes = classList.split(' ');
 
-    // Ищем класс, который содержит информацию об элементе
+    // Look for class that contains element information
     for (const className of classes) {
       if (this.tooltipData[className]) {
         return className;
@@ -261,7 +261,7 @@ export default class SvgTooltips {
     return null;
   }
 
-  // Метод для обновления данных элемента
+  // Method for updating element data
   updateElementData(elementClass, newData) {
     if (this.tooltipData[elementClass]) {
       this.tooltipData[elementClass] = {
@@ -271,7 +271,7 @@ export default class SvgTooltips {
     }
   }
 
-  // Метод для добавления нового элемента
+  // Method for adding new element
   addElementData(elementClass, data) {
     this.tooltipData[elementClass] = data;
   }
