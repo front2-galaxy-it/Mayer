@@ -319,6 +319,26 @@ export function renderFilters(data) {
   function normalizeValue(value) {
     const v = value ?? 0;
     if (typeof v === 'number') return v;
+    
+    // Special handling for status sorting
+    if (typeof v === 'string') {
+      const statusOrder = {
+        'volny': 1,
+        'voľný': 1,
+        'rezervovany': 2,
+        'rezervovaný': 2,
+        'v priprave': 3,
+        'v príprave': 3,
+        'predany': 4,
+        'predaný': 4
+      };
+      
+      const lowerValue = v.toLowerCase();
+      if (statusOrder.hasOwnProperty(lowerValue)) {
+        return statusOrder[lowerValue];
+      }
+    }
+    
     // Try numeric parse from string (e.g., price strings)
     const num = Number(
       String(v)
@@ -775,6 +795,26 @@ export function renderFloorFilters(data) {
   function normalizeValue(value) {
     const v = value ?? 0;
     if (typeof v === 'number') return v;
+    
+    // Special handling for status sorting
+    if (typeof v === 'string') {
+      const statusOrder = {
+        'volny': 1,
+        'voľný': 1,
+        'rezervovany': 2,
+        'rezervovaný': 2,
+        'v priprave': 3,
+        'v príprave': 3,
+        'predany': 4,
+        'predaný': 4
+      };
+      
+      const lowerValue = v.toLowerCase();
+      if (statusOrder.hasOwnProperty(lowerValue)) {
+        return statusOrder[lowerValue];
+      }
+    }
+    
     // Try numeric parse from string (e.g., price strings)
     const num = Number(
       String(v)
@@ -1176,6 +1216,26 @@ export function renderLandFilters(data) {
   function normalizeValue(value) {
     const v = value ?? 0;
     if (typeof v === 'number') return v;
+    
+    // Special handling for status sorting
+    if (typeof v === 'string') {
+      const statusOrder = {
+        'volny': 1,
+        'voľný': 1,
+        'rezervovany': 2,
+        'rezervovaný': 2,
+        'v priprave': 3,
+        'v príprave': 3,
+        'predany': 4,
+        'predaný': 4
+      };
+      
+      const lowerValue = v.toLowerCase();
+      if (statusOrder.hasOwnProperty(lowerValue)) {
+        return statusOrder[lowerValue];
+      }
+    }
+    
     // Try numeric parse from string (e.g., price strings)
     const num = Number(
       String(v)
