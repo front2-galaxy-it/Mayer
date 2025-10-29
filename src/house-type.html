@@ -1,6 +1,6 @@
 {{> head}}
 
-<body class="house-type">
+<body class="house-type veronica">
     <div id="wrapper">
         {{> header}}
         <main>
@@ -46,119 +46,268 @@
             </div>
             <section class="house-type-section scrollable_block">
                 <div class="container">
-                    <div class="filter__select-body">
-                        <span class="filter__tip">Výber podlažia</span>
-                        <div class="filter__select">
-                            <div class="filter__trigger open_floor_select">
-                                <span class="filter__trigger-text">Všetky</span>
-                                <svg class="filter__arrow" width="14" height="8" viewBox="0 0 14 8"
-                                    fill="none">
-                                    <path
-                                        d="M0.875 0.985352L5.46079 5.57114C6.24183 6.35219 7.50816 6.35219 8.28921 5.57114L12.875 0.985352"
-                                        stroke="" stroke-width="2" />
-                                </svg>
-                            </div>
-                        </div>
+                    <div class="svg-touch-fallback">
+                        <span class="svg-touch-fallback-tip">Výber podlažia</span>
+                        <button class="svg-touch-fallback-button">
+                            <span class="svg-touch-fallback-text">Vybrať</span>
+                            <svg class="filter__arrow" width="14" height="8" viewBox="0 0 14 8"
+                                fill="none">
+                                <path
+                                    d="M0.875 0.985352L5.46079 5.57114C6.24183 6.35219 7.50816 6.35219 8.28921 5.57114L12.875 0.985352"
+                                    stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
                 <div class="scroll_wrapper on-enter-mouse-block" data-scroll>
-                    <svg class="house-type-section_img scrollable_item pavlacovy_dom" width="1232"
-                        height="938" viewBox="0 0 1232 938" fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <rect width="1232" height="938" fill="url(#pattern0_3324_13033)" />
-                        <path class="disabled"
-                            d="M342.125 462L425.625 425V421.5L377.625 377.5L765.125 213.5L831.618 267.379L867.461 292.403L902.625 316L904.125 313L941.776 265.494L974.701 272.985L909.983 229.346L911.028 201.647L774.448 83.8813L735.599 73.4287L695.967 116.022V144.331L657.641 160.271L636.3 141.283L599.625 133.5L564.125 170.5L533.625 161L503.051 196.016L471.625 176.5L441.125 222L406.125 211L372.125 250.5L336.625 240L302.625 280L261.625 270L223.125 313L224.125 348L342.125 462Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="disabled"
-                            d="M342.125 462L425.625 425V421.5L377.625 377.5L765.125 213.5L831.618 267.379L867.461 292.403L902.625 316L904.125 313L941.776 265.494L974.701 272.985L909.983 229.346L911.028 201.647L774.448 83.8813L735.599 73.4287L695.967 116.022V144.331L657.641 160.271L636.3 141.283L599.625 133.5L564.125 170.5L533.625 161L503.051 196.016L471.625 176.5L441.125 222L406.125 211L372.125 250.5L336.625 240L302.625 280L261.625 270L223.125 313L224.125 348L342.125 462Z"
-                            stroke="#F5EDDB" />
-                        <path class="fourth_floor_front"
-                            d="M556.125 658.5L410.625 549L410.494 542.495L484.937 502.259L493.692 510.093L501.411 498.688L542.423 513.204L551.125 520.5L583.625 502.5L597.145 480.255L610.625 487.5L653.82 463.5L662.465 450.895L671.173 453.5L718.113 427.5L722.601 421.271L727.176 422.5L766.409 400.5L779.051 378.07L791.543 386.5L830.125 364.5L838.381 352.495L847.125 355L894.625 328.454L901.625 319L904.125 313L941.852 265.433L974.625 273L1065.12 335L1063.62 368.5L556.125 658.5Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="fourth_floor_front"
-                            d="M556.125 658.5L410.625 549L410.494 542.495L484.937 502.259L493.692 510.093L501.411 498.688L542.423 513.204L551.125 520.5L583.625 502.5L597.145 480.255L610.625 487.5L653.82 463.5L662.465 450.895L671.173 453.5L718.113 427.5L722.601 421.271L727.176 422.5L766.409 400.5L779.051 378.07L791.543 386.5L830.125 364.5L838.381 352.495L847.125 355L894.625 328.454L901.625 319L904.125 313L941.852 265.433L974.625 273L1065.12 335L1063.62 368.5L556.125 658.5Z"
-                            stroke="#F5EDDB" />
-                        <path class="fourth_floor_front_side"
-                            d="M343.125 491L225.625 379.5L224.125 348L342.125 462L425.625 425V454L343.125 491Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="fourth_floor_front_side"
-                            d="M343.125 491L225.625 379.5L224.125 348L342.125 462L425.625 425V454L343.125 491Z"
-                            stroke="#F5EDDB" />
-                        <path class="fourth_floor_inner"
-                            d="M832.125 267.499L902.625 316L901.625 318.499L894.125 328.5L887.125 332.5L832.125 294.499L765.125 240L398.625 396.5L377.625 377L765.125 213L832.125 267.499Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="fourth_floor_inner"
-                            d="M832.125 267.499L902.625 316L901.625 318.499L894.125 328.5L887.125 332.5L832.125 294.499L765.125 240L398.625 396.5L377.625 377L765.125 213L832.125 267.499Z"
-                            stroke="#F5EDDB" />
-                        <path class="third_floor_inner"
-                            d="M832.125 295L887.125 332.501L865.125 345.001L832.125 322L765.125 267.5L419.125 415.5L398.625 396.5L765.125 240.5L832.125 295Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="third_floor_inner"
-                            d="M832.125 295L887.125 332.501L865.125 345.001L832.125 322L765.125 267.5L419.125 415.5L398.625 396.5L765.125 240.5L832.125 295Z"
-                            stroke="#F5EDDB" />
-                        <path class="fourth_floor_front"
-                            d="M410.625 549L411.125 572L556.125 684.5L1062.62 395.5L1063.62 368.5L556.125 658.5L410.625 549Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="fourth_floor_front"
-                            d="M410.625 549L411.125 572L556.125 684.5L1062.62 395.5L1063.62 368.5L556.125 658.5L410.625 549Z"
-                            stroke="#F5EDDB" />
-                        <path class="third_floor_front_side"
-                            d="M344.125 519L226.625 409L225.625 379.5L343.125 491L425.625 454V483L344.125 519Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="third_floor_front_side"
-                            d="M344.125 519L226.625 409L225.625 379.5L343.125 491L425.625 454V483L344.125 519Z"
-                            stroke="#F5EDDB" />
-                        <path class="second_floor_front"
-                            d="M556.063 714L411.074 600.987L411.074 572L556.063 684.505L1062.62 395.5L1061.62 421.5L556.063 714Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="second_floor_front"
-                            d="M556.063 714L411.074 600.987L411.074 572L556.063 684.505L1062.62 395.5L1061.62 421.5L556.063 714Z"
-                            stroke="#F5EDDB" />
-                        <path class="second_floor_inner"
-                            d="M765.125 267.5L832.125 321.999L865.125 345L847.625 355L838.625 352.5L832.125 348.999L765.125 294L425.625 440.5V421.5L419.125 415.5L765.125 267.5Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="second_floor_inner"
-                            d="M765.125 267.5L832.125 321.999L865.125 345L847.625 355L838.625 352.5L832.125 348.999L765.125 294L425.625 440.5V421.5L419.125 415.5L765.125 267.5Z"
-                            stroke="#F5EDDB" />
-                        <path class="second_floor_front_side"
-                            d="M345.125 546L227.625 438.5L226.625 409L344.125 519L425.625 483V512L345.125 546Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="second_floor_front_side"
-                            d="M345.125 546L227.625 438.5L226.625 409L344.125 519L425.625 483V512L345.125 546Z"
-                            stroke="#F5EDDB" />
-                        <path class="first_floor"
-                            d="M411.125 598.5V601L556.125 714L1061.62 421L1061.12 429.5L1081.62 447L1081.12 458.5L550.625 765L536.625 751.5L477.625 785.5L365.125 673.5V663.5L371.125 660.5L355.125 645V629.5L382.625 614.5V607.5L406.125 595L411.125 598.5Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="first_floor"
-                            d="M411.125 598.5V601L556.125 714L1061.62 421L1061.12 429.5L1081.62 447L1081.12 458.5L550.625 765L536.625 751.5L477.625 785.5L365.125 673.5V663.5L371.125 660.5L355.125 645V629.5L382.625 614.5V607.5L406.125 595L411.125 598.5Z"
-                            stroke="#F5EDDB" />
-                        <path class="first_floor_inner"
-                            d="M765.125 294L832.125 348.999L838.625 352.5L830.125 364.5L791.625 386.5L779.125 378L741.125 343.5V329.5C623.107 380.253 549.994 412.016 425.625 465.5V440.5L765.125 294Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="first_floor_inner"
-                            d="M765.125 294L832.125 348.999L838.625 352.5L830.125 364.5L791.625 386.5L779.125 378L741.125 343.5V329.5C623.107 380.253 549.994 412.016 425.625 465.5V440.5L765.125 294Z"
-                            stroke="#F5EDDB" />
-                        <path class="first_floor_side"
-                            d="M227.625 438.5L229.125 471L260.625 501L232.125 513.5V523.5L311.125 601L410.625 557V542.5L425.625 534.5V512L345.125 546L227.625 438.5Z"
-                            fill="" fill-opacity="0.5" style="mix-blend-mode:multiply" />
-                        <path class="first_floor_side"
-                            d="M227.625 438.5L229.125 471L260.625 501L232.125 513.5V523.5L311.125 601L410.625 557V542.5L425.625 534.5V512L345.125 546L227.625 438.5Z"
-                            stroke="#F5EDDB" />
-                        <defs>
-                            <pattern id="pattern0_3324_13033"
-                                patternContentUnits="objectBoundingBox" width="1" height="1">
-                                <use xlink:href="#image0_3324_13033"
-                                    transform="scale(0.000405844 0.000533049)" />
-                            </pattern>
+                    <div class="scrollable_item house-type-section_img">
+                        <svg class="pavlacovy_dom svg-select" width="1232" height="938"
+                            viewBox="0 0 1232 938" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="V&#195;&#189;ber">
+                                <rect width="1232" height="938" fill="url(#pattern0_3324_13033)" />
+                                <g id="5" class="fifth_floor group-highlighted">
+                                    <g id="Vector 324">
+                                        <path
+                                            d="M342.125 462L425.625 425V421.5L377.625 377.5L765.125 213.5L831.618 267.379L867.461 292.403L902.625 316L904.125 313L941.776 265.494L974.701 272.985L909.983 229.346L911.028 201.647L774.448 83.8813L735.599 73.4287L695.967 116.022V144.331L657.641 160.271L636.3 141.283L599.625 133.5L564.125 170.5L533.625 161L503.051 196.016L471.625 176.5L441.125 222L406.125 211L372.125 250.5L336.625 240L302.625 280L261.625 270L223.125 313L224.125 348L342.125 462Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M342.125 462L425.625 425V421.5L377.625 377.5L765.125 213.5L831.618 267.379L867.461 292.403L902.625 316L904.125 313L941.776 265.494L974.701 272.985L909.983 229.346L911.028 201.647L774.448 83.8813L735.599 73.4287L695.967 116.022V144.331L657.641 160.271L636.3 141.283L599.625 133.5L564.125 170.5L533.625 161L503.051 196.016L471.625 176.5L441.125 222L406.125 211L372.125 250.5L336.625 240L302.625 280L261.625 270L223.125 313L224.125 348L342.125 462Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                </g>
+                                <g id="4" class="fourth_floor group-highlighted">
+                                    <g id="Vector 343">
+                                        <path
+                                            d="M556.125 658.5L410.625 549L410.494 542.495L484.937 502.259L493.692 510.093L501.411 498.688L542.423 513.204L551.125 520.5L583.625 502.5L597.145 480.255L610.625 487.5L653.82 463.5L662.465 450.895L671.173 453.5L718.113 427.5L722.601 421.271L727.176 422.5L766.409 400.5L779.051 378.07L791.543 386.5L830.125 364.5L838.381 352.495L847.125 355L894.625 328.454L901.625 319L904.125 313L941.852 265.433L974.625 273L1065.12 335L1063.62 368.5L556.125 658.5Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M556.125 658.5L410.625 549L410.494 542.495L484.937 502.259L493.692 510.093L501.411 498.688L542.423 513.204L551.125 520.5L583.625 502.5L597.145 480.255L610.625 487.5L653.82 463.5L662.465 450.895L671.173 453.5L718.113 427.5L722.601 421.271L727.176 422.5L766.409 400.5L779.051 378.07L791.543 386.5L830.125 364.5L838.381 352.495L847.125 355L894.625 328.454L901.625 319L904.125 313L941.852 265.433L974.625 273L1065.12 335L1063.62 368.5L556.125 658.5Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                    <g id="Vector 331">
+                                        <path
+                                            d="M343.125 491L225.625 379.5L224.125 348L342.125 462L425.625 425V454L343.125 491Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M343.125 491L225.625 379.5L224.125 348L342.125 462L425.625 425V454L343.125 491Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                    <g id="Vector 339">
+                                        <path
+                                            d="M832.125 267.499L902.625 316L901.625 318.499L894.125 328.5L887.125 332.5L832.125 294.499L765.125 240L398.625 396.5L377.625 377L765.125 213L832.125 267.499Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M832.125 267.499L902.625 316L901.625 318.499L894.125 328.5L887.125 332.5L832.125 294.499L765.125 240L398.625 396.5L377.625 377L765.125 213L832.125 267.499Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                </g>
+                                <g id="3" class="third_floor group-highlighted">
+                                    <g id="Vector 340">
+                                        <path
+                                            d="M832.125 295L887.125 332.501L865.125 345.001L832.125 322L765.125 267.5L419.125 415.5L398.625 396.5L765.125 240.5L832.125 295Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M832.125 295L887.125 332.501L865.125 345.001L832.125 322L765.125 267.5L419.125 415.5L398.625 396.5L765.125 240.5L832.125 295Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                    <g id="Vector 330">
+                                        <path
+                                            d="M410.625 549L411.125 572L556.125 684.5L1062.62 395.5L1063.62 368.5L556.125 658.5L410.625 549Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M410.625 549L411.125 572L556.125 684.5L1062.62 395.5L1063.62 368.5L556.125 658.5L410.625 549Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                    <g id="Vector 332">
+                                        <path
+                                            d="M344.125 519L226.625 409L225.625 379.5L343.125 491L425.625 454V483L344.125 519Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M344.125 519L226.625 409L225.625 379.5L343.125 491L425.625 454V483L344.125 519Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                </g>
+                                <g id="2" class="second_floor group-highlighted">
+                                    <g id="Vector 269">
+                                        <path
+                                            d="M556.063 714L411.074 600.987L411.074 572L556.063 684.505L1062.62 395.5L1061.62 421.5L556.063 714Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M556.063 714L411.074 600.987L411.074 572L556.063 684.505L1062.62 395.5L1061.62 421.5L556.063 714Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                    <g id="Vector 341">
+                                        <path
+                                            d="M765.125 267.5L832.125 321.999L865.125 345L847.625 355L838.625 352.5L832.125 348.999L765.125 294L425.625 440.5V421.5L419.125 415.5L765.125 267.5Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M765.125 267.5L832.125 321.999L865.125 345L847.625 355L838.625 352.5L832.125 348.999L765.125 294L425.625 440.5V421.5L419.125 415.5L765.125 267.5Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                    <g id="Vector 333">
+                                        <path
+                                            d="M345.125 546L227.625 438.5L226.625 409L344.125 519L425.625 483V512L345.125 546Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M345.125 546L227.625 438.5L226.625 409L344.125 519L425.625 483V512L345.125 546Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                </g>
+                                <g id="1" class="first_floor group-highlighted">
+                                    <g id="Vector 268">
+                                        <path
+                                            d="M411.125 598.5V601L556.125 714L1061.62 421L1061.12 429.5L1081.62 447L1081.12 458.5L550.625 765L536.625 751.5L477.625 785.5L365.125 673.5V663.5L371.125 660.5L355.125 645V629.5L382.625 614.5V607.5L406.125 595L411.125 598.5Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M411.125 598.5V601L556.125 714L1061.62 421L1061.12 429.5L1081.62 447L1081.12 458.5L550.625 765L536.625 751.5L477.625 785.5L365.125 673.5V663.5L371.125 660.5L355.125 645V629.5L382.625 614.5V607.5L406.125 595L411.125 598.5Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                    <g id="Vector 342">
+                                        <path
+                                            d="M765.125 294L832.125 348.999L838.625 352.5L830.125 364.5L791.625 386.5L779.125 378L741.125 343.5V329.5C623.107 380.253 549.994 412.016 425.625 465.5V440.5L765.125 294Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M765.125 294L832.125 348.999L838.625 352.5L830.125 364.5L791.625 386.5L779.125 378L741.125 343.5V329.5C623.107 380.253 549.994 412.016 425.625 465.5V440.5L765.125 294Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                    <g id="Vector 334">
+                                        <path
+                                            d="M227.625 438.5L229.125 471L260.625 501L232.125 513.5V523.5L311.125 601L410.625 557V542.5L425.625 534.5V512L345.125 546L227.625 438.5Z"
+                                            fill="#98AD00" fill-opacity="0.5"
+                                            style="mix-blend-mode:multiply" />
+                                        <path
+                                            d="M227.625 438.5L229.125 471L260.625 501L232.125 513.5V523.5L311.125 601L410.625 557V542.5L425.625 534.5V512L345.125 546L227.625 438.5Z"
+                                            stroke="#F5EDDB" />
+                                    </g>
+                                </g>
+                            </g>
+                            <defs>
+                                <pattern id="pattern0_3324_13033"
+                                    patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#image0_3324_13033"
+                                        transform="scale(0.000405844 0.000533049)" />
+                                </pattern>
 
-                            <image id="image0_3324_13033" width="2464" height="1876"
-                                xlink:href="/images/content/house_type_img.webp"
-                                preserveAspectRatio="xMidYMid slice" />
-                        </defs>
+                                <image id="image0_3324_13033"
+                                    xlink:href="/images/content/house_type_img.png"
+                                    preserveAspectRatio="xMidYMid slice" />
+                            </defs>
+                        </svg>
+                        <!-- <svg class="pavlacovy_dom svg-select" width="1232" height="938"
+                            viewBox="0 0 1232 938" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="1232" height="938" fill="url(#pattern0_3324_13033)" />
+                            <path class="fourth_floor_front"
+                                d="M556.125 658.5L410.625 549L410.494 542.495L484.937 502.259L493.692 510.093L501.411 498.688L542.423 513.204L551.125 520.5L583.625 502.5L597.145 480.255L610.625 487.5L653.82 463.5L662.465 450.895L671.173 453.5L718.113 427.5L722.601 421.271L727.176 422.5L766.409 400.5L779.051 378.07L791.543 386.5L830.125 364.5L838.381 352.495L847.125 355L894.625 328.454L901.625 319L904.125 313L941.852 265.433L974.625 273L1065.12 335L1063.62 368.5L556.125 658.5Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="fourth_floor_front"
+                                d="M556.125 658.5L410.625 549L410.494 542.495L484.937 502.259L493.692 510.093L501.411 498.688L542.423 513.204L551.125 520.5L583.625 502.5L597.145 480.255L610.625 487.5L653.82 463.5L662.465 450.895L671.173 453.5L718.113 427.5L722.601 421.271L727.176 422.5L766.409 400.5L779.051 378.07L791.543 386.5L830.125 364.5L838.381 352.495L847.125 355L894.625 328.454L901.625 319L904.125 313L941.852 265.433L974.625 273L1065.12 335L1063.62 368.5L556.125 658.5Z"
+                                stroke="#F5EDDB" />
+                            <path class="fourth_floor_front_side"
+                                d="M343.125 491L225.625 379.5L224.125 348L342.125 462L425.625 425V454L343.125 491Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="fourth_floor_front_side"
+                                d="M343.125 491L225.625 379.5L224.125 348L342.125 462L425.625 425V454L343.125 491Z"
+                                stroke="#F5EDDB" />
+                            <path class="fourth_floor_inner"
+                                d="M832.125 267.499L902.625 316L901.625 318.499L894.125 328.5L887.125 332.5L832.125 294.499L765.125 240L398.625 396.5L377.625 377L765.125 213L832.125 267.499Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="fourth_floor_inner"
+                                d="M832.125 267.499L902.625 316L901.625 318.499L894.125 328.5L887.125 332.5L832.125 294.499L765.125 240L398.625 396.5L377.625 377L765.125 213L832.125 267.499Z"
+                                stroke="#F5EDDB" />
+                            <path class="third_floor_inner"
+                                d="M832.125 295L887.125 332.501L865.125 345.001L832.125 322L765.125 267.5L419.125 415.5L398.625 396.5L765.125 240.5L832.125 295Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="third_floor_inner"
+                                d="M832.125 295L887.125 332.501L865.125 345.001L832.125 322L765.125 267.5L419.125 415.5L398.625 396.5L765.125 240.5L832.125 295Z"
+                                stroke="#F5EDDB" />
+                            <path class="fourth_floor_front"
+                                d="M410.625 549L411.125 572L556.125 684.5L1062.62 395.5L1063.62 368.5L556.125 658.5L410.625 549Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="fourth_floor_front"
+                                d="M410.625 549L411.125 572L556.125 684.5L1062.62 395.5L1063.62 368.5L556.125 658.5L410.625 549Z"
+                                stroke="#F5EDDB" />
+                            <path class="third_floor_front_side"
+                                d="M344.125 519L226.625 409L225.625 379.5L343.125 491L425.625 454V483L344.125 519Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="third_floor_front_side"
+                                d="M344.125 519L226.625 409L225.625 379.5L343.125 491L425.625 454V483L344.125 519Z"
+                                stroke="#F5EDDB" />
+                            <path class="second_floor_front"
+                                d="M556.063 714L411.074 600.987L411.074 572L556.063 684.505L1062.62 395.5L1061.62 421.5L556.063 714Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="second_floor_front"
+                                d="M556.063 714L411.074 600.987L411.074 572L556.063 684.505L1062.62 395.5L1061.62 421.5L556.063 714Z"
+                                stroke="#F5EDDB" />
+                            <path class="second_floor_inner"
+                                d="M765.125 267.5L832.125 321.999L865.125 345L847.625 355L838.625 352.5L832.125 348.999L765.125 294L425.625 440.5V421.5L419.125 415.5L765.125 267.5Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="second_floor_inner"
+                                d="M765.125 267.5L832.125 321.999L865.125 345L847.625 355L838.625 352.5L832.125 348.999L765.125 294L425.625 440.5V421.5L419.125 415.5L765.125 267.5Z"
+                                stroke="#F5EDDB" />
+                            <path class="second_floor_front_side"
+                                d="M345.125 546L227.625 438.5L226.625 409L344.125 519L425.625 483V512L345.125 546Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="second_floor_front_side"
+                                d="M345.125 546L227.625 438.5L226.625 409L344.125 519L425.625 483V512L345.125 546Z"
+                                stroke="#F5EDDB" />
+                            <path class="first_floor"
+                                d="M411.125 598.5V601L556.125 714L1061.62 421L1061.12 429.5L1081.62 447L1081.12 458.5L550.625 765L536.625 751.5L477.625 785.5L365.125 673.5V663.5L371.125 660.5L355.125 645V629.5L382.625 614.5V607.5L406.125 595L411.125 598.5Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="first_floor"
+                                d="M411.125 598.5V601L556.125 714L1061.62 421L1061.12 429.5L1081.62 447L1081.12 458.5L550.625 765L536.625 751.5L477.625 785.5L365.125 673.5V663.5L371.125 660.5L355.125 645V629.5L382.625 614.5V607.5L406.125 595L411.125 598.5Z"
+                                stroke="#F5EDDB" />
+                            <path class="first_floor_inner"
+                                d="M765.125 294L832.125 348.999L838.625 352.5L830.125 364.5L791.625 386.5L779.125 378L741.125 343.5V329.5C623.107 380.253 549.994 412.016 425.625 465.5V440.5L765.125 294Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="first_floor_inner"
+                                d="M765.125 294L832.125 348.999L838.625 352.5L830.125 364.5L791.625 386.5L779.125 378L741.125 343.5V329.5C623.107 380.253 549.994 412.016 425.625 465.5V440.5L765.125 294Z"
+                                stroke="#F5EDDB" />
+                            <path class="first_floor_side"
+                                d="M227.625 438.5L229.125 471L260.625 501L232.125 513.5V523.5L311.125 601L410.625 557V542.5L425.625 534.5V512L345.125 546L227.625 438.5Z"
+                                fill="transparent" fill-opacity="0.5"
+                                style="mix-blend-mode:multiply" />
+                            <path class="first_floor_side"
+                                d="M227.625 438.5L229.125 471L260.625 501L232.125 513.5V523.5L311.125 601L410.625 557V542.5L425.625 534.5V512L345.125 546L227.625 438.5Z"
+                                stroke="#F5EDDB" />
+                            <defs>
+                                <pattern id="pattern0_3324_13033"
+                                    patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <use xlink:href="#image0_3324_13033"
+                                        transform="scale(0.000405844 0.000533049)" />
+                                </pattern>
 
-                    </svg>
+                                <image id="image0_3324_13033"
+                                    xlink:href="/images/content/house_type_img.png"
+                                    preserveAspectRatio="xMidYMid slice" />
+                            </defs>
 
+                        </svg> -->
+                    </div>
                 </div>
                 <div class="container">
                     <div class="house-type-section_content">
@@ -278,7 +427,8 @@
                             <span class="slide_date">2028</span>
                             <div class="slide_item">
                                 <p>Predaj pozemkov 2.časť – <a href="#"
-                                        class="link_underline">Primula</a></p>
+                                        class="link_underline">Primula</a>
+                                </p>
                                 <p>od jari 2028</p>
                             </div>
                         </div>
@@ -325,41 +475,12 @@
             </section>
             {{> form}}
         </main>
-        <div class="floor_list-wrap">
-            <div class="floor_list-overlay"></div>
-            <div class="floor_list-body">
-                <span class="floor_list-title">Výber polažia</span>
-                <ul class="floor_list-list">
-                    <li class="floor_list-item">
-                        <a href="floor.html">
-                            <span>1. podlažie</span>
-                            <span>10 voľných</span>
-                        </a>
-                    </li>
-                    <li class="floor_list-item sold">
-                        <a href="floor.html">
-                            <span>2. podlažie</span>
-                            <span>Vypredané</span>
-                        </a>
-                    </li>
-                    <li class="floor_list-item">
-                        <a href="floor.html">
-                            <span>3. podlažie</span>
-                            <span>10 voľných</span>
-                        </a>
-                    </li>
-                    <li class="floor_list-item">
-                        <a href="floor.html">
-                            <span>4. podlažie</span>
-                            <span>6 voľných</span>
-                        </a>
-                    </li>
-                    <li class="floor_list-item">
-                        <a href="floor.html">
-                            <span>5. podlažie</span>
-                            <span>2 Voľné</span>
-                        </a>
-                    </li>
+        <div class="selection-list-wrap">
+            <div class="selection-list-overlay"></div>
+            <div class="selection-list-body">
+                <span class="selection-list-title">Výber polažia</span>
+                <ul class="selection-list-list">
+                    <!-- The list will be dynamically populated from JSON -->
                 </ul>
             </div>
         </div>

@@ -1,0 +1,32 @@
+{
+  "first_floor": {
+    "name": "1. podlažie",
+    "status": "Voľné",
+    "count": 12,
+    "statusClass": "free"
+  },
+  "second_floor": {
+    "name": "2. podlažie",
+    "status": "Rezervované",
+    "count": 12,
+    "statusClass": "reserv"
+  },
+  "third_floor": {
+    "name": "3. podlažie",
+    "status": "V príprave",
+    "count": 12,
+    "statusClass": "prepare"
+  },
+  "fourth_floor": {
+    "name": "4. podlažie",
+    "status": "Voľné",
+    "count": 10,
+    "statusClass": "free"
+  },
+  "fifth_floor": {
+    "name": "5. podlažie",
+    "status": "Predané",
+    "count": 10,
+    "statusClass": "sold"
+  }
+}

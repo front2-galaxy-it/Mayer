@@ -1,0 +1,448 @@
+{
+  "locations": [
+    {
+      "id": "cyklo-pesia-lavka",
+      "name": "Cyklo-pešia lávka (vo výstavbe)",
+      "coordinates": {
+        "lat": 48.43997244427197,
+        "lng": 17.043003287120033
+      },
+      "bikeTime": "2 min.",
+      "bikeTimeMinutes": 2,
+      "distance": 600,
+      "priority": 1
+    },
+    {
+      "id": "maternaska-skola-1",
+      "name": "Materská škola",
+      "coordinates": {
+        "lat": 48.44000603626582,
+        "lng": 17.037413796151355
+      },
+      "bikeTime": "4 min.",
+      "bikeTimeMinutes": 4,
+      "distance": 1000,
+      "priority": 2
+    },
+    {
+      "id": "stvrty-rybnik",
+      "name": "Štvrtý rybník",
+      "coordinates": {
+        "lat": 48.43302451007621,
+        "lng": 17.062917410560534
+      },
+      "bikeTime": "6 min.",
+      "bikeTimeMinutes": 6,
+      "distance": 1400,
+      "priority": 3
+    },
+    {
+      "id": "nemocnica-poliklinika",
+      "name": "Nemocnica, poliklinika",
+      "coordinates": {
+        "lat": 48.44079906400949,
+        "lng": 17.033871734745322
+      },
+      "bikeTime": "6 min.",
+      "bikeTimeMinutes": 6,
+      "distance": 1300,
+      "priority": 4
+    },
+    {
+      "id": "palfyovsky-kastiel",
+      "name": "Pálffyovský kaštieľ",
+      "coordinates": {
+        "lat": 48.439865324149245,
+        "lng": 17.03095069397853
+      },
+      "bikeTime": "7 min.",
+      "bikeTimeMinutes": 7,
+      "distance": 1600,
+      "priority": 5
+    },
+    {
+      "id": "zamocky-park-sportovy-areal",
+      "name": "Zámocký park, športový areál",
+      "coordinates": {
+        "lat": 48.439302235736456,
+        "lng": 17.02913509524736
+      },
+      "bikeTime": "7 min.",
+      "bikeTimeMinutes": 7,
+      "distance": 1700,
+      "priority": 6
+    },
+    {
+      "id": "zberny-dvor",
+      "name": "Zberný dvor",
+      "coordinates": {
+        "lat": 48.44856178264937,
+        "lng": 17.039025383662555
+      },
+      "bikeTime": "8 min.",
+      "bikeTimeMinutes": 8,
+      "distance": 1900,
+      "priority": 7
+    },
+    {
+      "id": "treti-rybnik",
+      "name": "Tretí rybník",
+      "coordinates": {
+        "lat": 48.43100905223352,
+        "lng": 17.076255658549325
+      },
+      "bikeTime": "10 min.",
+      "bikeTimeMinutes": 10,
+      "distance": 2400,
+      "priority": 8
+    },
+    {
+      "id": "sport-arena",
+      "name": "Šport aréna",
+      "coordinates": {
+        "lat": 48.43605057550216,
+        "lng": 17.024747437964226
+      },
+      "bikeTime": "10 min.",
+      "bikeTimeMinutes": 10,
+      "distance": 2400,
+      "priority": 9
+    },
+    {
+      "id": "supermarket-billa",
+      "name": "Supermarket Billa",
+      "coordinates": {
+        "lat": 48.43838426732513,
+        "lng": 17.02200470276177
+      },
+      "bikeTime": "10 min.",
+      "bikeTimeMinutes": 10,
+      "distance": 2400,
+      "priority": 10
+    },
+    {
+      "id": "letne-kupalisko",
+      "name": "Letné kúpalisko",
+      "coordinates": {
+        "lat": 48.43498468434637,
+        "lng": 17.03011868207908
+      },
+      "bikeTime": "10 min.",
+      "bikeTimeMinutes": 10,
+      "distance": 2200,
+      "priority": 11
+    },
+    {
+      "id": "nakupne-centrum-1",
+      "name": "Nákupné centrum",
+      "coordinates": {
+        "lat": 48.433386452620404,
+        "lng": 17.031286504814222
+      },
+      "bikeTime": "10 min.",
+      "bikeTimeMinutes": 10,
+      "distance": 2300,
+      "priority": 12
+    },
+    {
+      "id": "posta",
+      "name": "Pošta",
+      "coordinates": {
+        "lat": 48.43721823349483,
+        "lng": 17.02263756714613
+      },
+      "bikeTime": "10 min",
+      "bikeTimeMinutes": 10,
+      "distance": 2400,
+      "priority": 13
+    },
+    {
+      "id": "supermarket-lidl",
+      "name": "Supermarket Lidl",
+      "coordinates": {
+        "lat": 48.43791592353924,
+        "lng": 17.02123962094954
+      },
+      "bikeTime": "11 min.",
+      "bikeTimeMinutes": 11,
+      "distance": 2500,
+      "priority": 14
+    },
+    {
+      "id": "plavaren-sportova-hala",
+      "name": "Plaváreň, športová hala",
+      "coordinates": {
+        "lat": 48.43860188844256,
+        "lng": 17.020735103057387
+      },
+      "bikeTime": "11 min.",
+      "bikeTimeMinutes": 11,
+      "distance": 2500,
+      "priority": 15
+    },
+    {
+      "id": "maternaska-skola-2",
+      "name": "Materská škola",
+      "coordinates": {
+        "lat": 48.43921707312739,
+        "lng": 17.02151590950272
+      },
+      "bikeTime": "11 min.",
+      "bikeTimeMinutes": 11,
+      "distance": 2500,
+      "priority": 16
+    },
+    {
+      "id": "synagoga-kom-centrum",
+      "name": "Synagóga - kom.centrum",
+      "coordinates": {
+        "lat": 48.43739618173974,
+        "lng": 17.020470342148045
+      },
+      "bikeTime": "11 min.",
+      "bikeTimeMinutes": 11,
+      "distance": 2500,
+      "priority": 17
+    },
+    {
+      "id": "nakupne-centrum-2",
+      "name": "Nákupné centrum",
+      "coordinates": {
+        "lat": 48.433180289687485,
+        "lng": 17.028703229523888
+      },
+      "bikeTime": "12 min.",
+      "bikeTimeMinutes": 12,
+      "distance": 2800,
+      "priority": 18
+    },
+    {
+      "id": "hypermarket-tesco",
+      "name": "Hypermarket Tesco",
+      "coordinates": {
+        "lat": 48.43161456436809,
+        "lng": 17.029392947797334
+      },
+      "bikeTime": "12 min.",
+      "bikeTimeMinutes": 12,
+      "distance": 2800,
+      "priority": 19
+    },
+    {
+      "id": "gymnazium",
+      "name": "Gymnázium",
+      "coordinates": {
+        "lat": 48.43996194754636,
+        "lng": 17.018632413416544
+      },
+      "bikeTime": "12 min.",
+      "bikeTimeMinutes": 12,
+      "distance": 2700,
+      "priority": 20
+    },
+    {
+      "id": "zeleznicna-stanica",
+      "name": "Železničná stanica",
+      "coordinates": {
+        "lat": 48.43307392422428,
+        "lng": 17.02264737374236
+      },
+      "bikeTime": "13 min.",
+      "bikeTimeMinutes": 13,
+      "distance": 2900,
+      "priority": 21
+    },
+    {
+      "id": "frantiskanksy-kostol",
+      "name": "Františkánsky kostol",
+      "coordinates": {
+        "lat": 48.43598966691118,
+        "lng": 17.018527501538447
+      },
+      "bikeTime": "13 min.",
+      "bikeTimeMinutes": 13,
+      "distance": 3100,
+      "priority": 22
+    },
+    {
+      "id": "specialna-skola",
+      "name": "Špeciálna škola",
+      "coordinates": {
+        "lat": 48.44031904908008,
+        "lng": 17.015287591295287
+      },
+      "bikeTime": "13 min.",
+      "bikeTimeMinutes": 13,
+      "distance": 2900,
+      "priority": 23
+    },
+    {
+      "id": "spojena-skola",
+      "name": "Spojená škola",
+      "coordinates": {
+        "lat": 48.43558795824262,
+        "lng": 17.0185895199532
+      },
+      "bikeTime": "14 min.",
+      "bikeTimeMinutes": 14,
+      "distance": 3200,
+      "priority": 24
+    },
+    {
+      "id": "maternaska-skola-3",
+      "name": "Materská škola",
+      "coordinates": {
+        "lat": 48.43558795824262,
+        "lng": 17.0185895199532
+      },
+      "bikeTime": "14 min.",
+      "bikeTimeMinutes": 14,
+      "distance": 3200,
+      "priority": 25
+    },
+    {
+      "id": "mestsky-urad",
+      "name": "Mestký úrad",
+      "coordinates": {
+        "lat": 48.43645365945502,
+        "lng": 17.0175499610113
+      },
+      "bikeTime": "14 min.",
+      "bikeTimeMinutes": 14,
+      "distance": 3200,
+      "priority": 26
+    },
+    {
+      "id": "kino",
+      "name": "Kino",
+      "coordinates": {
+        "lat": 48.43711642577214,
+        "lng": 17.015049726432327
+      },
+      "bikeTime": "14 min.",
+      "bikeTimeMinutes": 14,
+      "distance": 3300,
+      "priority": 27
+    },
+    {
+      "id": "tenisovy-klub",
+      "name": "Tenisový klub",
+      "coordinates": {
+        "lat": 48.44355378462546,
+        "lng": 17.017475544416296
+      },
+      "bikeTime": "14 min",
+      "bikeTimeMinutes": 14,
+      "distance": 3300,
+      "priority": 28
+    },
+    {
+      "id": "okresny-urad",
+      "name": "Okresný úrad",
+      "coordinates": {
+        "lat": 48.44003726371809,
+        "lng": 17.013434051365728
+      },
+      "bikeTime": "16 min.",
+      "bikeTimeMinutes": 16,
+      "distance": 3600,
+      "priority": 29
+    },
+    {
+      "id": "kostol-najsv-trojice",
+      "name": "Kostol najsv. trojice",
+      "coordinates": {
+        "lat": 48.44048276605063,
+        "lng": 17.01186110119432
+      },
+      "bikeTime": "16 min.",
+      "bikeTimeMinutes": 16,
+      "distance": 3700,
+      "priority": 30
+    },
+    {
+      "id": "zakladna-skola-1",
+      "name": "Základná škola",
+      "coordinates": {
+        "lat": 48.44144316710993,
+        "lng": 17.00865039136665
+      },
+      "bikeTime": "17 min.",
+      "bikeTimeMinutes": 17,
+      "distance": 3900,
+      "priority": 31
+    },
+    {
+      "id": "maternaska-skola-4",
+      "name": "Materská škola",
+      "coordinates": {
+        "lat": 48.44137634419666,
+        "lng": 17.00886455220995
+      },
+      "bikeTime": "17 min.",
+      "bikeTimeMinutes": 17,
+      "distance": 3900,
+      "priority": 32
+    },
+    {
+      "id": "druhy-rybnik",
+      "name": "Druhý rybník",
+      "coordinates": {
+        "lat": 48.418437645369146,
+        "lng": 17.084824559546792
+      },
+      "bikeTime": "18 min.",
+      "bikeTimeMinutes": 18,
+      "distance": 4200,
+      "priority": 33
+    },
+    {
+      "id": "supermarket-kaufland",
+      "name": "Supermarket Kaufland",
+      "coordinates": {
+        "lat": 48.44294490582836,
+        "lng": 17.010538666275426
+      },
+      "bikeTime": "18 min.",
+      "bikeTimeMinutes": 18,
+      "distance": 4100,
+      "priority": 34
+    },
+    {
+      "id": "bowlingove-centrum",
+      "name": "Bowlingové centrum",
+      "coordinates": {
+        "lat": 48.424672662874535,
+        "lng": 17.025664385605122
+      },
+      "bikeTime": "18 min.",
+      "bikeTimeMinutes": 18,
+      "distance": 4100,
+      "priority": 35
+    },
+    {
+      "id": "zakladna-skola-2",
+      "name": "Základná škola",
+      "coordinates": {
+        "lat": 48.42202770579242,
+        "lng": 17.01544640334068
+      },
+      "bikeTime": "21 min.",
+      "bikeTimeMinutes": 21,
+      "distance": 4900,
+      "priority": 36
+    }
+  ],
+  "settings": {
+    "centerCoordinates": {
+      "lat": 48.43997244427197,
+      "lng": 17.043003287120033
+    },
+    "zoomLevel": 14,
+    "mapId": "",
+    "projectLabel": {
+      "text": "MAYER",
+      "position": { "lat": 48.441197989798205, "lng": 17.04627803458811 }
+    }
+  }
+}

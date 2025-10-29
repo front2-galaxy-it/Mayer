@@ -27,119 +27,23 @@
                     </div>
                 </div>
             </section>
-            <section class="district-map scrollable_block district-map-items-block">
-                <div class="scroll_wrapper" data-scroll>
-                    <img class="district-map_img scrollable_item"
-                        src="./images/content/district-map.png" alt="map" />
-                </div>
+            <section class="district-map district-map-items-block">
+                <div id="map" class="district-map_container"></div>
                 <div class="filter__select-body">
-                    <div class="filter__select">
-                        <div class="filter__trigger open_floor_select">
-                            <span class="filter__trigger-text">Zoznam bodov z mapy</span>
-                            <svg class="filter__arrow" width="14" height="8" viewBox="0 0 14 8"
-                                fill="none">
-                                <path
-                                    d="M0.875 0.985352L5.46079 5.57114C6.24183 6.35219 7.50816 6.35219 8.28921 5.57114L12.875 0.985352"
-                                    stroke="" stroke-width="2" />
-                            </svg>
+                    <button class="filter__select" id="map-dropdown-toggle">
+                        <span class="filter__select-text">Zoznam bodov z mapy</span>
+                        <svg class="filter__arrow" width="14" height="8" viewBox="0 0 14 8"
+                            fill="none">
+                            <path
+                                d="M0.875 0.985352L5.46079 5.57114C6.24183 6.35219 7.50816 6.35219 8.28921 5.57114L12.875 0.985352"
+                                stroke="" stroke-width="2" />
+                        </svg>
+                    </button>
+                    <div class="district-map-items-list" id="map-dropdown-content">
+                        <div class="district-map-items">
+                            <!-- Dynamic content will be loaded here from JSON -->
                         </div>
                     </div>
-                </div>
-                <div class="district-map-items">
-                    <button type="button" class="district-map-item">
-                        <span>Materská škola</span>
-                        <div class="ride-time">
-                            <span>4 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Štvrtý rybník</span>
-                        <div class="ride-time">
-                            <span>4 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Nemocnica, poliklinika</span>
-                        <div class="ride-time">
-                            <span>6 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Zámocký park, športový areál</span>
-                        <div class="ride-time">
-                            <span>6 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Šport aréna</span>
-                        <div class="ride-time">
-                            <span>7 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Supermarket Billa</span>
-                        <div class="ride-time">
-                            <span>10 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Supermarket Lidl</span>
-                        <div class="ride-time">
-                            <span>10 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Plaváreň, športová hala</span>
-                        <div class="ride-time">
-                            <span>11 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Nákupné centrum</span>
-                        <div class="ride-time">
-                            <span>11 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Železničná stanica</span>
-                        <div class="ride-time">
-                            <span>12 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Františkánsky kostol</span>
-                        <div class="ride-time">
-                            <span>13 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Mestký úrad</span>
-                        <div class="ride-time">
-                            <span>13 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Kino</span>
-                        <div class="ride-time">
-                            <span>14 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                </div>
-                <div class="custom-scrollbar">
-                    <div class="custom-thumb"></div>
                 </div>
             </section>
             <section class="text-section pt-80 pb-80">
@@ -160,103 +64,13 @@
                 </div>
             </section>
         </main>
-        <div class="floor_list-wrap district-map-items-block">
-            <div class="floor_list-overlay"></div>
-            <div class="floor_list-body">
-                <span class="floor_list-title">Zobraziť na mape</span>
-                <div class="district-map-items-mob">
-                    <button type="button" class="district-map-item">
-                        <span>Materská škola</span>
-                        <div class="ride-time">
-                            <span>4 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Štvrtý rybník</span>
-                        <div class="ride-time">
-                            <span>4 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Nemocnica, poliklinika</span>
-                        <div class="ride-time">
-                            <span>6 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Zámocký park, športový areál</span>
-                        <div class="ride-time">
-                            <span>6 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Šport aréna</span>
-                        <div class="ride-time">
-                            <span>7 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Supermarket Billa</span>
-                        <div class="ride-time">
-                            <span>10 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Supermarket Lidl</span>
-                        <div class="ride-time">
-                            <span>10 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Plaváreň, športová hala</span>
-                        <div class="ride-time">
-                            <span>11 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Nákupné centrum</span>
-                        <div class="ride-time">
-                            <span>11 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Železničná stanica</span>
-                        <div class="ride-time">
-                            <span>12 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Františkánsky kostol</span>
-                        <div class="ride-time">
-                            <span>13 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Mestký úrad</span>
-                        <div class="ride-time">
-                            <span>13 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                    <button type="button" class="district-map-item">
-                        <span>Kino</span>
-                        <div class="ride-time">
-                            <span>14 min</span>
-                            <img src="./images/bike.svg" alt="bike icon" width="16" height="16">
-                        </div>
-                    </button>
-                </div>
+        <div class="selection-list-wrap">
+            <div class="selection-list-overlay"></div>
+            <div class="selection-list-body">
+                <span class="selection-list-title">Výber polažia</span>
+                <ul class="selection-list-list">
+                    <!-- The list will be dynamically populated from JSON -->
+                </ul>
             </div>
         </div>
         {{> footer}}

@@ -22,7 +22,7 @@ body {
     padding-top: 80px;
 
     @include media ("<phone") {
-        padding-top: 110px;
+        padding-top: 70px;
     }
 
     &.transparent_header {
@@ -1599,135 +1599,7 @@ main {
     }
 }
 
-.district-map {
 
-    &-items-block {
-        max-width: 1280px;
-        width: 100%;
-        margin: 0 auto;
-        position: relative;
-
-        .district-map_img {
-            max-width: 1280px;
-            height: auto;
-        }
-
-        .district-map-items {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            max-width: 350px;
-            width: 100%;
-
-            @include media ("<tablet") {
-                display: none;
-            }
-
-            &-mob{
-                height: 100%;
-                overflow-y: auto;
-                padding-bottom: 30px;
-
-                &::-webkit-scrollbar{
-                    display: none;
-                }
-
-                scrollbar-width: none;
-            }
-        }
-
-        .district-map-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 15px;
-            border: 1px solid $green;
-            background-color: #FCF7EB;
-            font-size: 14px;
-            font-family: "Ease";
-            font-weight: 600;
-            line-height: 125%;
-            transition: $animation-speed;
-
-            &:hover {
-                background-color: color-mix(in srgb, #FCF7EB 100%, #424D1C 20%);
-                transition: $animation-speed;
-            }
-
-            @include media ("<tablet") {
-                border: none;
-                border-bottom: 1px solid $green;
-                width: 100%;
-            }
-
-            &:not(:last-child) {
-                border-bottom: none;
-
-                @include media ("<tablet") {
-                    border-bottom: 1px solid $green;
-                }
-            }
-        }
-
-        .ride-time {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-
-            img {
-                width: 24px;
-                height: 18px;
-            }
-        }
-
-        .filter__select-body {
-            display: none;
-            position: absolute;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #FCF7EB;
-            width: 100%;
-
-            .filter__select {
-                width: 340px;
-                margin: 0 auto;
-            }
-
-            @include media ("<tablet") {
-                display: block;
-            }
-
-            .filter__trigger-text {
-                color: $green;
-            }
-        }
-    }
-
-    &.floor-map {
-
-        &_img {
-            min-width: 1232px;
-            max-width: 1232px;
-            height: auto;
-        }
-    }
-
-    .scroll_wrapper {
-        overflow: auto;
-    }
-
-    &_img {
-        display: block;
-        min-width: 1280px;
-        max-width: 1280px;
-        height: 840px;
-        margin: 0 auto;
-    }
-}
 
 .custom-scrollbar {
     width: 120px;
@@ -1798,8 +1670,7 @@ main {
     }
 }
 
-
-.floor_list {
+.selection-list {
 
     &-wrap {
         position: fixed;
@@ -1816,6 +1687,11 @@ main {
         &.open {
             opacity: 1;
             visibility: visible;
+
+            .selection-list-body {
+                transform: translateY(0);
+                transition: transform 0.3s ease;
+            }
         }
     }
 
@@ -1827,7 +1703,8 @@ main {
     }
 
     &-body {
-        max-height: 50vh;
+        transform: translateY(100%);
+        max-height: 70vh;
 
         border-radius: 8px 8px 0 0;
         padding: 24px;
@@ -1848,12 +1725,12 @@ main {
 
     &-list {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
         gap: 12px;
         height: 100%;
         overflow-y: auto;
+        padding-bottom: 50px;
 
         &::-webkit-scrollbar {
             display: none;
@@ -1873,9 +1750,9 @@ main {
         }
 
         a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 30% 1fr;
+            justify-items: start;
             gap: 12px;
             width: 100%;
             font-size: 14px;
@@ -1883,7 +1760,21 @@ main {
             font-family: "Ease";
             color: $green;
         }
+
+        .selection-info {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            row-gap: 4px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            column-gap: 12px;
+        }
     }
+
 }
 
 .floor {
@@ -1996,6 +1887,11 @@ main {
 
         &.next {
             rotate: -90deg;
+        }
+
+        &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
         }
     }
 

@@ -1,0 +1,146 @@
+{
+  "apartment_b_2_1": {
+    "name": "Byt B.2.1",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "78,40 m²",
+    "price": "245 000 EUR"
+  },
+  "apartment_b_2_2": {
+    "name": "Byt B.2.2",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "2 izby",
+    "area": "64,10 m²",
+    "price": "210 000 EUR"
+  },
+  "apartment_b_2_3": {
+    "name": "Byt B.2.3",
+    "status": "V príprave",
+    "statusClass": "prepare",
+    "count": "4 izby",
+    "area": "102,20 m²",
+    "price": "-"
+  },
+  "apartment_c_2_1": {
+    "name": "Byt C.2.1",
+    "status": "Predaný",
+    "statusClass": "sold",
+    "count": "3 izby",
+    "area": "80,90 m²",
+    "price": "-"
+  },
+  "apartment_c_2_2": {
+    "name": "Byt C.2.2",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "85,30 m²",
+    "price": "255 000 EUR"
+  },
+  "apartment_c_2_3": {
+    "name": "Byt C.2.3",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "2 izby",
+    "area": "69,50 m²",
+    "price": "225 000 EUR"
+  },
+  "apartment_d_2_1": {
+    "name": "Byt D.2.1",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "82,70 m²",
+    "price": "270 000 EUR"
+  },
+  "apartment_d_2_2": {
+    "name": "Byt D.2.2",
+    "status": "Predaný",
+    "statusClass": "sold",
+    "count": "3 izby",
+    "area": "79,40 m²",
+    "price": "-"
+  },
+  "apartment_d_2_3": {
+    "name": "Byt D.2.3",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "81,10 m²",
+    "price": "246 000 EUR"
+  },
+  "apartment_d_2_4": {
+    "name": "Byt D.2.4",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "2 izby",
+    "area": "66,80 m²",
+    "price": "215 000 EUR"
+  },
+  "apartment_d_2_5": {
+    "name": "Byt D.2.5",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "83,40 m²",
+    "price": "252 000 EUR"
+  },
+  "apartment_d_2_6": {
+    "name": "Byt D.2.6",
+    "status": "V príprave",
+    "statusClass": "prepare",
+    "count": "4 izby",
+    "area": "100,30 m²",
+    "price": "-"
+  },
+  "apartment_d_2_7": {
+    "name": "Byt D.2.7",
+    "status": "Predaný",
+    "statusClass": "sold",
+    "count": "3 izby",
+    "area": "79,90 m²",
+    "price": "-"
+  },
+  "apartment_d_2_8": {
+    "name": "Byt D.2.8",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "2 izby",
+    "area": "67,20 m²",
+    "price": "218 000 EUR"
+  },
+  "apartment_d_2_9": {
+    "name": "Byt D.2.9",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "3 izby",
+    "area": "82,10 m²",
+    "price": "262 000 EUR"
+  },
+  "apartment_d_2_10": {
+    "name": "Byt D.2.10",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "84,60 m²",
+    "price": "268 000 EUR"
+  },
+  "apartment_d_2_11": {
+    "name": "Byt D.2.11",
+    "status": "Predaný",
+    "statusClass": "sold",
+    "count": "2 izby",
+    "area": "65,40 m²",
+    "price": "-"
+  },
+  "apartment_d_2_12": {
+    "name": "Byt D.2.12",
+    "status": "V príprave",
+    "statusClass": "prepare",
+    "count": "4 izby",
+    "area": "101,80 m²",
+    "price": "-"
+  }
+}

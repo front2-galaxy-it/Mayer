@@ -13,6 +13,16 @@ Install the dependencies and devDependencies and start the server.
   npm run dev
 ```
 
+## Environment variables
+
+Create a `.env.local` file in the project root with your Google Maps API key:
+
+```env
+VITE_GOOGLE_MAPS_API_KEY=YOUR_REAL_API_KEY
+```
+
+Then restart the dev server.
+
 ## Eslint + Pretier
 
 If you don't have a .vscode/settings.json file yet, create it with the following settings:

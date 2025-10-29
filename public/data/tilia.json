@@ -1,0 +1,18 @@
+{
+  "section-1": { "name": "Pozemok 1", "status": "Dostupné", "count": "806 m²", "statusClass": "free" },
+  "section-2": { "name": "Pozemok 2", "status": "V príprave", "count": "750 m²", "statusClass": "prepare" },
+  "section-3": { "name": "Pozemok 3", "status": "Rezervované", "count": "920 m²", "statusClass": "reserv" },
+  "section-4": { "name": "Pozemok 4", "status": "Dostupné", "count": "680 m²", "statusClass": "free" },
+  "section-5": { "name": "Pozemok 5", "status": "Predané", "count": "850 m²", "statusClass": "sold" },
+  "section-6": { "name": "Pozemok 6", "status": "Dostupné", "count": "720 m²", "statusClass": "free" },
+  "section-7": { "name": "Pozemok 7", "status": "Rezervované", "count": "780 m²", "statusClass": "reserv" },
+  "section-8": { "name": "Pozemok 8", "status": "Dostupné", "count": "890 m²", "statusClass": "free" },
+  "section-9": { "name": "Pozemok 9", "status": "Predané", "count": "650 m²", "statusClass": "sold" },
+  "section-10": { "name": "Pozemok 10", "status": "V príprave", "count": "820 m²", "statusClass": "prepare" },
+  "section-11": { "name": "Pozemok 11", "status": "Rezervované", "count": "760 m²", "statusClass": "reserv" },
+  "section-12": { "name": "Pozemok 12", "status": "Dostupné", "count": "940 m²", "statusClass": "free" },
+  "section-13": { "name": "Pozemok 13", "status": "Predané", "count": "710 m²", "statusClass": "sold" },
+  "section-14": { "name": "Pozemok 14", "status": "Dostupné", "count": "870 m²", "statusClass": "free" },
+  "section-15": { "name": "Pozemok 15", "status": "Rezervované", "count": "800 m²", "statusClass": "reserv" },
+  "section-16": { "name": "Pozemok 16", "status": "Dostupné", "count": "730 m²", "statusClass": "free" }
+}

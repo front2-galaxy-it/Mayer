@@ -1,0 +1,178 @@
+{
+  "apartment_b_3_1": {
+    "name": "Byt B.3.1",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "78,10 m²",
+    "price": "246 000 EUR"
+  },
+  "apartment_b_3_2": {
+    "name": "Byt B.3.2",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "2 izby",
+    "area": "63,80 m²",
+    "price": "212 000 EUR"
+  },
+  "apartment_b_3_3": {
+    "name": "Byt B.3.3",
+    "status": "Predaný",
+    "statusClass": "sold",
+    "count": "3 izby",
+    "area": "80,20 m²",
+    "price": "-"
+  },
+  "apartment_c_3_1": {
+    "name": "Byt C.3.1",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "85,00 m²",
+    "price": "258 000 EUR"
+  },
+  "apartment_c_3_2": {
+    "name": "Byt C.3.2",
+    "status": "V príprave",
+    "statusClass": "prepare",
+    "count": "4 izby",
+    "area": "103,10 m²",
+    "price": "-"
+  },
+  "apartment_c_3_3": {
+    "name": "Byt C.3.3",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "3 izby",
+    "area": "82,40 m²",
+    "price": "266 000 EUR"
+  },
+  "apartment_c_3_4": {
+    "name": "Byt C.3.4",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "84,10 m²",
+    "price": "262 000 EUR"
+  },
+  "apartment_c_3_5": {
+    "name": "Byt C.3.5",
+    "status": "Predaný",
+    "statusClass": "sold",
+    "count": "2 izby",
+    "area": "66,30 m²",
+    "price": "-"
+  },
+  "apartment_c_3_6": {
+    "name": "Byt C.3.6",
+    "status": "V príprave",
+    "statusClass": "prepare",
+    "count": "4 izby",
+    "area": "101,90 m²",
+    "price": "-"
+  },
+  "apartment_c_3_7": {
+    "name": "Byt C.3.7",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "83,30 m²",
+    "price": "259 000 EUR"
+  },
+  "apartment_d_3_1": {
+    "name": "Byt D.3.1",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "3 izby",
+    "area": "82,40 m²",
+    "price": "271 000 EUR"
+  },
+  "apartment_d_3_2": {
+    "name": "Byt D.3.2",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "81,30 m²",
+    "price": "248 000 EUR"
+  },
+  "apartment_d_3_3": {
+    "name": "Byt D.3.3",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "2 izby",
+    "area": "66,10 m²",
+    "price": "216 000 EUR"
+  },
+  "apartment_d_3_4": {
+    "name": "Byt D.3.4",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "83,10 m²",
+    "price": "253 000 EUR"
+  },
+  "apartment_d_3_5": {
+    "name": "Byt D.3.5",
+    "status": "Predaný",
+    "statusClass": "sold",
+    "count": "3 izby",
+    "area": "80,00 m²",
+    "price": "-"
+  },
+  "apartment_d_3_6": {
+    "name": "Byt D.3.6",
+    "status": "V príprave",
+    "statusClass": "prepare",
+    "count": "4 izby",
+    "area": "101,50 m²",
+    "price": "-"
+  },
+  "apartment_d_3_7": {
+    "name": "Byt D.3.7",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "2 izby",
+    "area": "67,50 m²",
+    "price": "219 000 EUR"
+  },
+  "apartment_d_3_8": {
+    "name": "Byt D.3.8",
+    "status": "Rezervovaný",
+    "statusClass": "reserv",
+    "count": "3 izby",
+    "area": "82,60 m²",
+    "price": "261 000 EUR"
+  },
+  "apartment_d_3_9": {
+    "name": "Byt D.3.9",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "84,20 m²",
+    "price": "269 000 EUR"
+  },
+  "apartment_d_3_10": {
+    "name": "Byt D.3.10",
+    "status": "Predaný",
+    "statusClass": "sold",
+    "count": "2 izby",
+    "area": "65,10 m²",
+    "price": "-"
+  },
+  "apartment_d_3_11": {
+    "name": "Byt D.3.11",
+    "status": "Voľný",
+    "statusClass": "free",
+    "count": "3 izby",
+    "area": "82,90 m²",
+    "price": "263 000 EUR"
+  },
+  "apartment_d_3_12": {
+    "name": "Byt D.3.12",
+    "status": "V príprave",
+    "statusClass": "prepare",
+    "count": "4 izby",
+    "area": "102,40 m²",
+    "price": "-"
+  }
+}

@@ -13,6 +13,11 @@ import { slideDown, slideUp } from './utils/slideIn';
 import { initFilters } from './components/filters';
 
 import SvgTooltips from './components/svg-tooltips';
+import GoogleMaps from './components/google-maps';
+import DistrictMap from './components/district-map';
+
+// Make GoogleMaps available globally for district-map.html
+window.GoogleMaps = GoogleMaps;
 
 new WOW().init();
 
@@ -24,11 +29,10 @@ new Accordion('.accordion', 'single');
 document.addEventListener('DOMContentLoaded', () => {
   initFilters();
   addFilterListResizeClass();
-  new SvgTooltips({
-    dataFile: '/data/PAVLAČOVÝ-DOM.json',
-    svgSelector: '.pavlacovy_dom',
-    pathSelector: 'path[class*="floor"], path[class*="_floor"]',
-  });
+  initSvgTooltips();
+  initGoogleMaps();
+  initDistrictMap();
+  setScrollCenter();
 });
 
 window.addEventListener('load', () => {
@@ -44,14 +48,10 @@ window.addEventListener('load', () => {
   initGenericFilterSelects();
   addFilterListResizeClass();
   openFormPopup();
-  initFloorSelect();
+  initSectionSelect();
   // closeHeaderLabel();
   showCookies();
-  new SvgTooltips({
-    dataFile: '/data/PAVLAČOVÝ-DOM.json',
-    svgSelector: '.pavlacovy_dom',
-    pathSelector: 'path[class*="floor"], path[class*="_floor"]',
-  });
+  initSvgTooltips();
 });
 
 window.addEventListener('resize', () => {
@@ -67,17 +67,14 @@ window.addEventListener('resize', () => {
   initGenericFilterSelects();
   addFilterListResizeClass();
   openFormPopup();
-  initFloorSelect();
+  initSectionSelect();
   // closeHeaderLabel();
-  new SvgTooltips({
-    dataFile: '/data/PAVLAČOVÝ-DOM.json',
-    svgSelector: '.pavlacovy_dom',
-    pathSelector: 'path[class*="floor"], path[class*="_floor"]',
-  });
+  initSvgTooltips();
 });
 
 document.addEventListener('filters:ready', () => {
   initCustomRangeSliders();
+  addFilterListResizeClass();
 });
 
 document.querySelectorAll('.gallery-swiper').forEach((galleryEl) => {
@@ -172,37 +169,37 @@ new Swiper('.house-swiper', {
   slidesPerView: 'auto',
 });
 
-function closeHeaderLabel() {
-  const headerLabel = document.querySelector('.header_label-wrap');
-  const headerLabelCloseBtn = document.querySelector('.label-wrap-close-btn');
+// function closeHeaderLabel() {
+//   const headerLabel = document.querySelector('.header_label-wrap');
+//   const headerLabelCloseBtn = document.querySelector('.label-wrap-close-btn');
 
-  const body = document.body;
+//   const body = document.body;
 
-  const duration = 500;
+//   const duration = 500;
 
-  if (!headerLabel || !headerLabelCloseBtn) return;
+//   if (!headerLabel || !headerLabelCloseBtn) return;
 
-  let visibleLabel = true;
+//   let visibleLabel = true;
 
-  function updatePadding() {
-    if (body.classList.contains('transparent_header')) return;
-    if (window.innerWidth <= 480) {
-      body.style.paddingTop = visibleLabel ? '90px' : '50px';
-    } else {
-      body.style.paddingTop = visibleLabel ? '120px' : '80px';
-    }
-  }
+//   function updatePadding() {
+//     if (body.classList.contains('transparent_header')) return;
+//     if (window.innerWidth <= 480) {
+//       body.style.paddingTop = visibleLabel ? '90px' : '50px';
+//     } else {
+//       body.style.paddingTop = visibleLabel ? '120px' : '80px';
+//     }
+//   }
 
-  updatePadding();
+//   updatePadding();
 
-  headerLabelCloseBtn.addEventListener('click', () => {
-    slideUp(headerLabel, duration);
-    visibleLabel = false;
-    updatePadding();
-  });
+//   headerLabelCloseBtn.addEventListener('click', () => {
+//     slideUp(headerLabel, duration);
+//     visibleLabel = false;
+//     updatePadding();
+//   });
 
-  window.addEventListener('resize', updatePadding);
-}
+//   window.addEventListener('resize', updatePadding);
+// }
 
 let swiperQualities = null;
 let swiperPlan = null;
@@ -456,83 +453,140 @@ function setScrollCenter() {
 
   scrollContainers.forEach((container, index) => {
     const image = scrollImages[index];
-    if (!image) return;
+    if (!image || !container) return;
 
-    const scrollTo = (image.offsetWidth - container.clientWidth) / 2;
-    container.scrollLeft = scrollTo;
+    const imageWidth = image.offsetWidth;
+    const containerWidth = container.clientWidth;
+
+    // Validate dimensions
+    if (imageWidth <= 0 || containerWidth <= 0) return;
+
+    // Always center the image, regardless of size
+    if (imageWidth > containerWidth) {
+      // Image is wider than container - center it by scrolling
+      const scrollTo = Math.max(0, (imageWidth - containerWidth) / 2);
+      container.scrollLeft = scrollTo;
+    } else {
+      // Image is smaller than container - center it by scrolling to 0
+      container.scrollLeft = 0;
+    }
   });
 }
 
 function initCustomScrollbar() {
   const customScrollbar = document.querySelector('.custom-scrollbar');
   const customThumb = document.querySelector('.custom-thumb');
-  let scrollContainer = null;
 
   if (!customScrollbar || !customThumb) return;
 
+  // Configuration constants
+  const CONFIG = {
+    MIN_THUMB_WIDTH: 20,
+    TAB_SWITCH_DELAY: 500,
+    RESIZE_DEBOUNCE_DELAY: 100,
+  };
+
+  let scrollContainer = null;
+  let resizeTimeout = null;
+  let isDestroyed = false;
+
+  // Debounce function for resize events
+  function debounce(func, delay) {
+    return function (...args) {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
   function getActiveScrollContainer() {
-    const activeTab = document.querySelector(
+    // Priority order for finding active scroll container
+    const selectors = [
       '.tab-content.scroll_wrapper.active',
-    );
-    if (activeTab) return activeTab;
-
-    const activeSlide = document.querySelector(
       '.floor-swiper .swiper-slide-active .scroll_wrapper',
-    );
-    if (activeSlide) return activeSlide;
+      '.scroll_wrapper',
+    ];
 
-    return document.querySelector('.scroll_wrapper');
+    for (const selector of selectors) {
+      const element = document.querySelector(selector);
+      if (element) return element;
+    }
+    return null;
   }
 
   function updateThumb() {
-    if (!scrollContainer) {
-      customScrollbar.style.display = 'none';
+    if (isDestroyed || !scrollContainer || !customScrollbar || !customThumb) {
+      if (customScrollbar) customScrollbar.style.display = 'none';
       return;
     }
 
-    const scrollbarWidth = customScrollbar.offsetWidth;
-    const scrollWidth = scrollContainer.scrollWidth;
-    const visibleWidth = scrollContainer.clientWidth;
+    try {
+      const scrollbarWidth = customScrollbar.offsetWidth;
+      const scrollWidth = scrollContainer.scrollWidth;
+      const visibleWidth = scrollContainer.clientWidth;
 
-    if (scrollWidth <= visibleWidth) {
-      customScrollbar.style.display = 'none';
-      return;
-    } else {
+      // Validate dimensions
+      if (scrollbarWidth <= 0 || scrollWidth <= 0 || visibleWidth <= 0) {
+        customScrollbar.style.display = 'none';
+        return;
+      }
+
+      // Hide scrollbar if content fits
+      if (scrollWidth <= visibleWidth) {
+        customScrollbar.style.display = 'none';
+        return;
+      }
+
       customScrollbar.style.display = 'block';
+
+      // Calculate thumb dimensions
+      const thumbWidth = Math.max(
+        (visibleWidth / scrollWidth) * scrollbarWidth,
+        CONFIG.MIN_THUMB_WIDTH,
+      );
+      customThumb.style.width = `${thumbWidth}px`;
+
+      // Calculate thumb position
+      const scrollLeft = scrollContainer.scrollLeft;
+      const maxScroll = scrollWidth - visibleWidth;
+      const maxThumbMove = scrollbarWidth - thumbWidth;
+
+      if (maxScroll > 0 && maxThumbMove > 0) {
+        const thumbLeft = Math.max(
+          0,
+          Math.min(maxThumbMove, (scrollLeft / maxScroll) * maxThumbMove),
+        );
+        customThumb.style.left = `${thumbLeft}px`;
+      }
+    } catch (error) {
+      console.warn('Error updating custom scrollbar:', error);
+      customScrollbar.style.display = 'none';
     }
-
-    const thumbWidth = Math.max(
-      (visibleWidth / scrollWidth) * scrollbarWidth,
-      20,
-    );
-    customThumb.style.width = `${thumbWidth}px`;
-
-    const scrollLeft = scrollContainer.scrollLeft;
-    const maxScroll = scrollWidth - visibleWidth;
-    const maxThumbMove = scrollbarWidth - thumbWidth;
-
-    const thumbLeft = (scrollLeft / maxScroll) * maxThumbMove;
-    customThumb.style.left = `${thumbLeft}px`;
   }
 
   function attachScrollListener() {
+    if (isDestroyed) return;
+
+    // Remove existing listeners
     document.querySelectorAll('.scroll_wrapper').forEach((el) => {
       el.removeEventListener('scroll', updateThumb);
     });
 
     scrollContainer = getActiveScrollContainer();
     if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', updateThumb);
+      scrollContainer.addEventListener('scroll', updateThumb, {
+        passive: true,
+      });
       updateThumb();
     }
   }
 
+  // Event listeners setup
   const tabButtons = document.querySelectorAll('.tab-button');
   tabButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       setTimeout(() => {
         attachScrollListener();
-      }, 500);
+      }, CONFIG.TAB_SWITCH_DELAY);
     });
   });
 
@@ -540,9 +594,33 @@ function initCustomScrollbar() {
     floorSwiper.on('slideChange', attachScrollListener);
   }
 
-  window.addEventListener('resize', updateThumb);
+  // Debounced resize handler
+  const debouncedResize = debounce(updateThumb, CONFIG.RESIZE_DEBOUNCE_DELAY);
+  window.addEventListener('resize', debouncedResize);
 
+  // Initial setup
   attachScrollListener();
+
+  // Cleanup function (can be called when component is destroyed)
+  return function destroy() {
+    isDestroyed = true;
+    clearTimeout(resizeTimeout);
+
+    // Remove all event listeners
+    document.querySelectorAll('.scroll_wrapper').forEach((el) => {
+      el.removeEventListener('scroll', updateThumb);
+    });
+
+    window.removeEventListener('resize', debouncedResize);
+
+    if (window.floorSwiper) {
+      floorSwiper.off('slideChange', attachScrollListener);
+    }
+
+    tabButtons.forEach((btn) => {
+      btn.removeEventListener('click', attachScrollListener);
+    });
+  };
 }
 
 function initModalGalleries() {
@@ -804,14 +882,14 @@ function showCookies() {
   });
 }
 
-function initFloorSelect() {
-  const triggers = document.querySelectorAll('.open_floor_select');
-  const wraps = Array.from(document.querySelectorAll('.floor_list-wrap'));
+function initSectionSelect() {
+  const triggers = document.querySelectorAll('.svg-touch-fallback-button');
+  const wraps = Array.from(document.querySelectorAll('.selection-list-wrap'));
 
   if (!triggers.length || !wraps.length) return;
 
   function anyOpen() {
-    return document.querySelector('.floor_list-wrap.open');
+    return document.querySelector('.selection-list-wrap.open');
   }
 
   function setBodyLock() {
@@ -828,8 +906,8 @@ function initFloorSelect() {
   }
 
   wraps.forEach((wrap) => {
-    if (wrap.dataset.floorListInited === '1') return;
-    const overlay = wrap.querySelector('.floor_list-overlay');
+    if (wrap.dataset.selectionListInited === '1') return;
+    const overlay = wrap.querySelector('.selection-list-overlay');
 
     if (overlay) {
       overlay.addEventListener('click', () => {
@@ -843,30 +921,30 @@ function initFloorSelect() {
       if (!wrap.classList.contains('open')) return;
       const isInsideWrap = wrap.contains(e.target);
       const isTrigger =
-        e.target.closest && !!e.target.closest('.open_floor_select');
+        e.target.closest && !!e.target.closest('.svg-touch-fallback-button');
       if (!isInsideWrap && !isTrigger) {
         wrap.classList.remove('open');
         setBodyLock();
       }
     });
 
-    wrap.dataset.floorListInited = '1';
+    wrap.dataset.selectionListInited = '1';
   });
 
   // Escape закрывает любой открытый список (однократно навешиваем)
-  if (!document.documentElement.dataset.floorListEscapeBound) {
+  if (!document.documentElement.dataset.selectionListEscapeBound) {
     document.addEventListener('keydown', (e) => {
       if (e.key !== 'Escape') return;
-      const opened = document.querySelector('.floor_list-wrap.open');
+      const opened = document.querySelector('.selection-list-wrap.open');
       if (!opened) return;
       opened.classList.remove('open');
       setBodyLock();
     });
-    document.documentElement.dataset.floorListEscapeBound = 'true';
+    document.documentElement.dataset.selectionListEscapeBound = 'true';
   }
 
   function resolveTarget(trigger) {
-    const selector = trigger.getAttribute('data-floor-target');
+    const selector = trigger.getAttribute('data-selection-target');
     if (selector) {
       try {
         const el = document.querySelector(selector);
@@ -876,12 +954,12 @@ function initFloorSelect() {
       }
     }
     const scope = trigger.closest('main') || document;
-    const found = scope.querySelector('.floor_list-wrap');
+    const found = scope.querySelector('.selection-list-wrap');
     return found || wraps[0] || null;
   }
 
   triggers.forEach((trigger) => {
-    if (trigger.dataset.floorTriggerInited === '1') return;
+    if (trigger.dataset.selectionTriggerInited === '1') return;
 
     const targetWrap = resolveTarget(trigger);
     if (!targetWrap) return;
@@ -896,7 +974,7 @@ function initFloorSelect() {
       setBodyLock();
     });
 
-    trigger.dataset.floorTriggerInited = '1';
+    trigger.dataset.selectionTriggerInited = '1';
   });
 }
 
@@ -1041,3 +1119,180 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+function initSvgTooltips() {
+  // Check if we're on a floor page by looking for floor-specific elements
+  const isFloorPage =
+    document.querySelector('.floor-svg') ||
+    document.querySelector('.floor-map') ||
+    /floor-\d+\.html$/.test(window.location.pathname);
+
+  if (isFloorPage) {
+    // Try to detect floor number from URL like floor-2.html
+    const match = window.location.pathname.match(/floor-(\d+)\.html$/);
+    const floorNum = match ? match[1] : '1';
+    const dataFile = `/data/floor-${floorNum}-tooltips.json`;
+
+    const config = {
+      dataFile,
+      svgSelector: '.floor-svg',
+      pathSelector: 'path[class*="apartment_"]',
+    };
+    new SvgTooltips(config);
+    return;
+  }
+
+  // Get the current page type from body class
+  const bodyClasses = document.body.className.split(' ');
+  const pageType = bodyClasses.find((cls) =>
+    ['veronica', 'primula', 'tilia'].includes(cls),
+  );
+
+  if (!pageType) {
+    return;
+  }
+
+  // Configuration mapping based on page type
+  const configMap = {
+    veronica: {
+      dataFile: '/data/veronica.json',
+      svgSelector: '.pavlacovy_dom',
+      pathSelector: '[class*="_floor"]',
+    },
+    primula: {
+      dataFile: '/data/primula.json',
+      svgSelector: '.primula',
+      pathSelector: 'path[class*="section"]',
+    },
+    tilia: {
+      dataFile: '/data/tilia.json',
+      svgSelector: '.tilia',
+      pathSelector: 'path[class*="section"]',
+    },
+  };
+
+  const config = configMap[pageType];
+  if (config) {
+    new SvgTooltips(config);
+  }
+}
+
+function initGoogleMaps() {
+  // Check if we're on a page that needs Google Maps
+  const mapContainer = document.querySelector('#map');
+  if (!mapContainer) {
+    return;
+  }
+
+  // Avoid double-initialization on district map page (handled by DistrictMap)
+  if (document.querySelector('section.district-map')) {
+    return;
+  }
+
+  // Ensure Google Maps API is loaded (lazy-load if necessary)
+  if (typeof google === 'undefined') {
+    loadGoogleMapsApi()
+      .then(() => {
+        // Initialize Google Maps after API loads
+        new GoogleMaps({
+          mapContainer: '#map',
+          dataFile: '/data/map-locations.json',
+          center: { lat: 48.43997244427197, lng: 17.043003287120033 },
+          zoom: 14,
+        });
+      })
+      .catch((err) => {
+        console.error('Failed to load Google Maps API:', err);
+      });
+    return;
+  }
+
+  // Initialize Google Maps
+  new GoogleMaps({
+    mapContainer: '#map',
+    dataFile: '/data/map-locations.json',
+    center: { lat: 48.43997244427197, lng: 17.043003287120033 },
+    zoom: 14,
+  });
+}
+
+function initDistrictMap() {
+  // Check if we're on the district-map page
+  const mapContainer = document.querySelector('#map');
+  if (!mapContainer) {
+    return;
+  }
+
+  // Initialize DistrictMap component (ensure API is loaded)
+  if (typeof google === 'undefined') {
+    loadGoogleMapsApi()
+      .then(() => new DistrictMap())
+      .catch((err) => console.error('Failed to load Google Maps API:', err));
+    return;
+  }
+  new DistrictMap();
+}
+
+// Lazy-load Google Maps script once and cache the promise
+let googleMapsLoadPromise = null;
+function loadGoogleMapsApi() {
+  if (typeof google !== 'undefined' && google.maps) {
+    return Promise.resolve();
+  }
+  if (googleMapsLoadPromise) return googleMapsLoadPromise;
+
+  const apiKey =
+    (import.meta &&
+      import.meta.env &&
+      import.meta.env.VITE_GOOGLE_MAPS_API_KEY) ||
+    '';
+  const callbackName = '__onGoogleMapsLoaded';
+
+  googleMapsLoadPromise = new Promise((resolve, reject) => {
+    // If already loading, rely on existing global callback
+    if (document.querySelector('script[data-google-maps-loader="1"]')) {
+      const checkInterval = setInterval(() => {
+        if (typeof google !== 'undefined' && google.maps) {
+          clearInterval(checkInterval);
+          resolve();
+        }
+      }, 50);
+      // Fallback timeout
+      setTimeout(() => {
+        clearInterval(checkInterval);
+        if (typeof google !== 'undefined' && google.maps) {
+          resolve();
+        } else {
+          reject(new Error('Google Maps API load timeout'));
+        }
+      }, 15000);
+      return;
+    }
+
+    if (!apiKey) {
+      reject(new Error('Missing VITE_GOOGLE_MAPS_API_KEY'));
+      return;
+    }
+
+    window[callbackName] = () => {
+      resolve();
+      try {
+        delete window[callbackName];
+      } catch (_) {}
+    };
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.defer = true;
+    script.dataset.googleMapsLoader = '1';
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(
+       apiKey,
+     )}&callback=${callbackName}&loading=async&v=weekly&libraries=marker`;
+    script.onerror = () =>
+      reject(new Error('Google Maps script failed to load'));
+    document.head.appendChild(script);
+  });
+
+  return googleMapsLoadPromise;
+}
