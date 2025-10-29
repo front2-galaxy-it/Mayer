@@ -594,30 +594,6 @@ export default class SvgTooltips {
     });
   }
 
-  // Get floor group class from path element
-  getFloorGroup(path) {
-    const group = path.closest('g[id]');
-    if (!group) return null;
-
-    // Map group IDs to floor classes
-    const floorMap = {
-      5: 'fifth_floor',
-      4: 'fourth_floor',
-      3: 'third_floor',
-      2: 'second_floor',
-      1: 'first_floor',
-    };
-
-    return floorMap[group.id] || null;
-  }
-
-  // Get all paths in a specific floor group
-  getAllPathsInGroup(floorGroup) {
-    const svg = document.querySelector(this.config.svgSelector);
-    if (!svg) return [];
-
-    return svg.querySelectorAll(`.${floorGroup} path`);
-  }
 
   // Highlight or unhighlight a group of paths
   highlightGroup(paths, highlight) {
@@ -641,19 +617,6 @@ export default class SvgTooltips {
     });
   }
 
-  // Get element class from floor group
-  getElementClassFromFloor(floorGroup) {
-    // Map floor groups to apartment classes
-    const floorToApartmentMap = {
-      fifth_floor: 'apartment_a_1_1',
-      fourth_floor: 'apartment_a_1_2',
-      third_floor: 'apartment_a_1_3',
-      second_floor: 'apartment_b_1_1',
-      first_floor: 'apartment_b_1_2',
-    };
-
-    return floorToApartmentMap[floorGroup] || null;
-  }
 
   // Method to clean up event listeners and prevent memory leaks
   cleanup() {

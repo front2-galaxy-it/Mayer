@@ -1157,7 +1157,6 @@ function initSvgTooltips() {
     veronica: {
       dataFile: '/data/veronica.json',
       svgSelector: '.pavlacovy_dom',
-      pathSelector: '[class*="_floor"]',
     },
     primula: {
       dataFile: '/data/primula.json',

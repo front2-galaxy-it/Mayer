@@ -67,24 +67,42 @@
 
     // JavaScript-controlled group hover effects
     .group-hovered {
+
         &.free {
-            fill: rgba(152, 173, 0, 0.7) !important;
-            stroke: #F5EDDB !important;
+
+            &:hover {
+                path {
+                    fill: rgba(152, 173, 0, 0.7) !important;
+                    stroke: #F5EDDB !important;
+                }
+            }
         }
 
         &.reserv {
-            fill: rgba(158, 162, 131, 0.7) !important;
-            stroke: #F5EDDB !important;
+            &:hover {
+                path {
+                    fill: rgba(158, 162, 131, 0.7) !important;
+                    stroke: #F5EDDB !important;
+                }
+            }
         }
 
         &.sold {
-            fill: rgba(66, 77, 28, 0.7) !important;
-            stroke: #F5EDDB !important;
+            &:hover {
+                path {
+                    fill: rgba(66, 77, 28, 0.7) !important;
+                    stroke: #F5EDDB !important;
+                }
+            }
         }
 
         &.prepare {
-            fill: rgba(214, 213, 193, 0.7) !important;
-            stroke: #F5EDDB !important;
+            &:hover {
+                path {
+                    fill: rgba(214, 213, 193, 0.7) !important;
+                    stroke: #F5EDDB !important;
+                }
+            }
         }
     }
 }
