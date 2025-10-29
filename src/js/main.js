@@ -1245,6 +1245,9 @@ function loadGoogleMapsApi() {
       import.meta.env &&
       import.meta.env.VITE_GOOGLE_MAPS_API_KEY) ||
     '';
+  
+  console.log('Google Maps API Key loaded:', apiKey ? 'YES' : 'NO');
+  console.log('import.meta.env:', import.meta.env);
   const callbackName = '__onGoogleMapsLoaded';
 
   googleMapsLoadPromise = new Promise((resolve, reject) => {

@@ -1,6 +1,6 @@
 [
   {
-    "Blok": "VERONICA",
+    "Blok": "TILIA",
     "Typ": "Byt",
     "Podlazie": 1,
     "Pocet_izieb": 2,
@@ -12,8 +12,8 @@
     "Stav": "Volny"
   },
   {
-    "Blok": "VERONICA",
-    "Typ": "Byt",
+    "Blok": "TILIA",
+    "Typ": "Land plot",
     "Podlazie": 1,
     "Pocet_izieb": 3,
     "Plocha": 89.2,
@@ -25,7 +25,7 @@
   },
   {
     "Blok": "VERONICA",
-    "Typ": "Byt",
+    "Typ": "Land plot",
     "Podlazie": 1,
     "Pocet_izieb": 4,
     "Plocha": 112.8,

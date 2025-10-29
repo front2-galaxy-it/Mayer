@@ -255,8 +255,8 @@ export function renderFilters(data) {
       const key = sortState.key;
       const dir = sortState.dir === 'asc' ? 1 : -1;
       filtered = filtered.slice().sort((a, b) => {
-        const va = normalizeValue(a[key]);
-        const vb = normalizeValue(b[key]);
+        const va = normalizeValue(a[key], key);
+        const vb = normalizeValue(b[key], key);
         if (va < vb) return -1 * dir;
         if (va > vb) return 1 * dir;
         return 0;
@@ -316,7 +316,7 @@ export function renderFilters(data) {
     }
   }
 
-  function normalizeValue(value) {
+  function normalizeValue(value, key) {
     const v = value ?? 0;
     if (typeof v === 'number') return v;
     
@@ -339,6 +339,16 @@ export function renderFilters(data) {
       }
     }
     
+    // Special handling for Blok sorting (sort alphabetically)
+    if (key === 'Blok' && typeof v === 'string') {
+      return v.toLowerCase();
+    }
+    
+    // Special handling for Typ sorting (sort alphabetically)
+    if (key === 'Typ' && typeof v === 'string') {
+      return v.toLowerCase();
+    }
+    
     // Try numeric parse from string (e.g., price strings)
     const num = Number(
       String(v)
@@ -346,6 +356,8 @@ export function renderFilters(data) {
         .replace(/[^0-9.-]+/g, ''),
     );
     if (!Number.isNaN(num) && String(v).trim() !== '') return num;
+    
+    // For string values, return lowercase for consistent sorting
     return String(v).toLowerCase();
   }
 
@@ -730,8 +742,8 @@ export function renderFloorFilters(data) {
       const key = sortState.key;
       const dir = sortState.dir === 'asc' ? 1 : -1;
       filtered = filtered.slice().sort((a, b) => {
-        const va = normalizeValue(a[key]);
-        const vb = normalizeValue(b[key]);
+        const va = normalizeValue(a[key], key);
+        const vb = normalizeValue(b[key], key);
         if (va < vb) return -1 * dir;
         if (va > vb) return 1 * dir;
         return 0;
@@ -792,7 +804,7 @@ export function renderFloorFilters(data) {
     }
   }
 
-  function normalizeValue(value) {
+  function normalizeValue(value, key) {
     const v = value ?? 0;
     if (typeof v === 'number') return v;
     
@@ -815,6 +827,16 @@ export function renderFloorFilters(data) {
       }
     }
     
+    // Special handling for Blok sorting (sort alphabetically)
+    if (key === 'Blok' && typeof v === 'string') {
+      return v.toLowerCase();
+    }
+    
+    // Special handling for Typ sorting (sort alphabetically)
+    if (key === 'Typ' && typeof v === 'string') {
+      return v.toLowerCase();
+    }
+    
     // Try numeric parse from string (e.g., price strings)
     const num = Number(
       String(v)
@@ -822,6 +844,8 @@ export function renderFloorFilters(data) {
         .replace(/[^0-9.-]+/g, ''),
     );
     if (!Number.isNaN(num) && String(v).trim() !== '') return num;
+    
+    // For string values, return lowercase for consistent sorting
     return String(v).toLowerCase();
   }
 
@@ -1153,8 +1177,8 @@ export function renderLandFilters(data) {
       const key = sortState.key;
       const dir = sortState.dir === 'asc' ? 1 : -1;
       filtered = filtered.slice().sort((a, b) => {
-        const va = normalizeValue(a[key]);
-        const vb = normalizeValue(b[key]);
+        const va = normalizeValue(a[key], key);
+        const vb = normalizeValue(b[key], key);
         if (va < vb) return -1 * dir;
         if (va > vb) return 1 * dir;
         return 0;
@@ -1213,7 +1237,7 @@ export function renderLandFilters(data) {
     }
   }
 
-  function normalizeValue(value) {
+  function normalizeValue(value, key) {
     const v = value ?? 0;
     if (typeof v === 'number') return v;
     
@@ -1236,6 +1260,16 @@ export function renderLandFilters(data) {
       }
     }
     
+    // Special handling for Blok sorting (sort alphabetically)
+    if (key === 'Blok' && typeof v === 'string') {
+      return v.toLowerCase();
+    }
+    
+    // Special handling for Typ sorting (sort alphabetically)
+    if (key === 'Typ' && typeof v === 'string') {
+      return v.toLowerCase();
+    }
+    
     // Try numeric parse from string (e.g., price strings)
     const num = Number(
       String(v)
@@ -1243,6 +1277,8 @@ export function renderLandFilters(data) {
         .replace(/[^0-9.-]+/g, ''),
     );
     if (!Number.isNaN(num) && String(v).trim() !== '') return num;
+    
+    // For string values, return lowercase for consistent sorting
     return String(v).toLowerCase();
   }
 
