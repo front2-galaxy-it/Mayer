@@ -257,18 +257,35 @@ function initGenericFilterSelects() {
     const duration = 300;
     if (!trigger || !optionsWrap) return;
 
-    trigger.addEventListener('click', () => {
+    trigger.addEventListener('click', (e) => {
+      // Prevent bubbling to document handler that could immediately close it
+      e.stopPropagation();
+
       if (selectEl.classList.contains('open')) {
         selectEl.classList.remove('open');
         slideUp(optionsWrap, duration);
       } else {
+        // Close any other open selects first
+        document.querySelectorAll('.filter__select.open').forEach((other) => {
+          if (other === selectEl) return;
+          other.classList.remove('open');
+          const otherOpts = other.querySelector('.filter__options');
+          if (otherOpts) slideUp(otherOpts, duration);
+        });
+
         selectEl.classList.add('open');
         slideDown(optionsWrap, duration);
       }
     });
 
+    optionsWrap.addEventListener('click', (e) => {
+      // Keep clicks inside options panel from closing via document handler
+      e.stopPropagation();
+    });
+
     optionsWrap.querySelectorAll('.filter__option').forEach((opt) => {
-      opt.addEventListener('click', () => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
         if (triggerText && opt.textContent) {
           triggerText.textContent = opt.textContent;
         }
@@ -1245,7 +1262,7 @@ function loadGoogleMapsApi() {
       import.meta.env &&
       import.meta.env.VITE_GOOGLE_MAPS_API_KEY) ||
     '';
-  
+
   console.log('Google Maps API Key loaded:', apiKey ? 'YES' : 'NO');
   console.log('import.meta.env:', import.meta.env);
   const callbackName = '__onGoogleMapsLoaded';
@@ -1289,8 +1306,8 @@ function loadGoogleMapsApi() {
     script.defer = true;
     script.dataset.googleMapsLoader = '1';
     script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(
-       apiKey,
-     )}&callback=${callbackName}&loading=async&v=weekly&libraries=marker`;
+      apiKey,
+    )}&callback=${callbackName}&loading=async&v=weekly&libraries=marker`;
     script.onerror = () =>
       reject(new Error('Google Maps script failed to load'));
     document.head.appendChild(script);
